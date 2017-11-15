@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "527374314342",
+    "firebase_url": "https://fir-storage-4b52d.firebaseio.com",
+    "project_id": "fir-storage-4b52d",
+    "storage_bucket": "fir-storage-4b52d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527374314342:android:a8ab3e367feef878",
+        "android_client_info": {
+          "package_name": "com.android.curlytops.suroytabukidnon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527374314342-vrg1uhddtri2ncoibprg0s20520cmmjv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK7ga1eGcnX_wfPe5fbuSxN3fPjFt64Bo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

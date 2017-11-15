@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="municipalityId">
+        <item>baungon</item>
+        <item>cabanglasan</item>
+        <item>damulog</item>
+        <item>dangcagan</item>
+        <item>don-carlos</item>
+        <item>impasugong</item>
+        <item>kadingilan</item>
+        <item>kalilangan</item>
+        <item>kibawe</item>
+        <item>kitaotao</item>
+        <item>lantapan</item>
+        <item>libona</item>
+        <item>malaybalay</item>
+        <item>maramag</item>
+        <item>malitbog</item>
+        <item>manolo-fortich</item>
+        <item>pangantucan</item>
+        <item>quezon</item>
+        <item>san-fernando</item>
+        <item>talakag</item>
+        <item>valencia</item>
+    </string-array>
+
+    <string-array name="catergory">
+        <item>Landmark</item>
+        <item>Accommodation</item>
+        <item>Food</item>
+        <item>Recreation</item>
+    </string-array>
+
+    <string-array name="names">
+        <item>Kristeen Coderre</item>
+        <item>Libby Leslie</item>
+        <item>Sherika Baynes</item>
+        <item>Coralie Mckinny</item>
+        <item>Jon Timms</item>
+        <item>Ezekiel Cousineau</item>
+        <item>Camila Mcgonigle</item>
+        <item>Lakesha Sewell</item>
+        <item>Hunter Kelsch</item>
+        <item>Wendie Meltzer</item>
+        <item>Doretha Preciado</item>
+        <item>Marybelle Staton</item>
+        <item>Angelo Robbins</item>
+        <item>Norene Baptista</item>
+        <item>Kathryn Mansfield</item>
+        <item>Jamee Botts</item>
+        <item>Jama Spiker</item>
+        <item>Eugene Lazenby</item>
+        <item>Tomika Blind</item>
+        <item>Johana Massengill</item>
+        <item>Randa Wommack</item>
+        <item>Lang Medina</item>
+        <item>Clyde Keena</item>
+        <item>Malisa Knopp</item>
+        <item>Yaeko Murakami</item>
+        <item>Pa Gilmore</item>
+        <item>Lashell Boyette</item>
+        <item>Sherri Hogans</item>
+        <item>Emelda Ahlquist</item>
+        <item>Kala Bardin</item>
+        <item>Alysia Parra</item>
+        <item>Harris Yopp</item>
+        <item>Claribel Freeney</item>
+        <item>Laila Ekstrom</item>
+        <item>Numbers Solomon</item>
+        <item>Desirae Endicott</item>
+        <item>Shandi Zahl</item>
+        <item>Venessa Brunson</item>
+        <item>Guillermo Abila</item>
+        <item>Kenna Boles</item>
+        <item>Daisey Mariscal</item>
+        <item>Marry Gartrell</item>
+        <item>Tyree Boateng</item>
+        <item>Caryl Matheney</item>
+        <item>Zenaida Perfecto</item>
+        <item>Izola Stivers</item>
+        <item>Rosario Rominger</item>
+        <item>Bennett Donelson</item>
+        <item>Sharell Hewes</item>
+        <item>Kirk Sim</item>
+    </string-array>
+
+    <string-array name="months">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+</resources>

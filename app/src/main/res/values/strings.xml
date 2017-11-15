@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">SuroyBukidnon</string>
+
+    <string name="search">Search...</string>
+
+    <string name="address">address</string>
+    <string name="title">Title</string>
+    <string name="item_direction_icon">item_direction_icon</string>
+
+    <string name="home">Home</string>
+    <string name="event">Events</string>
+    <string name="municipality">Municipality</string>
+    <string name="map">Maps.me</string>
+
+    <string name="mode">default</string>
+
+
+
+</resources>
