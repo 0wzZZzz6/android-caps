@@ -1,27 +1,27 @@
 [
     {
-        "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_shadow.xml.flat",
-        "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\shadow.xml"
+        "merged": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_pattern.png.flat",
+        "source": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\pattern.png"
     },
     {
         "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_green.xml.flat",
         "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\green.xml"
     },
     {
-        "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_background_pattern.xml.flat",
-        "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_pattern.xml"
-    },
-    {
         "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_pattern.png.flat",
         "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\pattern.png"
     },
     {
-        "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_overflow.xml.flat",
-        "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\overflow.xml"
+        "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_background_pattern.xml.flat",
+        "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_pattern.xml"
     },
     {
-        "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_btn_back_green_active.xml.flat",
-        "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_back_green_active.xml"
+        "merged": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_btn_green_selector.xml.flat",
+        "source": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_green_selector.xml"
+    },
+    {
+        "merged": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_shadow.xml.flat",
+        "source": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\shadow.xml"
     },
     {
         "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_btn_back_green.xml.flat",
@@ -40,15 +40,67 @@
         "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\gray.xml"
     },
     {
-        "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_btn_back_gray_active.xml.flat",
-        "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_back_gray_active.xml"
+        "merged": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_green.xml.flat",
+        "source": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\green.xml"
+    },
+    {
+        "merged": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_background_pattern.xml.flat",
+        "source": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_pattern.xml"
     },
     {
         "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_btn_back_gray.xml.flat",
         "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_back_gray.xml"
     },
     {
+        "merged": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_btn_back_gray_active.xml.flat",
+        "source": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_back_gray_active.xml"
+    },
+    {
+        "merged": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_overflow.xml.flat",
+        "source": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\overflow.xml"
+    },
+    {
+        "merged": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_btn_back_green.xml.flat",
+        "source": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_back_green.xml"
+    },
+    {
+        "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_shadow.xml.flat",
+        "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\shadow.xml"
+    },
+    {
+        "merged": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_btn_gray_selector.xml.flat",
+        "source": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_gray_selector.xml"
+    },
+    {
+        "merged": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_btn_back_green_active.xml.flat",
+        "source": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_back_green_active.xml"
+    },
+    {
+        "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_overflow.xml.flat",
+        "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\overflow.xml"
+    },
+    {
+        "merged": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_btn_back_gray.xml.flat",
+        "source": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_back_gray.xml"
+    },
+    {
+        "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_btn_back_green_active.xml.flat",
+        "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_back_green_active.xml"
+    },
+    {
+        "merged": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_dlg_install_mwm.xml.flat",
+        "source": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\bundles\\debug\\res\\layout\\dlg_install_mwm.xml"
+    },
+    {
+        "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_btn_back_gray_active.xml.flat",
+        "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_back_gray_active.xml"
+    },
+    {
         "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_dlg_install_mwm.xml.flat",
         "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\layout\\dlg_install_mwm.xml"
+    },
+    {
+        "merged": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_gray.xml.flat",
+        "source": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\gray.xml"
     }
 ]
