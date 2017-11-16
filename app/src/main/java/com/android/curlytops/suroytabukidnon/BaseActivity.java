@@ -39,7 +39,7 @@ public class BaseActivity extends AppCompatActivity {
 //        firebase();
     }
 
-
+// remove firebase municipality
 
 }
 
