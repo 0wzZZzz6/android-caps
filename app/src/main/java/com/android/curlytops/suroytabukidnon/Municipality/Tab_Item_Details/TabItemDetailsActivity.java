@@ -59,8 +59,8 @@ public class TabItemDetailsActivity extends BaseActivity {
 
     @BindView(R.id.tab_item_details_toolbar)
     Toolbar toolbar;
-    @BindView(R.id.gmail_fab)
-    FloatingActionButton fab;
+//    @BindView(R.id.gmail_fab)
+//    FloatingActionButton fab;
     @BindView(R.id.tab_item_details_coordinator)
     CoordinatorLayout coordinatorLayout;
     @BindView(R.id.tab_item_details_collapsingToolbar)
@@ -108,54 +108,54 @@ public class TabItemDetailsActivity extends BaseActivity {
 
         mShortAnimationDuration = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-        fab.setVisibility(View.VISIBLE);
-        fab.startAnimation(growAnimation);
+//        fab.setVisibility(View.VISIBLE);
+//        fab.startAnimation(growAnimation);
 
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (verticalOffset == 0) {
-                    showFAB = true;
-                    fab.startAnimation(growAnimation);
-                } else {
-                    if (showFAB) {
-                        fab.startAnimation(shrinkAnimation);
-                        showFAB = false;
-                    }
-                }
-            }
-        });
+//        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+//            @Override
+//            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+//                if (verticalOffset == 0) {
+//                    showFAB = true;
+//                    fab.startAnimation(growAnimation);
+//                } else {
+//                    if (showFAB) {
+//                        fab.startAnimation(shrinkAnimation);
+//                        showFAB = false;
+//                    }
+//                }
+//            }
+//        });
 
-        growAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                fab.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-        shrinkAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                fab.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-            }
-        });
+//        growAnimation.setAnimationListener(new Animation.AnimationListener() {
+//            @Override
+//            public void onAnimationStart(Animation animation) {
+//                fab.setVisibility(View.VISIBLE);
+//            }
+//
+//            @Override
+//            public void onAnimationEnd(Animation animation) {
+//
+//            }
+//
+//            @Override
+//            public void onAnimationRepeat(Animation animation) {
+//
+//            }
+//        });
+//        shrinkAnimation.setAnimationListener(new Animation.AnimationListener() {
+//            @Override
+//            public void onAnimationStart(Animation animation) {
+//            }
+//
+//            @Override
+//            public void onAnimationEnd(Animation animation) {
+//                fab.setVisibility(View.GONE);
+//            }
+//
+//            @Override
+//            public void onAnimationRepeat(Animation animation) {
+//            }
+//        });
 
         for (int i = 0; i < imageURLS.size(); i++) {
             ImageModel imageModel = new ImageModel();

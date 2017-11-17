@@ -3,6 +3,7 @@ package com.android.curlytops.suroytabukidnon.Model;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by jan_frncs
@@ -21,10 +22,16 @@ public class Event implements Serializable {
     private String fromTime;
     private String toTime;
 
+    private String coverURL, coverName, eventStorageKey;
+    private boolean starred;
+    private List<String> imageURLS, imageNames;
+
     public Event() {}
 
     public Event(String e_id, String title, String location,
-                 String description, boolean allDay, long date, String fromTime, String toTime) {
+                 String description, boolean allDay, long date, String fromTime, String toTime,
+                 String coverURL, String coverName, String eventStorageKey, boolean starred,
+                 List<String> imageURLS, List<String> imageNames) {
         this.e_id = e_id;
         this.title = title;
         this.location = location;
@@ -33,10 +40,18 @@ public class Event implements Serializable {
         this.date = date;
         this.fromTime = fromTime;
         this.toTime = toTime;
+        this.coverURL = coverURL;
+        this.coverName = coverName;
+        this.eventStorageKey = eventStorageKey;
+        this.starred = starred;
+        this.imageURLS = imageURLS;
+        this.imageNames = imageNames;
     }
 
     public Event(String e_id, String title, String location, String description,
-                 boolean allDay, long fromDate, long toDate, String fromTime, String toTime) {
+                 boolean allDay, long fromDate, long toDate, String fromTime, String toTime,
+                 String coverURL, String coverName, String eventStorageKey, boolean starred,
+                 List<String> imageURLS, List<String> imageNames) {
         this.e_id = e_id;
         this.title = title;
         this.location = location;
@@ -46,6 +61,12 @@ public class Event implements Serializable {
         this.toDate = toDate;
         this.fromTime = fromTime;
         this.toTime = toTime;
+        this.coverURL = coverURL;
+        this.coverName = coverName;
+        this.eventStorageKey = eventStorageKey;
+        this.starred = starred;
+        this.imageURLS = imageURLS;
+        this.imageNames = imageNames;
     }
 
     public Event(String e_id, String title, String location, String description,
@@ -95,4 +116,29 @@ public class Event implements Serializable {
     public String getToTime() {
         return toTime;
     }
+
+    public String getCoverName() {
+        return coverName;
+    }
+
+    public String getCoverURL() {
+        return coverURL;
+    }
+
+    public List<String> getImageURLS() {
+        return imageURLS;
+    }
+
+    public List<String> getImageNames() {
+        return imageNames;
+    }
+
+    public String getEventStorageKey() {
+        return eventStorageKey;
+    }
+
+    public boolean getStarred() {
+        return starred;
+    }
+
 }

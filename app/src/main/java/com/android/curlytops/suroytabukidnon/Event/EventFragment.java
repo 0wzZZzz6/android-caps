@@ -51,6 +51,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
@@ -227,6 +228,14 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
                         eventObject.put("fromTime", event.getFromTime());
                         eventObject.put("toTime", event.getToTime());
 
+                        // new
+                        eventObject.put("coverURL", event.getCoverURL());
+                        eventObject.put("coverName", event.getCoverName());
+                        eventObject.put("imageURLS", event.getImageURLS());
+                        eventObject.put("imageNames", event.getImageNames());
+                        eventObject.put("eventStorageKey", event.getEventStorageKey());
+                        eventObject.put("starred", event.getStarred());
+
                         if (event.getAllDay()) {
                             eventObject.put("date", event.getDate());
                         } else {
@@ -303,6 +312,17 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
                 String fromTime = JsonPath.read(document, "$.events[" + i + "].fromTime");
                 String toTime = JsonPath.read(document, "$.events[" + i + "].toTime");
 
+                // new
+                String coverURL = JsonPath.read(document, "$.events[" + i + "].coverURL");
+                String coverName = JsonPath.read(document, "$.events[" + i + "].coverName");
+                String eventStorageKey = JsonPath.read(document, "$.events[" + i + "].eventStorageKey");
+                boolean starred = JsonPath.read(document, "$.events[" + i + "].starred");
+                String stringImageURLS = JsonPath.read(document, "$.events[" + i + "].imageURLS");
+                String stringImageNames = JsonPath.read(document, "$.events[" + i + "].imageNames");
+
+                List<String> imageURLS = convertToArray(stringImageURLS);
+                List<String> imageNames = convertToArray(stringImageNames);
+
                 if (allDay) {
                     date = JsonPath.read(document, "$.events[" + i + "].date");
                     dates.add(ConvertCalendarDate(date));
@@ -328,18 +348,18 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
 
                 if (milliseconds == 0) {// show all events
                     if (allDay) {
-                        eventList.add(new Event(eid, title, location, description, allDay, date, fromTime, toTime));
+                        eventList.add(new Event(eid, title, location, description, allDay, date, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
                     } else {
-                        eventList.add(new Event(eid, title, location, description, allDay, fDate, tDate, fromTime, toTime));
+                        eventList.add(new Event(eid, title, location, description, allDay, fDate, tDate, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
                     }
                 } else if (milliseconds == date) {// show only events sorted by longDate
                     if (allDay) {
-                        eventList.add(new Event(eid, title, location, description, allDay, date, fromTime, toTime));
+                        eventList.add(new Event(eid, title, location, description, allDay, date, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
                     }
                 }
 
                 if (!allDay && inRange(milliseconds, fromDate, toDate)) {
-                    eventList.add(new Event(eid, title, location, description, allDay, fDate, tDate, fromTime, toTime));
+                    eventList.add(new Event(eid, title, location, description, allDay, fDate, tDate, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
                 }
 
                 i++;
@@ -347,6 +367,14 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private List<String> convertToArray(String item) {
+        String category = item.replaceAll("\\s+", "");
+        category = category.replace("[", "");
+        category = category.replace("]", "");
+
+        return new ArrayList<>(Arrays.asList(category.split(",")));
     }
 
     private boolean inRange(long milliSeconds, Date fromDate, Date toDate) {
