@@ -54,7 +54,7 @@ public class MunicipalityFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        firebase();
+//        firebase();
     }
 
     @Override
@@ -110,64 +110,64 @@ public class MunicipalityFragment extends Fragment {
         return municipalityList;
     }
 
-    private void firebase() {
-        final JSONObject municipalityObject = new JSONObject();
-        final String[] municipalities = getResources().getStringArray(R.array.municipalityId);
-
-        for (final String municipality : municipalities) {
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference municipalityReference = database
-                    .getReference("municipality")
-                    .child(municipality);
-
-            municipalityReference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    JSONObject object;
-                    JSONArray data = new JSONArray();
-
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        MunicipalityItem municipalityItem = snapshot.getValue(MunicipalityItem.class);
-                        try {
-                            object = new JSONObject();
-                            object.put("id", snapshot.getKey());
-                            object.put("title", municipalityItem.getTitle());
-                            object.put("location", municipalityItem.getLocation());
-                            object.put("contact", municipalityItem.getContact());
-                            object.put("category", municipalityItem.getCategory());
-                            object.put("imageURLS", municipalityItem.getImageURLS());
-                            object.put("imageNames", municipalityItem.getImageNames());
-
-                            // new
-                            object.put("coverURL", municipalityItem.getCoverURL());
-                            object.put("coverName", municipalityItem.getCoverName());
-                            object.put("starred", municipalityItem.getStarred());
-                            data.put(object);
-                            municipalityObject.put(municipality, data);
-                            FileOutputStream fos = getContext().openFileOutput("municipality.json", Context.MODE_PRIVATE);
-                            fos.write(municipalityObject.toString().getBytes());
-                            fos.flush();
-                            fos.close();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                            Log.e("Error: ", e.toString());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    System.out.println("The read failed: " + databaseError.getMessage());
-                }
-            });
-        }
-
-
-    }
+//    private void firebase() {
+//        final JSONObject municipalityObject = new JSONObject();
+//        final String[] municipalities = getResources().getStringArray(R.array.municipalityId);
+//
+//        for (final String municipality : municipalities) {
+//            FirebaseDatabase database = FirebaseDatabase.getInstance();
+//            DatabaseReference municipalityReference = database
+//                    .getReference("municipality")
+//                    .child(municipality);
+//
+//            municipalityReference.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                    JSONObject object;
+//                    JSONArray data = new JSONArray();
+//
+//                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                        MunicipalityItem municipalityItem = snapshot.getValue(MunicipalityItem.class);
+//                        try {
+//                            object = new JSONObject();
+//                            object.put("id", snapshot.getKey());
+//                            object.put("title", municipalityItem.getTitle());
+//                            object.put("location", municipalityItem.getLocation());
+//                            object.put("contact", municipalityItem.getContact());
+//                            object.put("category", municipalityItem.getCategory());
+//                            object.put("imageURLS", municipalityItem.getImageURLS());
+//                            object.put("imageNames", municipalityItem.getImageNames());
+//
+//                            // new
+//                            object.put("coverURL", municipalityItem.getCoverURL());
+//                            object.put("coverName", municipalityItem.getCoverName());
+//                            object.put("starred", municipalityItem.getStarred());
+//                            data.put(object);
+//                            municipalityObject.put(municipality, data);
+//                            FileOutputStream fos = getContext().openFileOutput("municipality.json", Context.MODE_PRIVATE);
+//                            fos.write(municipalityObject.toString().getBytes());
+//                            fos.flush();
+//                            fos.close();
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        } catch (FileNotFoundException e) {
+//                            e.printStackTrace();
+//                            Log.e("Error: ", e.toString());
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//                    System.out.println("The read failed: " + databaseError.getMessage());
+//                }
+//            });
+//        }
+//
+//
+//    }
 
 }
