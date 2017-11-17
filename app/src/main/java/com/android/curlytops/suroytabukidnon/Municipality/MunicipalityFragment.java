@@ -138,6 +138,11 @@ public class MunicipalityFragment extends Fragment {
                             object.put("category", municipalityItem.getCategory());
                             object.put("imageURLS", municipalityItem.getImageURLS());
                             object.put("imageNames", municipalityItem.getImageNames());
+
+                            // new
+                            object.put("coverURL", municipalityItem.getCoverURL());
+                            object.put("coverName", municipalityItem.getCoverName());
+                            object.put("starred", municipalityItem.getStarred());
                             data.put(object);
                             municipalityObject.put(municipality, data);
                             FileOutputStream fos = getContext().openFileOutput("municipality.json", Context.MODE_PRIVATE);

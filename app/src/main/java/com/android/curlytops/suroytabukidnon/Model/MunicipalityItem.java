@@ -10,13 +10,15 @@ import java.util.List;
 
 public class MunicipalityItem implements Serializable{
 
-    private String id, title, location, contact;
+    private String id, title, location, contact, coverName, coverURL;
     private List<String> category, imageURLS, imageNames;
+    private boolean starred;
 
     public MunicipalityItem() {}
 
     public MunicipalityItem(String id, String title, String location, String contact,
-                            List<String> category, List<String> imageURLS, List<String> imageNames) {
+                            List<String> category, List<String> imageURLS, List<String> imageNames,
+                            String coverURL, String coverName, boolean starred) {
         this.id = id;
         this.title = title;
         this.location = location;
@@ -24,6 +26,9 @@ public class MunicipalityItem implements Serializable{
         this.category = category;
         this.imageURLS = imageURLS;
         this.imageNames = imageNames;
+        this.coverURL = coverURL;
+        this.coverName = coverName;
+        this.starred = starred;
     }
 
     public String getContact() {
@@ -52,5 +57,17 @@ public class MunicipalityItem implements Serializable{
 
     public List<String> getImageURLS() {
         return imageURLS;
+    }
+
+    public String getCoverURL() {
+        return coverURL;
+    }
+
+    public String getCoverName() {
+        return coverName;
+    }
+
+    public boolean getStarred() {
+        return starred;
     }
 }

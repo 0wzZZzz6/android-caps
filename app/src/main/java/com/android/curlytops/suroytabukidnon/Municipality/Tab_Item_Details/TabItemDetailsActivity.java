@@ -36,6 +36,8 @@ import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;
 import com.pchmn.materialchips.ChipView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +52,6 @@ public class TabItemDetailsActivity extends BaseActivity {
 
     ArrayList<ImageModel> data = new ArrayList<>();
     MunicipalityItem municipalityItem;
-    boolean showFAB = true;
     int mShortAnimationDuration;
 
     GalleryAdapter galleryAdapter;
@@ -59,8 +60,6 @@ public class TabItemDetailsActivity extends BaseActivity {
 
     @BindView(R.id.tab_item_details_toolbar)
     Toolbar toolbar;
-//    @BindView(R.id.gmail_fab)
-//    FloatingActionButton fab;
     @BindView(R.id.tab_item_details_coordinator)
     CoordinatorLayout coordinatorLayout;
     @BindView(R.id.tab_item_details_collapsingToolbar)
@@ -75,6 +74,9 @@ public class TabItemDetailsActivity extends BaseActivity {
     RecyclerView recyclerViewGallery;
     @BindView(R.id.bottomSheet_title)
     TextView textView_title;
+
+    @BindView(R.id.detail2)
+    TextView detail2;
 
 
     @Override
@@ -95,67 +97,14 @@ public class TabItemDetailsActivity extends BaseActivity {
         municipalityItem = (MunicipalityItem) getIntent().getSerializableExtra("municipalityItem");
 
         textView_title.setText(municipalityItem.getTitle());
-
+        detail2.setText(String.valueOf(municipalityItem.getStarred()));
         List<String> imageURLS = municipalityItem.getImageURLS();
 
         Glide.with(this)
-                .load(imageURLS.get(1))
+                .load(municipalityItem.getCoverURL())
                 .into(imageView);
 
-        // To handle FAB animation upon entrance and exit
-        final Animation growAnimation = AnimationUtils.loadAnimation(this, R.anim.simple_grow);
-        final Animation shrinkAnimation = AnimationUtils.loadAnimation(this, R.anim.simple_shrink);
-
         mShortAnimationDuration = getResources().getInteger(android.R.integer.config_shortAnimTime);
-
-//        fab.setVisibility(View.VISIBLE);
-//        fab.startAnimation(growAnimation);
-
-//        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-//            @Override
-//            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-//                if (verticalOffset == 0) {
-//                    showFAB = true;
-//                    fab.startAnimation(growAnimation);
-//                } else {
-//                    if (showFAB) {
-//                        fab.startAnimation(shrinkAnimation);
-//                        showFAB = false;
-//                    }
-//                }
-//            }
-//        });
-
-//        growAnimation.setAnimationListener(new Animation.AnimationListener() {
-//            @Override
-//            public void onAnimationStart(Animation animation) {
-//                fab.setVisibility(View.VISIBLE);
-//            }
-//
-//            @Override
-//            public void onAnimationEnd(Animation animation) {
-//
-//            }
-//
-//            @Override
-//            public void onAnimationRepeat(Animation animation) {
-//
-//            }
-//        });
-//        shrinkAnimation.setAnimationListener(new Animation.AnimationListener() {
-//            @Override
-//            public void onAnimationStart(Animation animation) {
-//            }
-//
-//            @Override
-//            public void onAnimationEnd(Animation animation) {
-//                fab.setVisibility(View.GONE);
-//            }
-//
-//            @Override
-//            public void onAnimationRepeat(Animation animation) {
-//            }
-//        });
 
         for (int i = 0; i < imageURLS.size(); i++) {
             ImageModel imageModel = new ImageModel();

@@ -53,16 +53,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <!--<android.support.design.widget.FloatingActionButton-->
-        <!--android:id="@+id/gmail_fab"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginEnd="15dp"-->
-        <!--android:focusable="true"-->
-        <!--android:src="@drawable/ic_arrow_forward_white"-->
-        <!--app:layout_anchor="@+id/tab_item_details_bottomSheet"-->
-        <!--app:layout_anchorGravity="right|top" />-->
-
     <include
         android:id="@+id/tab_item_details_bottomSheet"
         layout="@layout/bottom_sheet" />

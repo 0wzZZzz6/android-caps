@@ -104,11 +104,16 @@ public class Tab2 extends Fragment {
                     String stringImageURLS = JsonPath.read(document, "$." + id + "[" + i + "].imageURLS");
                     String stringImageNames = JsonPath.read(document, "$." + id + "[" + i + "].imageNames");
 
+                    // new
+                    String coverURL = JsonPath.read(document, "$." + id + "[" + i + "].coverURL");
+                    String coverName = JsonPath.read(document, "$." + id + "[" + i + "].coverName");
+                    boolean starred = JsonPath.read(document, "$." + id + "[" + i + "].starred");
+
                     List<String> category = convertToArray(stringCategory);
                     List<String> imageURLS =  convertToArray(stringImageURLS);
                     List<String> imageNames = convertToArray(stringImageNames);
 
-                    itemList.add(new MunicipalityItem(iid, title, location, contact, category, imageURLS, imageNames));
+                    itemList.add(new MunicipalityItem(iid, title, location, contact, category, imageURLS, imageNames, coverURL, coverName, starred));
                     i++;
                 }
             } catch (Exception e) {
