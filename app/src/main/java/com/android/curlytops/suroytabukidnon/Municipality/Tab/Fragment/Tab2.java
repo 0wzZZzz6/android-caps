@@ -105,15 +105,19 @@ public class Tab2 extends Fragment {
                     String stringImageNames = JsonPath.read(document, "$." + id + "[" + i + "].imageNames");
 
                     // new
+                    String municipalityStorageKey = JsonPath.read(document, "$." + id + "[" + i + "].municipalityStorageKey");
                     String coverURL = JsonPath.read(document, "$." + id + "[" + i + "].coverURL");
                     String coverName = JsonPath.read(document, "$." + id + "[" + i + "].coverName");
                     boolean starred = JsonPath.read(document, "$." + id + "[" + i + "].starred");
+                    String description = JsonPath.read(document, "$." + id + "[" + i + "].description");
+                    String latlon = JsonPath.read(document, "$." + id + "[" + i + "].latlon");
 
                     List<String> category = convertToArray(stringCategory);
                     List<String> imageURLS =  convertToArray(stringImageURLS);
                     List<String> imageNames = convertToArray(stringImageNames);
 
-                    itemList.add(new MunicipalityItem(iid, title, location, contact, category, imageURLS, imageNames, coverURL, coverName, starred));
+                    itemList.add(new MunicipalityItem(iid, title, location, contact, category, municipalityStorageKey,
+                            imageURLS, imageNames, coverURL, coverName, starred, description, latlon));
                     i++;
                 }
             } catch (Exception e) {
@@ -193,6 +197,7 @@ public class Tab2 extends Fragment {
                 public void onClick(View v) {
                     Intent intent = new Intent(getContext(), TabItemDetailsActivity.class);
                     intent.putExtra("municipalityItem", municipalityItem);
+                    intent.putExtra("_municipality", id);
                     startActivity(intent);
                 }
             });

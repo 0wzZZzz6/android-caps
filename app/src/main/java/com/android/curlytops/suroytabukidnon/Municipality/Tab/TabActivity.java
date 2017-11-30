@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
  */
 public class TabActivity extends BaseActivity {
 
-    String _id, _img, _municipality;
+    public String _id, _img, _municipality;
     int mutedColor = R.attr.colorPrimary;
 
     @BindView(R.id.tab_toolbar) Toolbar toolbar;
@@ -56,7 +56,13 @@ public class TabActivity extends BaseActivity {
         tabLayout.setupWithViewPager(viewPager);
         collapsingToolbarLayout.setTitleEnabled(false);
 
-        viewPager.setCurrentItem(0, true);
+        viewPager.setCurrentItem(0, false);
+
+
+        Bundle bundle = new Bundle();
+        bundle.putString("_municipality", _municipality);
+        Tab2 tab2 = new Tab2();
+        tab2.setArguments(bundle);
 
 //        Drawable drawable = getResources().getDrawable(Integer.parseInt(_img));
 //

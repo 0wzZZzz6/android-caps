@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +19,12 @@ import com.android.curlytops.suroytabukidnon.AppIntro.IntroActivity;
 import com.android.curlytops.suroytabukidnon.Event.EventFragment;
 import com.android.curlytops.suroytabukidnon.Helper.BottomNavigationViewHelper;
 import com.android.curlytops.suroytabukidnon.Home.HomeFragment;
+import com.android.curlytops.suroytabukidnon.Model.User;
 import com.android.curlytops.suroytabukidnon.Municipality.MunicipalityFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.lapism.searchview.SearchAdapter;
 import com.lapism.searchview.SearchFilter;
 import com.lapism.searchview.SearchHistoryTable;
@@ -38,12 +44,21 @@ public class MainActivity extends BaseActivity {
     boolean doubleBackToExitPressedOnce = false;
     SearchView mSearchView;
 
-    @BindView(R.id.activityMain_toolbar) public Toolbar toolbar;
-    @BindView(R.id.activityMain_bottomNavigation) BottomNavigationView bottomNavigationView;
+    private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
+
+    @BindView(R.id.activityMain_toolbar)
+    public Toolbar toolbar;
+    @BindView(R.id.activityMain_bottomNavigation)
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+
         onFirstRun();
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -54,6 +69,10 @@ public class MainActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         toolbar.setNavigationContentDescription(R.string.app_name);
 
+        if (getUid() == null) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
+        }
 
     }
 
@@ -90,6 +109,12 @@ public class MainActivity extends BaseActivity {
                 return true;
 //                mSearchView.open(true); // enable or disable animation
 //                return true;
+            }
+            case R.id.action_logout: {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                finish();
+                return true;
             }
             default:
                 return super.onOptionsItemSelected(item);
@@ -177,6 +202,22 @@ public class MainActivity extends BaseActivity {
         // Start the thread
         t.start();
 
+
+        // Check auth on Activity start
+        if (mAuth.getCurrentUser() != null) {
+//            onAuthSuccess(mAuth.getCurrentUser());
+            Toast.makeText(this, "go to mainActivity", Toast.LENGTH_SHORT).show();
+        } else {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
+        }
+
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        firebaseEvents();
+        firebaseMunicipalityItem();
+    }
 }

@@ -2,7 +2,10 @@ package com.android.curlytops.suroytabukidnon.Event;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -67,6 +70,7 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapt
 import io.github.luizgrp.sectionedrecyclerviewadapter.StatelessSection;
 
 import static android.content.Context.MODE_PRIVATE;
+import static android.graphics.Paint.ANTI_ALIAS_FLAG;
 
 /**
  * Created by jan_frncs
@@ -151,6 +155,9 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
             @Override
             public void onAnimationStart(Animation animation) {
                 fab.setVisibility(View.VISIBLE);
+                Calendar cal = Calendar.getInstance();
+                int dayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
+                fab.setImageBitmap(textAsBitmap(String.valueOf(dayOfMonth),  Color.WHITE));
             }
 
             @Override
@@ -426,6 +433,21 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
         calendar.setTime(date);
 
         return String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+    }
+
+    private static Bitmap textAsBitmap(String text, int textColor) {
+        Paint paint = new Paint(ANTI_ALIAS_FLAG);
+        paint.setTextSize(30);
+        paint.setColor(textColor);
+        paint.setTextAlign(Paint.Align.LEFT);
+        float baseline = -paint.ascent(); // ascent() is negative
+        int width = (int) (paint.measureText(text) + 0.0f); // round
+        int height = (int) (baseline + paint.descent() + 0.0f);
+        Bitmap image = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+
+        Canvas canvas = new Canvas(image);
+        canvas.drawText(text, 0, baseline, paint);
+        return image;
     }
 
     private CalendarDay SampleThis(Date date) {

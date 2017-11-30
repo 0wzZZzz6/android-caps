@@ -1,17 +1,15 @@
 package com.android.curlytops.suroytabukidnon;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +23,6 @@ import org.json.JSONObject;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
 
 /**
  * Created by jan_frncs
@@ -46,7 +43,7 @@ public class BaseActivity extends AppCompatActivity {
         firebaseMunicipalityItem();
     }
 
-    private void firebaseEvents() {
+    public void firebaseEvents() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference eventReference = database.getReference("events");
 
@@ -100,7 +97,7 @@ public class BaseActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-                Toast.makeText(BaseActivity.this, "[CHANGE] event item", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(BaseActivity.this, "[CHANGE] event item", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -110,13 +107,12 @@ public class BaseActivity extends AppCompatActivity {
         });
     }
 
-    private void firebaseMunicipalityItem() {
+    public void firebaseMunicipalityItem() {
         final JSONObject municipalityObject = new JSONObject();
         final String[] municipalities = getResources().getStringArray(R.array.municipalityId);
 
         for (final String municipality : municipalities) {
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference municipalityReference = database
+            DatabaseReference municipalityReference = FirebaseDatabase.getInstance()
                     .getReference("municipality")
                     .child(municipality);
 
@@ -140,9 +136,13 @@ public class BaseActivity extends AppCompatActivity {
                             object.put("imageNames", municipalityItem.getImageNames());
 
                             // new
+                            object.put("municipalityStorageKey", municipalityItem.getMunicipalityStorageKey());
                             object.put("coverURL", municipalityItem.getCoverURL());
                             object.put("coverName", municipalityItem.getCoverName());
                             object.put("starred", municipalityItem.getStarred());
+                            object.put("description", municipalityItem.getDescription());
+                            object.put("latlon", municipalityItem.getLatlon());
+
                             data.put(object);
                             municipalityObject.put(municipality, data);
                             FileOutputStream fos = openFileOutput("municipality.json", Context.MODE_PRIVATE);
@@ -158,7 +158,7 @@ public class BaseActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
-                    Toast.makeText(BaseActivity.this, "[CHANGE] municipality item", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(BaseActivity.this, "[CHANGE] municipality item", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -171,5 +171,26 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
+    private ProgressDialog mProgressDialog;
+
+    public void showProgressDialog() {
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(this);
+            mProgressDialog.setCancelable(false);
+            mProgressDialog.setMessage("Loading...");
+        }
+
+        mProgressDialog.show();
+    }
+
+    public void hideProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+    }
+
+    public String getUid() {
+        return FirebaseAuth.getInstance().getCurrentUser().getUid();
+    }
 }
 

@@ -32,6 +32,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -125,7 +126,6 @@ public class HomeFragment extends Fragment {
     public List<Event> getEventsJson() {
         List<Event> eventList = new ArrayList<>();
 
-
         try {
             FileInputStream fis = getActivity().openFileInput("event.json");
             BufferedInputStream bis = new BufferedInputStream(fis);
@@ -184,6 +184,12 @@ public class HomeFragment extends Fragment {
 
 
                 i++;
+            }
+            View view = rootView.findViewById(R.id.highlights_event);
+            if (eventList.size() == 0) {
+                view.setVisibility(View.GONE);
+            } else {
+                view.setVisibility(View.VISIBLE);
             }
         } catch (IOException e) {
             e.printStackTrace();

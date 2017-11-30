@@ -16,16 +16,16 @@
         android:gravity="center"
         android:paddingLeft="32dp"
         android:paddingRight="32dp"
-        android:text="Slide 1 title"
+        android:text="Slide 2 title"
         android:textColor="#ffffff"
         android:textSize="28sp" />
-
 
     <ImageView
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center"
         android:src="@drawable/suroybukidnon" />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
         android:gravity="center"
         android:paddingLeft="64dp"
         android:paddingRight="64dp"
-        android:text="Long descreption here"
+        android:text="Description here"
         android:textColor="#ffffff"
         android:textSize="16sp" />
 

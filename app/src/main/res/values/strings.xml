@@ -14,6 +14,13 @@
 
     <string name="mode">default</string>
 
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
 
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+
+    <string name="menu_logout">Log out</string>
+    <string name="menu_search">Search</string>
 
 </resources>

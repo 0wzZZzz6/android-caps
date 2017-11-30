@@ -23,12 +23,18 @@ public class EventDetailsActivity extends AppCompatActivity {
     Event event;
     String date;
 
-    @BindView(R.id.event_details_toolbar) Toolbar eventDetailsToolbar;
-    @BindView(R.id.event_details_title) TextView eventDetailsTitle;
-    @BindView(R.id.event_details_description) TextView eventDetailsDescription;
-    @BindView(R.id.event_details_location) TextView eventDetailsLocation;
-    @BindView(R.id.event_details_date) TextView eventDetailsDate;
-    @BindView(R.id.event_details_time) TextView eventDetailsTime;
+    @BindView(R.id.event_details_toolbar)
+    Toolbar eventDetailsToolbar;
+    @BindView(R.id.event_details_title)
+    TextView eventDetailsTitle;
+    @BindView(R.id.event_details_description)
+    TextView eventDetailsDescription;
+    @BindView(R.id.event_details_location)
+    TextView eventDetailsLocation;
+    @BindView(R.id.event_details_date)
+    TextView eventDetailsDate;
+    @BindView(R.id.event_details_time)
+    TextView eventDetailsTime;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

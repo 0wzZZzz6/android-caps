@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/cyan"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <FrameLayout
@@ -13,12 +14,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/white"
             android:elevation="4dp"
-            android:orientation="vertical"
-            android:paddingTop="@dimen/activity_horizontal_margin">
+            android:background="@color/white"
+            android:orientation="vertical">
 
             <LinearLayout
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -63,8 +64,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingTop="@dimen/activity_horizontal_margin"
-                android:paddingBottom="@dimen/activity_horizontal_margin">
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_horizontal_margin">
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recyclerView_chips"
@@ -142,17 +143,11 @@
 
             </LinearLayout>
 
-            <FrameLayout
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView_gallery"
+                android:background="@color/cyan"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/cyan">
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerView_gallery"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </FrameLayout>
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 

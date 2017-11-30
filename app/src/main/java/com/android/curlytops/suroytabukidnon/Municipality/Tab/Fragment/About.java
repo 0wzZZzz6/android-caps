@@ -20,8 +20,7 @@ public class About extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_about, container, false);
         TextView textView = rootView.findViewById(R.id.textView2);
-        TabActivity tabActivity = (TabActivity) getActivity();
-        textView.setText(tabActivity.get_id());
+        textView.setText(((TabActivity) getActivity()).get_id());
         return rootView;
     }
 }

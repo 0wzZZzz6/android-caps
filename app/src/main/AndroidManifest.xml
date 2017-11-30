@@ -29,6 +29,10 @@
             android:screenOrientation="portrait"/>
 
         <activity
+            android:name="com.android.curlytops.suroytabukidnon.LoginActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
             android:name="com.android.curlytops.suroytabukidnon.Municipality.Tab.TabActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"

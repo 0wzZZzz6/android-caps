@@ -8,12 +8,12 @@
         "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\green.xml"
     },
     {
-        "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_background_pattern.xml.flat",
-        "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_pattern.xml"
-    },
-    {
         "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_pattern.png.flat",
         "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\pattern.png"
+    },
+    {
+        "merged": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_background_pattern.xml.flat",
+        "source": "D:\\project\\SuroyBukidnon\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_pattern.xml"
     },
     {
         "merged": "D:\\project\\GITHUB\\android-caps\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_btn_green_selector.xml.flat",
