@@ -380,14 +380,6 @@ public class TabItemDetailsActivity extends BaseActivity {
             case R.id.action_heart: {
                 onStarClicked(municipalityReference);
                 starStatus();
-//
-//                if (starStatus) {
-//                    menu.getItem(0).setIcon(ContextCompat.getDrawable(this,
-//                            R.drawable.ic_heart_white_24dp));
-//                } else {
-//                    menu.getItem(0).setIcon(ContextCompat.getDrawable(this,
-//                            R.drawable.ic_heart_outline_white_24dp));
-//                }
                 return true;
             }
             default:

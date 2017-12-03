@@ -67,5 +67,3 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>
-
-    <!--<View--><!--android:layout_width="match_parent"--><!--android:layout_height="100dp"--><!--android:background="@drawable/gradient_bottom"--><!--android:layout_gravity="center_horizontal|bottom"/>-->

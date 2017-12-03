@@ -5,7 +5,9 @@ import android.support.annotation.NonNull;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jan_frncs
@@ -13,7 +15,7 @@ import java.util.List;
 @IgnoreExtraProperties
 public class Event implements Serializable {
 
-    private String e_id;
+    public String e_id;
     public String title;
     public String location;
     public String description;
@@ -27,6 +29,9 @@ public class Event implements Serializable {
     public String coverURL, coverName, eventStorageKey;
     public boolean starred;
     public List<String> imageURLS, imageNames;
+
+    public Map<String, Boolean> interested = new HashMap<>();
+    public Map<String, Boolean> going = new HashMap<>();
 
     public Event() {}
 

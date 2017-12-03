@@ -8,21 +8,23 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:background="@color/colorPrimary"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/activity_event_details_collapsingToolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="240dp"
             android:fitsSystemWindows="true"
-            app:contentScrim="@color/colorPrimary">
+            app:contentScrim="@color/colorPrimary"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <ImageView
                 android:id="@+id/activity_event_details_header"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="240dp"
                 android:background="@drawable/happy"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
@@ -38,34 +40,75 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/activity_event_details_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="94dp"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                android:layout_height="@dimen/actionBarSize"
+                android:gravity="top"
+                android:minHeight="@dimen/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:titleMarginTop="10dp" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
 
-    <FrameLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="240dp"
-        android:background="@color/grey_50"
-        android:fitsSystemWindows="true">
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="15dp">
 
-            <TextView
-                android:id="@+id/activity_event_details_title"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Title"
-                android:paddingBottom="12dp"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/activity_event_details_textView_month"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DEC"
+                        android:textColor="@color/red" />
+
+                    <TextView
+                        android:id="@+id/activity_event_details_textView_day"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="6" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activity_event_details_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:paddingBottom="12dp"
+                    android:paddingEnd="0dp"
+                    android:paddingStart="15dp"
+                    android:text="Title"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/activity_event_details_location"
@@ -73,18 +116,8 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="10dp"
                 android:drawableStart="@drawable/ic_map_marker_grey600_24dp"
-                android:paddingTop="8dp"
-                android:text="Location"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/activity_event_details_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/ic_calendar_grey600_24dp"
-                android:paddingTop="12dp"
-                android:text="Date"
+                android:paddingTop="15dp"
+                android:text="Time"
                 android:textSize="14sp" />
 
             <TextView
@@ -93,22 +126,121 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_clock_grey600_24dp"
                 android:drawablePadding="10dp"
-                android:paddingTop="12dp"
+                android:paddingTop="15dp"
                 android:text="Time"
                 android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/activity_event_details_description"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/ic_note_text_grey600_24dp"
-                android:paddingTop="12dp"
-                android:text="Description"
-                android:textSize="14sp" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="15dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:src="@drawable/ic_note_text_grey600_24dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="5dp"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="10dp"
+                        android:text="Description"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <!--<TextView-->
+                    <!--android:id="@+id/activity_event_details_description"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:ellipsize="end"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:maxLines="20"-->
+                    <!--android:paddingEnd="5dp"-->
+                    <!--android:paddingStart="10dp"-->
+                    <!--android:text="Location"-->
+                    <!--android:textSize="14sp" />-->
+
+                    <com.ms.square.android.expandabletextview.ExpandableTextView xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/expand_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        expandableTextView:animDuration="200"
+                        expandableTextView:maxCollapsedLines="12">
+
+                        <TextView
+                            android:id="@id/expandable_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="14sp" />
+
+                        <ImageButton
+                            android:id="@id/expand_collapse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end|bottom"
+                            android:background="@android:color/transparent"
+                            android:padding="14sp" />
+
+                    </com.ms.square.android.expandabletextview.ExpandableTextView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/activity_event_details_button_interested"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/ic_star_grey600_24dp"
+                    android:text="Interested"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/activity_event_details_button_going"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/ic_check_grey600_24dp"
+                    android:text="Going"
+                    android:textAllCaps="false" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/darker_gray" />
 
         </LinearLayout>
 
-    </FrameLayout>
+    </android.support.v4.widget.NestedScrollView>
 
 </android.support.design.widget.CoordinatorLayout>

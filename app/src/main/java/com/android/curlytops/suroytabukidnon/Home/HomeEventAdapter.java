@@ -39,8 +39,10 @@ public class HomeEventAdapter extends RecyclerView.Adapter<HomeEventAdapter.Home
     }
 
     @Override
-    public HomeEventAdapter.HomeEventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_event_starred, parent, false);
+    public HomeEventAdapter.HomeEventViewHolder
+    onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.home_event_starred, parent, false);
         return new HomeEventViewHolder(view);
     }
 
@@ -54,7 +56,7 @@ public class HomeEventAdapter extends RecyclerView.Adapter<HomeEventAdapter.Home
                 .load(item.coverURL)
                 .into(holder.home_event_cover);
 
-        holder.home_event.setOnClickListener(new View.OnClickListener() {
+        holder.home_event_title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, EventDetailsActivity.class);
