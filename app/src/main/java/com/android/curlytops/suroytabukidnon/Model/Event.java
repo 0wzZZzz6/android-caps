@@ -1,5 +1,7 @@
 package com.android.curlytops.suroytabukidnon.Model;
 
+import android.support.annotation.NonNull;
+
 import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.io.Serializable;
@@ -12,19 +14,19 @@ import java.util.List;
 public class Event implements Serializable {
 
     private String e_id;
-    private String title;
-    private String location;
-    private String description;
-    private long date;
-    private long fromDate;
-    private long toDate;
-    private boolean allDay;
-    private String fromTime;
-    private String toTime;
+    public String title;
+    public String location;
+    public String description;
+    public long date;
+    public long fromDate;
+    public long toDate;
+    public boolean allDay;
+    public String fromTime;
+    public String toTime;
 
-    private String coverURL, coverName, eventStorageKey;
-    private boolean starred;
-    private List<String> imageURLS, imageNames;
+    public String coverURL, coverName, eventStorageKey;
+    public boolean starred;
+    public List<String> imageURLS, imageNames;
 
     public Event() {}
 
@@ -68,77 +70,4 @@ public class Event implements Serializable {
         this.imageURLS = imageURLS;
         this.imageNames = imageNames;
     }
-
-    public Event(String e_id, String title, String location, String description,
-                 long date, long fromDate, long toDate, boolean allDay) {
-        this.e_id = e_id;
-        this.title = title;
-        this.location = location;
-        this.description = description;
-        this.date = date;
-        this.fromDate = fromDate;
-        this.toDate = toDate;
-        this.allDay = allDay;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public long getDate() {
-        return date;
-    }
-
-    public long getFromDate() {
-        return fromDate;
-    }
-
-    public long getToDate() {
-        return toDate;
-    }
-
-    public boolean getAllDay() {
-        return allDay;
-    }
-
-    public String getFromTime() {
-        return fromTime;
-    }
-
-    public String getToTime() {
-        return toTime;
-    }
-
-    public String getCoverName() {
-        return coverName;
-    }
-
-    public String getCoverURL() {
-        return coverURL;
-    }
-
-    public List<String> getImageURLS() {
-        return imageURLS;
-    }
-
-    public List<String> getImageNames() {
-        return imageNames;
-    }
-
-    public String getEventStorageKey() {
-        return eventStorageKey;
-    }
-
-    public boolean getStarred() {
-        return starred;
-    }
-
 }

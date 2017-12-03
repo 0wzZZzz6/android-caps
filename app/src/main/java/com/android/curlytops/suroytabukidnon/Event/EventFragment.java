@@ -56,6 +56,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -77,6 +78,10 @@ import static android.graphics.Paint.ANTI_ALIAS_FLAG;
  */
 
 public class EventFragment extends Fragment implements OnDateSelectedListener {
+
+    private static final String TAG = "EventFragment";
+    private static final String jsonPathNode = "events";
+
     List<Event> eventList = new ArrayList<>();
     ArrayList<CalendarDay> dates = new ArrayList<>();
     BottomSheetBehavior behavior;
@@ -86,13 +91,13 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
     String[] months;
     Animation growAnimation, shrinkAnimation;
 
-    @BindView(R.id.event_calendarView)
+    @BindView(R.id.fragment_event_calendarView)
     MaterialCalendarView widget;
-    @BindView(R.id.eventBottomsheet_recyclerView)
+    @BindView(R.id.fragment_event_bottomSheet_recyclerView)
     RecyclerView recyclerView;
-    @BindView(R.id.eventBottomsheet)
+    @BindView(R.id.fragment_event_bottomSheet)
     View bottomSheet;
-    @BindView(R.id.event_fab)
+    @BindView(R.id.fragment_event_fab)
     FloatingActionButton fab;
 
     boolean fabStat = false;
@@ -120,7 +125,7 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.event_layout, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_event, container, false);
         ButterKnife.bind(this, rootView);
         sectionAdapter = new SectionedRecyclerViewAdapter();
         toolbar = ((MainActivity) getActivity()).toolbar;
@@ -157,7 +162,7 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
                 fab.setVisibility(View.VISIBLE);
                 Calendar cal = Calendar.getInstance();
                 int dayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
-                fab.setImageBitmap(textAsBitmap(String.valueOf(dayOfMonth),  Color.WHITE));
+                fab.setImageBitmap(textAsBitmap(String.valueOf(dayOfMonth), Color.WHITE));
             }
 
             @Override
@@ -185,7 +190,7 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
         });
 
         calendarViewWidget();
-        firebase();
+        firebaseEvents();
         readEvents(0);
         SectionAdapter("default");
 
@@ -196,7 +201,7 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
         behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
 
-    @OnClick(R.id.event_fab)
+    @OnClick(R.id.fragment_event_fab)
     public void fabClick(View view) {
         long millis = System.currentTimeMillis();
         widget.setCurrentDate(ConvertCalendarDate(millis));
@@ -211,7 +216,7 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
         }
     }
 
-    private void firebase() {
+    private void firebaseEvents() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference eventReference = database.getReference("events");
 
@@ -221,39 +226,37 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
 
                 JSONArray data = new JSONArray();
                 JSONObject eventObject;
-                JSONObject finalEventObject = new JSONObject();
+                JSONObject rootEventObject = new JSONObject();
 
                 for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
                     Event event = eventSnapshot.getValue(Event.class);
                     try {
                         eventObject = new JSONObject();
                         eventObject.put("e_id", eventSnapshot.getKey());
-                        eventObject.put("title", event.getTitle());
-                        eventObject.put("description", event.getDescription());
-                        eventObject.put("location", event.getLocation());
-                        eventObject.put("allDay", event.getAllDay());
-                        eventObject.put("fromTime", event.getFromTime());
-                        eventObject.put("toTime", event.getToTime());
+                        eventObject.put("title", event.title);
+                        eventObject.put("description", event.description);
+                        eventObject.put("location", event.location);
+                        eventObject.put("allDay", event.allDay);
+                        eventObject.put("fromTime", event.fromTime);
+                        eventObject.put("toTime", event.toTime);
+                        eventObject.put("coverURL", event.coverURL);
+                        eventObject.put("coverName", event.coverName);
+                        eventObject.put("imageURLS", event.imageURLS);
+                        eventObject.put("imageNames", event.imageNames);
+                        eventObject.put("eventStorageKey", event.eventStorageKey);
+                        eventObject.put("starred", event.starred);
 
-                        // new
-                        eventObject.put("coverURL", event.getCoverURL());
-                        eventObject.put("coverName", event.getCoverName());
-                        eventObject.put("imageURLS", event.getImageURLS());
-                        eventObject.put("imageNames", event.getImageNames());
-                        eventObject.put("eventStorageKey", event.getEventStorageKey());
-                        eventObject.put("starred", event.getStarred());
-
-                        if (event.getAllDay()) {
-                            eventObject.put("date", event.getDate());
+                        if (event.allDay) {
+                            eventObject.put("date", event.date);
                         } else {
-                            eventObject.put("fromDate", event.getFromDate());
-                            eventObject.put("toDate", event.getToDate());
+                            eventObject.put("fromDate", event.fromDate);
+                            eventObject.put("toDate", event.toDate);
                         }
 
                         data.put(eventObject);
-                        finalEventObject.put("events", data);
+                        rootEventObject.put("events", data);
                         FileOutputStream fos = context.openFileOutput("event.json", MODE_PRIVATE);
-                        fos.write(finalEventObject.toString().getBytes());
+                        fos.write(rootEventObject.toString().getBytes());
                         fos.flush();
                         fos.close();
                     } catch (JSONException e) {
@@ -311,31 +314,29 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
 
             int i = 0;
             while (i < length) {
-                String eid = JsonPath.read(document, "$.events[" + i + "].e_id");
-                String title = JsonPath.read(document, "$.events[" + i + "].title");
-                String location = JsonPath.read(document, "$.events[" + i + "].location");
-                String description = JsonPath.read(document, "$.events[" + i + "].description");
-                boolean allDay = JsonPath.read(document, "$.events[" + i + "].allDay");
-                String fromTime = JsonPath.read(document, "$.events[" + i + "].fromTime");
-                String toTime = JsonPath.read(document, "$.events[" + i + "].toTime");
-
-                // new
-                String coverURL = JsonPath.read(document, "$.events[" + i + "].coverURL");
-                String coverName = JsonPath.read(document, "$.events[" + i + "].coverName");
-                String eventStorageKey = JsonPath.read(document, "$.events[" + i + "].eventStorageKey");
-                boolean starred = JsonPath.read(document, "$.events[" + i + "].starred");
-                String stringImageURLS = JsonPath.read(document, "$.events[" + i + "].imageURLS");
-                String stringImageNames = JsonPath.read(document, "$.events[" + i + "].imageNames");
+                String eid = JsonPath.read(document, jsonPath(i, "e_id"));
+                String title = JsonPath.read(document, jsonPath(i, "title"));
+                String location = JsonPath.read(document, jsonPath(i, "location"));
+                String description = JsonPath.read(document, jsonPath(i, "description"));
+                boolean allDay = JsonPath.read(document, jsonPath(i, "allDay"));
+                String fromTime = JsonPath.read(document, jsonPath(i, "fromTime"));
+                String toTime = JsonPath.read(document, jsonPath(i, "toTime"));
+                String coverURL = JsonPath.read(document, jsonPath(i, "coverURL"));
+                String coverName = JsonPath.read(document, jsonPath(i, "coverName"));
+                String eventStorageKey = JsonPath.read(document, jsonPath(i, "eventStorageKey"));
+                boolean starred = JsonPath.read(document, jsonPath(i, "starred"));
+                String stringImageURLS = JsonPath.read(document, jsonPath(i, "imageURLS"));
+                String stringImageNames = JsonPath.read(document, jsonPath(i, "imageNames"));
 
                 List<String> imageURLS = convertToArray(stringImageURLS);
                 List<String> imageNames = convertToArray(stringImageNames);
 
                 if (allDay) {
-                    date = JsonPath.read(document, "$.events[" + i + "].date");
+                    date = JsonPath.read(document, jsonPath(i, "date"));
                     dates.add(ConvertCalendarDate(date));
                 } else {
-                    fDate = JsonPath.read(document, "$.events[" + i + "].fromDate");
-                    tDate = JsonPath.read(document, "$.events[" + i + "].toDate");
+                    fDate = JsonPath.read(document, jsonPath(i, "fromDate"));
+                    tDate = JsonPath.read(document, jsonPath(i, "toDate"));
 
                     // test
                     fromDate = new Date(fDate);
@@ -376,6 +377,10 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
         }
     }
 
+    private String jsonPath(int index, String keyword) {
+        return "$." + jsonPathNode + "[" + index + "]." + keyword;
+    }
+
     private List<String> convertToArray(String item) {
         String category = item.replaceAll("\\s+", "");
         category = category.replace("[", "");
@@ -398,12 +403,12 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
     private List<Event> getEventMonth(String month) {
         List<Event> events = new ArrayList<>();
         for (Event ev : eventList) {
-            if (ev.getAllDay() && month.equalsIgnoreCase(getMonth(ev.getDate()))) {
+            if (ev.allDay && month.equalsIgnoreCase(getMonth(ev.date))) {
                 events.add(ev);
             }
-            if (!ev.getAllDay() && month.equalsIgnoreCase(getMonth(ev.getFromDate()))) {
+            if (!ev.allDay && month.equalsIgnoreCase(getMonth(ev.fromDate))) {
                 events.add(ev);
-            } else if (!ev.getAllDay() && month.equalsIgnoreCase(getMonth(ev.getToDate()))) {
+            } else if (!ev.allDay && month.equalsIgnoreCase(getMonth(ev.toDate))) {
                 events.add(ev);
             }
         }
@@ -597,7 +602,7 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
             Collections.sort(list, new Comparator<Event>() {
                 @Override
                 public int compare(Event e1, Event e2) {
-                    return Long.compare(e1.getDate(), e2.getDate());
+                    return Long.compare(e1.date, e2.date);
                 }
             });
         }
@@ -617,12 +622,12 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
             final EventFragment.ItemViewHolder itemHolder = (EventFragment.ItemViewHolder) holder;
             final Event event = list.get(position);
 
-            String letter = event.getTitle().substring(0, 1).toUpperCase();
+            String letter = event.title.substring(0, 1).toUpperCase();
             TextDrawable textDrawable = TextDrawable.builder()
                     .buildRound(letter, R.color.colorAccent);
 
-            itemHolder.eventTitle.setText(event.getTitle());
-            itemHolder.eventLocation.setText(event.getLocation());
+            itemHolder.eventTitle.setText(event.title);
+            itemHolder.eventLocation.setText(event.location);
             itemHolder.eventLetter.setImageDrawable(textDrawable);
             itemHolder.eventItem.setOnClickListener(new View.OnClickListener() {
                 @Override

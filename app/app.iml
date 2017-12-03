@@ -118,6 +118,7 @@
     <orderEntry type="library" name="com.amulyakhare:com.amulyakhare.textdrawable-1.0.1" level="project" />
     <orderEntry type="library" name="io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter-1.1.3" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-auth-license-11.6.2" level="project" />
+    <orderEntry type="library" name="joda-time:joda-time:2.9.9@jar" level="project" />
     <orderEntry type="library" name="com.android.support:appcompat-v7-26.1.0" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-basement-license-11.6.2" level="project" />
     <orderEntry type="library" name="com.mikepenz:fastadapter-1.5.2" level="project" />
@@ -129,7 +130,6 @@
     <orderEntry type="library" name="com.android.support:support-compat-26.1.0" level="project" />
     <orderEntry type="library" scope="TEST" name="org.hamcrest:hamcrest-core:1.3@jar" level="project" />
     <orderEntry type="library" name="com.jakewharton:butterknife-annotations:8.8.1@jar" level="project" />
-    <orderEntry type="library" name="com.beloo.widget:ChipsLayoutManager-0.3.7" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-basement-11.6.2" level="project" />
     <orderEntry type="library" name="android.arch.core:common:1.0.0@jar" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-common-11.6.2" level="project" />
@@ -139,6 +139,7 @@
     <orderEntry type="library" name="com.lapism:searchview-5.0.0-alpha7" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-core-11.6.2" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-database-connection-license-11.6.2" level="project" />
+    <orderEntry type="library" name="com.github.curioustechizen.android-ago:library-1.3.4" level="project" />
     <orderEntry type="library" name="com.android.support:transition-26.1.0" level="project" />
     <orderEntry type="library" name="com.android.support:design-26.1.0" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-auth-11.6.2" level="project" />
@@ -147,7 +148,6 @@
     <orderEntry type="library" name="com.mikepenz:fastadapter-extensions-1.5.1" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-iid-license-11.6.2" level="project" />
     <orderEntry type="library" name="com.android.support:palette-v7-26.1.0" level="project" />
-    <orderEntry type="library" name="de.hdodenhof:circleimageview-2.1.0" level="project" />
     <orderEntry type="library" scope="TEST" name="junit:junit:4.12@jar" level="project" />
     <orderEntry type="library" name="com.android.support:support-fragment-26.1.0" level="project" />
     <orderEntry type="library" name="com.android.support:support-vector-drawable-26.1.0" level="project" />
@@ -157,7 +157,6 @@
     <orderEntry type="library" name="com.google.firebase:firebase-analytics-11.6.2" level="project" />
     <orderEntry type="library" name="net.minidev:accessors-smart:1.2@jar" level="project" />
     <orderEntry type="library" name="org.slf4j:slf4j-api:1.7.25@jar" level="project" />
-    <orderEntry type="library" name="com.github.pchmn:MaterialChipsInput-1.0.8" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-database-connection-11.6.2" level="project" />
     <orderEntry type="library" name="com.jakewharton:butterknife-8.8.1" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-database-license-11.6.2" level="project" />

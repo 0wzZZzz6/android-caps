@@ -1,23 +1,21 @@
 package com.android.curlytops.suroytabukidnon.Home;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.curlytops.suroytabukidnon.Event.EventDetailsActivity;
 import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.Model.Home;
+import com.android.curlytops.suroytabukidnon.Model.News;
 import com.android.curlytops.suroytabukidnon.R;
-import com.bumptech.glide.Glide;
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
 
@@ -28,12 +26,10 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
+import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -45,9 +41,26 @@ import butterknife.ButterKnife;
 
 public class HomeFragment extends Fragment {
 
-    View rootView;
+    private static final String TAG = "HomeFragment";
+
     HomeAdapter homeAdapter;
     HomeEventAdapter homeEventAdapter;
+    HomeNewsAdapter homeNewsAdapter;
+
+    @BindView(R.id.fragment_home_swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
+
+    @BindView(R.id.recyclerView_home)
+    RecyclerView recyclerView;
+    @BindView(R.id.fragment_home_recyclerView_news)
+    RecyclerView rv_news;
+    @BindView(R.id.fragment_home_recyclerView_events)
+    RecyclerView rv_events;
+
+    @BindView(R.id.fragment_home_textView_news)
+    TextView textView_news;
+    @BindView(R.id.fragment_home_textView_events)
+    TextView textView_events;
 
     public HomeFragment() {
     }
@@ -67,33 +80,51 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        homeAdapter = new HomeAdapter(this.getContext(), getHomeJson());
-        homeEventAdapter = new HomeEventAdapter(this.getContext(), getEventsJson());
+        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        swipeRefreshLayout = rootView.findViewById(R.id.fragment_home_swipeRefreshLayout);
 
-        RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView_home);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setHasFixedSize(false);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(homeAdapter);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                content();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
-        RecyclerView recyclerView1 = rootView.findViewById(R.id.recyclerView_news);
-        LinearLayoutManager linearLayout1 = new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView1.setHasFixedSize(false);
-        recyclerView1.setLayoutManager(linearLayout1);
-        recyclerView1.setAdapter(homeAdapter);
+        ButterKnife.bind(this, rootView);
 
-        RecyclerView recyclerView2 = rootView.findViewById(R.id.recyclerView_events);
-        LinearLayoutManager linearLayout2 = new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView2.setHasFixedSize(false);
-        recyclerView2.setLayoutManager(linearLayout2);
-        recyclerView2.setAdapter(homeEventAdapter);
+        content();
 
         setHasOptionsMenu(true);
         return rootView;
     }
 
-    public List<Home> getHomeJson() {
+    private void content() {
+        homeAdapter = new HomeAdapter(this.getContext(), readHomeJson());
+        homeEventAdapter = new HomeEventAdapter(this.getContext(), readEventsJson());
+        homeNewsAdapter = new HomeNewsAdapter(this.getContext(), readNewsJson());
+
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext(),
+                LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setHasFixedSize(false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(homeAdapter);
+
+        LinearLayoutManager linearLayout1 = new LinearLayoutManager(this.getContext(),
+                LinearLayoutManager.HORIZONTAL, false);
+        rv_news.setHasFixedSize(false);
+        rv_news.setLayoutManager(linearLayout1);
+        rv_news.setAdapter(homeNewsAdapter);
+
+        LinearLayoutManager linearLayout2 = new LinearLayoutManager(this.getContext(),
+                LinearLayoutManager.HORIZONTAL, false);
+        rv_events.setHasFixedSize(false);
+        rv_events.setLayoutManager(linearLayout2);
+        rv_events.setAdapter(homeEventAdapter);
+    }
+
+    public List<Home> readHomeJson() {
         List<Home> homeList = new ArrayList<>();
         InputStream inputStream;
         BufferedInputStream bufferedInputStream;
@@ -123,7 +154,7 @@ public class HomeFragment extends Fragment {
         return homeList;
     }
 
-    public List<Event> getEventsJson() {
+    public List<Event> readEventsJson() {
         List<Event> eventList = new ArrayList<>();
 
         try {
@@ -148,54 +179,119 @@ public class HomeFragment extends Fragment {
 
             int i = 0;
             while (i < length) {
-                String eid = JsonPath.read(document, "$.events[" + i + "].e_id");
-                String title = JsonPath.read(document, "$.events[" + i + "].title");
-                String location = JsonPath.read(document, "$.events[" + i + "].location");
-                String description = JsonPath.read(document, "$.events[" + i + "].description");
-                boolean allDay = JsonPath.read(document, "$.events[" + i + "].allDay");
-                String fromTime = JsonPath.read(document, "$.events[" + i + "].fromTime");
-                String toTime = JsonPath.read(document, "$.events[" + i + "].toTime");
-
-                // new
-                String coverURL = JsonPath.read(document, "$.events[" + i + "].coverURL");
-                String coverName = JsonPath.read(document, "$.events[" + i + "].coverName");
-                String eventStorageKey = JsonPath.read(document, "$.events[" + i + "].eventStorageKey");
-                boolean starred = JsonPath.read(document, "$.events[" + i + "].starred");
-                String stringImageURLS = JsonPath.read(document, "$.events[" + i + "].imageURLS");
-                String stringImageNames = JsonPath.read(document, "$.events[" + i + "].imageNames");
+                String eid = JsonPath.read(document, jsonPath("events", i, "e_id"));
+                String title = JsonPath.read(document, jsonPath("events", i, "title"));
+                String location = JsonPath.read(document, jsonPath("events", i, "location"));
+                String description = JsonPath.read(document, jsonPath("events", i, "description"));
+                boolean allDay = JsonPath.read(document, jsonPath("events", i, "allDay"));
+                String fromTime = JsonPath.read(document, jsonPath("events", i, "fromTime"));
+                String toTime = JsonPath.read(document, jsonPath("events", i, "toTime"));
+                String coverURL = JsonPath.read(document, jsonPath("events", i, "coverURL"));
+                String coverName = JsonPath.read(document, jsonPath("events", i, "coverName"));
+                String eventStorageKey = JsonPath.read(document, jsonPath("events", i, "eventStorageKey"));
+                boolean starred = JsonPath.read(document, jsonPath("events", i, "starred"));
+                String stringImageURLS = JsonPath.read(document, jsonPath("events", i, "imageURLS"));
+                String stringImageNames = JsonPath.read(document, jsonPath("events", i, "imageNames"));
 
                 List<String> imageURLS = convertToArray(stringImageURLS);
                 List<String> imageNames = convertToArray(stringImageNames);
 
                 if (allDay) {
-                    date = JsonPath.read(document, "$.events[" + i + "].date");
+                    date = JsonPath.read(document, jsonPath("events", i, "date"));
                 } else {
-                    fDate = JsonPath.read(document, "$.events[" + i + "].fromDate");
-                    tDate = JsonPath.read(document, "$.events[" + i + "].toDate");
+                    fDate = JsonPath.read(document, jsonPath("events", i, "fromDate"));
+                    tDate = JsonPath.read(document, jsonPath("events", i, "toDate"));
                 }
 
                 if (starred) {
                     if (allDay) {
-                        eventList.add(new Event(eid, title, location, description, allDay, date, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
+                        eventList.add(new Event(eid, title, location, description,
+                                allDay, date, fromTime, toTime, coverURL, coverName,
+                                eventStorageKey, starred, imageURLS, imageNames));
                     } else {
-                        eventList.add(new Event(eid, title, location, description, allDay, fDate, tDate, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
+                        eventList.add(new Event(eid, title, location, description,
+                                allDay, fDate, tDate, fromTime, toTime, coverURL, coverName,
+                                eventStorageKey, starred, imageURLS, imageNames));
                     }
                 }
 
-
                 i++;
             }
-            View view = rootView.findViewById(R.id.highlights_event);
+
             if (eventList.size() == 0) {
-                view.setVisibility(View.GONE);
+                textView_events.setVisibility(View.GONE);
             } else {
-                view.setVisibility(View.VISIBLE);
+                textView_events.setVisibility(View.VISIBLE);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         return eventList;
+    }
+
+    public List<News> readNewsJson() {
+
+        List<News> newsList = new ArrayList<>();
+
+        try {
+            FileInputStream fis = getActivity().openFileInput("news.json");
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            StringBuilder b = new StringBuilder();
+
+            while (bis.available() != 0) {
+                char c = (char) bis.read();
+                b.append(c);
+            }
+            bis.close();
+            fis.close();
+
+            String json = b.toString();
+            Object document = Configuration.defaultConfiguration().jsonProvider().parse(json);
+            int length = JsonPath.read(document, "$.news.length()");
+
+            int i = 0;
+            while (i < length) {
+                String nid = JsonPath.read(document, jsonPath("news", i, "n_id"));
+                String title = JsonPath.read(document, jsonPath("news", i, "title"));
+                String link = JsonPath.read(document, jsonPath("news", i, "link"));
+                String newsStorageKey = JsonPath.read(document, jsonPath("news", i, "newsStorageKey"));
+                String coverURL = JsonPath.read(document, jsonPath("news", i, "coverURL"));
+                String coverName = JsonPath.read(document, jsonPath("news", i, "coverName"));
+                long timestamp = JsonPath.read(document, jsonPath("news", i, "timestamp"));
+
+                newsList.add(new News(nid, title, link, newsStorageKey,
+                        coverURL, coverName, timestamp));
+
+                i++;
+            }
+            if (newsList.size() == 0) {
+                textView_news.setVisibility(View.GONE);
+            } else {
+                textView_news.setVisibility(View.VISIBLE);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Collections.sort(newsList, new Comparator<News>() {
+            @Override
+            public int compare(News o1, News o2) {
+                return Long.compare(o1.timestamp, o2.timestamp);
+            }
+        });
+        Collections.reverse(newsList);
+
+        for (News item : newsList) {
+            if(item.equals(newsList)){
+                Log.d(TAG, "asd");
+            }
+        }
+        return newsList;
+    }
+
+    private String jsonPath(String node, int index, String keyword) {
+        return "$." + node + "[" + index + "]." + keyword;
     }
 
     private List<String> convertToArray(String item) {
@@ -206,75 +302,5 @@ public class HomeFragment extends Fragment {
         return new ArrayList<>(Arrays.asList(category.split(",")));
     }
 
-    class HomeEventAdapter extends RecyclerView.Adapter<HomeEventAdapter.HomeEventViewHolder> {
-
-        private List<Event> eventList;
-        private Context context;
-        private String date;
-
-        HomeEventAdapter(Context context, List<Event> eventList) {
-            this.context = context;
-            this.eventList = eventList;
-        }
-
-        @Override
-        public HomeEventAdapter.HomeEventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_event_starred, parent, false);
-            return new HomeEventViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(HomeEventAdapter.HomeEventViewHolder holder, int position) {
-            final Event item = eventList.get(position);
-
-            holder.home_event_title.setText(item.getTitle());
-            holder.home_event_date.setText(getDate(item));
-            Glide.with(this.context)
-                    .load(item.getCoverURL())
-                    .into(holder.home_event_cover);
-
-            holder.home_event.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getContext(), EventDetailsActivity.class);
-                    intent.putExtra("myEvent", item);
-                    getContext().startActivity(intent);
-                }
-            });
-
-        }
-
-        @Override
-        public int getItemCount() {
-            return eventList.size();
-        }
-
-        private String getDate(Event item) {
-            if (item.getAllDay()) {
-                date = convertDate(item.getDate());
-            } else {
-                date = convertDate(item.getFromDate()) + " - " + convertDate(item.getToDate());
-            }
-
-            return date;
-        }
-
-        private String convertDate(long date) {
-            SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
-            return formatter.format(date);
-        }
-
-        class HomeEventViewHolder extends RecyclerView.ViewHolder {
-            @BindView(R.id.home_event) View home_event;
-            @BindView(R.id.home_event_title) TextView home_event_title;
-            @BindView(R.id.home_event_date) TextView home_event_date;
-            @BindView(R.id.home_event_cover) ImageView home_event_cover;
-
-            HomeEventViewHolder(View itemView) {
-                super(itemView);
-                ButterKnife.bind(this, itemView);
-            }
-        }
-    }
 }
 

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:id="@+id/home_news_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="210dp">
+
+        <ImageView
+            android:id="@+id/home_news_item_imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/happy" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:alpha="0.2"
+            android:background="@color/grey_900" />
+
+        <TextView
+            android:id="@+id/home_news_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:padding="10dp"
+            android:shadowColor="#000"
+            android:shadowRadius="7.0"
+            android:text="This is some random text"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <com.github.curioustechizen.ago.RelativeTimeTextView
+            android:id="@+id/home_news_item_timestamp"
+            android:text="asd"
+            android:textColor="@color/white"
+            android:shadowColor="#000"
+            android:shadowRadius="7.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:relative_time_prefix="Completed "
+            android:layout_margin="5dp"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
+

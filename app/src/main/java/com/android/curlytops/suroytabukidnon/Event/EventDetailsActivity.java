@@ -23,26 +23,26 @@ public class EventDetailsActivity extends AppCompatActivity {
     Event event;
     String date;
 
-    @BindView(R.id.event_details_toolbar)
-    Toolbar eventDetailsToolbar;
-    @BindView(R.id.event_details_title)
-    TextView eventDetailsTitle;
-    @BindView(R.id.event_details_description)
-    TextView eventDetailsDescription;
-    @BindView(R.id.event_details_location)
-    TextView eventDetailsLocation;
-    @BindView(R.id.event_details_date)
-    TextView eventDetailsDate;
-    @BindView(R.id.event_details_time)
-    TextView eventDetailsTime;
+    @BindView(R.id.activity_event_details_toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.activity_event_details_title)
+    TextView tv_title;
+    @BindView(R.id.activity_event_details_description)
+    TextView tv_description;
+    @BindView(R.id.activity_event_details_location)
+    TextView tv_location;
+    @BindView(R.id.activity_event_details_date)
+    TextView tv_date;
+    @BindView(R.id.activity_event_details_time)
+    TextView tv_time;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.event_details_layout);
+        setContentView(R.layout.activity_event_details);
         ButterKnife.bind(this);
 
-        setSupportActionBar(eventDetailsToolbar);
+        setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(null);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -50,18 +50,18 @@ public class EventDetailsActivity extends AppCompatActivity {
 
         event = (Event) getIntent().getSerializableExtra("myEvent");
 
-        eventDetailsTitle.setText(event.getTitle());
-        eventDetailsLocation.setText(event.getLocation());
-        eventDetailsDate.setText(getDate(event.getAllDay())); // ifAllday
-        eventDetailsTime.setText(getTime(event.getFromTime(), event.getToTime()));
-        eventDetailsDescription.setText(event.getDescription());
+        tv_title.setText(event.title);
+        tv_location.setText(event.location);
+        tv_date.setText(getDate(event.allDay)); // ifAllday
+        tv_time.setText(getTime(event.fromTime, event.toTime));
+        tv_description.setText(event.description);
     }
 
     private String getDate(boolean ifAllday) {
         if (ifAllday) {
-            date = convertDate(event.getDate());
+            date = convertDate(event.date);
         } else {
-            date = convertDate(event.getFromDate()) + " - " + convertDate(event.getToDate());
+            date = convertDate(event.fromDate) + " - " + convertDate(event.toDate);
         }
 
         return date;

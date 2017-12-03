@@ -5,16 +5,12 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,15 +24,10 @@ import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.curlytops.suroytabukidnon.BaseActivity;
-import com.android.curlytops.suroytabukidnon.LoginActivity;
-import com.android.curlytops.suroytabukidnon.MainActivity;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
-import com.android.curlytops.suroytabukidnon.Municipality.Tab.TabActivity;
 import com.android.curlytops.suroytabukidnon.R;
-import com.android.curlytops.suroytabukidnon.SearchActivity;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -77,7 +68,6 @@ public class TabItemDetailsActivity extends BaseActivity {
 
     Menu menu;
     MenuItem menuItem;
-    boolean starStatus;
 
     @BindView(R.id.tab_item_details_toolbar)
     Toolbar toolbar;
@@ -103,6 +93,10 @@ public class TabItemDetailsActivity extends BaseActivity {
     @BindView(R.id.detail3)
     TextView detail3;
 
+    @BindView(R.id.heart_status)
+    ImageView heart_status;
+    @BindView(R.id.heart_count)
+    TextView heart_count;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -157,7 +151,6 @@ public class TabItemDetailsActivity extends BaseActivity {
                 .child(municipality).child(item_id);
 
 
-
     }
 
     public void starStatus() {
@@ -167,16 +160,19 @@ public class TabItemDetailsActivity extends BaseActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     MunicipalityItem municipalityItem = dataSnapshot.getValue(MunicipalityItem.class);
 
-                    int statusIcon;
                     // Determine if the current user has liked this post and set UI accordingly
                     if (municipalityItem.stars.containsKey(getUid())) {
-                        detail2.setText("outlined");
                         menuItem.setIcon(getResources()
                                 .getDrawable(R.drawable.ic_heart_white_24dp));
+                        heart_status.setBackground(getResources()
+                                .getDrawable(R.drawable.ic_heart_black_24dp));
+                        heart_count.setText("(" + municipalityItem.stars.size() + ")");
                     } else {
-                        detail2.setText("un-outlined");
                         menuItem.setIcon(getResources()
                                 .getDrawable(R.drawable.ic_heart_outline_white_24dp));
+                        heart_status.setBackground(getResources()
+                                .getDrawable(R.drawable.ic_heart_outline_black_24dp));
+                        heart_count.setText("(" + municipalityItem.stars.size() + ")");
                     }
 
                 }
@@ -223,8 +219,8 @@ public class TabItemDetailsActivity extends BaseActivity {
     }
     // [END post_stars_transaction]
 
-    @OnClick(R.id.details_fab)
-    public void details_fab(View view) {
+    @OnClick(R.id.fab_directions)
+    public void details_fab() {
         String latlon = municipalityItem.getLatlon();
         latlon = latlon.replace(" ", "");
         String[] parts = latlon.split(",");

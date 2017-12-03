@@ -42,6 +42,8 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.StatelessSection;
 
 public class Tab2 extends Fragment {
 
+    private static final String TAG = "Tab2";
+
     SectionedRecyclerViewAdapter sectionAdapter;
     List<MunicipalityItem> itemList = new ArrayList<>();
     List<String> categories = new ArrayList<>();
@@ -96,28 +98,27 @@ public class Tab2 extends Fragment {
                 itemLength = JsonPath.read(document, "$." + id + ".length()");
                 int i = 0;
                 while (i < itemLength) {
-                    String iid = JsonPath.read(document, "$." + id + "[" + i + "].id");
-                    String title = JsonPath.read(document, "$." + id + "[" + i + "].title");
-                    String location = JsonPath.read(document, "$." + id + "[" + i + "].location");
-                    String contact = JsonPath.read(document, "$." + id + "[" + i + "].contact");
-                    String stringCategory = JsonPath.read(document, "$." + id + "[" + i + "].category");
-                    String stringImageURLS = JsonPath.read(document, "$." + id + "[" + i + "].imageURLS");
-                    String stringImageNames = JsonPath.read(document, "$." + id + "[" + i + "].imageNames");
-
-                    // new
-                    String municipalityStorageKey = JsonPath.read(document, "$." + id + "[" + i + "].municipalityStorageKey");
-                    String coverURL = JsonPath.read(document, "$." + id + "[" + i + "].coverURL");
-                    String coverName = JsonPath.read(document, "$." + id + "[" + i + "].coverName");
-                    boolean starred = JsonPath.read(document, "$." + id + "[" + i + "].starred");
-                    String description = JsonPath.read(document, "$." + id + "[" + i + "].description");
-                    String latlon = JsonPath.read(document, "$." + id + "[" + i + "].latlon");
+                    String iid = JsonPath.read(document, jsonPath(i, "id"));
+                    String title = JsonPath.read(document, jsonPath(i, "title"));
+                    String location = JsonPath.read(document, jsonPath(i, "location"));
+                    String contact = JsonPath.read(document, jsonPath(i, "contact"));
+                    String stringCategory = JsonPath.read(document, jsonPath(i, "category"));
+                    String stringImageURLS = JsonPath.read(document, jsonPath(i, "imageURLS"));
+                    String stringImageNames = JsonPath.read(document, jsonPath(i, "imageNames"));
+                    String municipalityStorageKey = JsonPath.read(document, jsonPath(i, "municipalityStorageKey"));
+                    String coverURL = JsonPath.read(document, jsonPath(i, "coverURL"));
+                    String coverName = JsonPath.read(document, jsonPath(i, "coverName"));
+                    boolean starred = JsonPath.read(document, jsonPath(i, "starred"));
+                    String description = JsonPath.read(document, jsonPath(i, "description"));
+                    String latlon = JsonPath.read(document, jsonPath(i, "latlon"));
 
                     List<String> category = convertToArray(stringCategory);
                     List<String> imageURLS =  convertToArray(stringImageURLS);
                     List<String> imageNames = convertToArray(stringImageNames);
 
-                    itemList.add(new MunicipalityItem(iid, title, location, contact, category, municipalityStorageKey,
-                            imageURLS, imageNames, coverURL, coverName, starred, description, latlon));
+                    itemList.add(new MunicipalityItem(iid, title, location, contact,
+                            category, municipalityStorageKey, imageURLS, imageNames,
+                            coverURL, coverName, starred, description, latlon));
                     i++;
                 }
             } catch (Exception e) {
@@ -127,6 +128,10 @@ public class Tab2 extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private String jsonPath(int index, String keyword) {
+        return "$." + id + "[" + index + "]." + keyword;
     }
 
     public void sectionAdapter() {

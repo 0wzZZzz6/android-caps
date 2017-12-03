@@ -9,54 +9,39 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.android.curlytops.suroytabukidnon.AppIntro.IntroActivity;
 import com.android.curlytops.suroytabukidnon.Event.EventFragment;
 import com.android.curlytops.suroytabukidnon.Helper.BottomNavigationViewHelper;
 import com.android.curlytops.suroytabukidnon.Home.HomeFragment;
-import com.android.curlytops.suroytabukidnon.Model.User;
 import com.android.curlytops.suroytabukidnon.Municipality.MunicipalityFragment;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.lapism.searchview.SearchAdapter;
-import com.lapism.searchview.SearchFilter;
-import com.lapism.searchview.SearchHistoryTable;
-import com.lapism.searchview.SearchItem;
-import com.lapism.searchview.SearchView;
 import com.mapswithme.maps.api.MWMPoint;
 import com.mapswithme.maps.api.MapsWithMeApi;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity {
 
-    boolean doubleBackToExitPressedOnce = false;
-    SearchView mSearchView;
+    private static final String TAG = "MainActivity";
 
-    private DatabaseReference mDatabase;
+    boolean doubleBackToExitPressedOnce = false;
+
     private FirebaseAuth mAuth;
 
-    @BindView(R.id.activityMain_toolbar)
+    @BindView(R.id.activity_main_toolbar)
     public Toolbar toolbar;
-    @BindView(R.id.activityMain_bottomNavigation)
+    @BindView(R.id.activity_main_bottomNavigationView)
     BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
 
         onFirstRun();
@@ -68,12 +53,6 @@ public class MainActivity extends BaseActivity {
 
         setSupportActionBar(toolbar);
         toolbar.setNavigationContentDescription(R.string.app_name);
-
-        if (getUid() == null) {
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            finish();
-        }
-
     }
 
     @Override
@@ -155,7 +134,7 @@ public class MainActivity extends BaseActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                .replace(R.id.frame, fragment)
+                .replace(R.id.content_main_frame, fragment)
                 .commit();
     }
 
@@ -219,5 +198,11 @@ public class MainActivity extends BaseActivity {
         super.onStart();
         firebaseEvents();
         firebaseMunicipalityItem();
+        firebaseNews();
+
+        if (getUid() == null) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
+        }
     }
 }

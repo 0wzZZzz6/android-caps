@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
+import com.android.curlytops.suroytabukidnon.Model.News;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,6 +42,7 @@ public class BaseActivity extends AppCompatActivity {
         super.setContentView(layoutResID);
         firebaseEvents();
         firebaseMunicipalityItem();
+        firebaseNews();
     }
 
     public void firebaseEvents() {
@@ -53,39 +55,37 @@ public class BaseActivity extends AppCompatActivity {
 
                 JSONArray data = new JSONArray();
                 JSONObject eventObject;
-                JSONObject finalEventObject = new JSONObject();
+                JSONObject rootEventObject = new JSONObject();
 
                 for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
                     Event event = eventSnapshot.getValue(Event.class);
                     try {
                         eventObject = new JSONObject();
                         eventObject.put("e_id", eventSnapshot.getKey());
-                        eventObject.put("title", event.getTitle());
-                        eventObject.put("description", event.getDescription());
-                        eventObject.put("location", event.getLocation());
-                        eventObject.put("allDay", event.getAllDay());
-                        eventObject.put("fromTime", event.getFromTime());
-                        eventObject.put("toTime", event.getToTime());
+                        eventObject.put("title", event.title);
+                        eventObject.put("description", event.description);
+                        eventObject.put("location", event.location);
+                        eventObject.put("allDay", event.allDay);
+                        eventObject.put("fromTime", event.fromTime);
+                        eventObject.put("toTime", event.toTime);
+                        eventObject.put("coverURL", event.coverURL);
+                        eventObject.put("coverName", event.coverName);
+                        eventObject.put("imageURLS", event.imageURLS);
+                        eventObject.put("imageNames", event.imageNames);
+                        eventObject.put("eventStorageKey", event.eventStorageKey);
+                        eventObject.put("starred", event.starred);
 
-                        // new
-                        eventObject.put("coverURL", event.getCoverURL());
-                        eventObject.put("coverName", event.getCoverName());
-                        eventObject.put("imageURLS", event.getImageURLS());
-                        eventObject.put("imageNames", event.getImageNames());
-                        eventObject.put("eventStorageKey", event.getEventStorageKey());
-                        eventObject.put("starred", event.getStarred());
-
-                        if (event.getAllDay()) {
-                            eventObject.put("date", event.getDate());
+                        if (event.allDay) {
+                            eventObject.put("date", event.date);
                         } else {
-                            eventObject.put("fromDate", event.getFromDate());
-                            eventObject.put("toDate", event.getToDate());
+                            eventObject.put("fromDate", event.fromDate);
+                            eventObject.put("toDate", event.toDate);
                         }
 
                         data.put(eventObject);
-                        finalEventObject.put("events", data);
+                        rootEventObject.put("events", data);
                         FileOutputStream fos = openFileOutput("event.json", MODE_PRIVATE);
-                        fos.write(finalEventObject.toString().getBytes());
+                        fos.write(rootEventObject.toString().getBytes());
                         fos.flush();
                         fos.close();
                     } catch (JSONException e) {
@@ -97,7 +97,6 @@ public class BaseActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-//                Toast.makeText(BaseActivity.this, "[CHANGE] event item", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -134,8 +133,6 @@ public class BaseActivity extends AppCompatActivity {
                             object.put("category", municipalityItem.getCategory());
                             object.put("imageURLS", municipalityItem.getImageURLS());
                             object.put("imageNames", municipalityItem.getImageNames());
-
-                            // new
                             object.put("municipalityStorageKey", municipalityItem.getMunicipalityStorageKey());
                             object.put("coverURL", municipalityItem.getCoverURL());
                             object.put("coverName", municipalityItem.getCoverName());
@@ -158,7 +155,6 @@ public class BaseActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
-//                    Toast.makeText(BaseActivity.this, "[CHANGE] municipality item", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -169,6 +165,54 @@ public class BaseActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public void firebaseNews() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference newsReference = database.getReference("news");
+
+        newsReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                JSONArray data = new JSONArray();
+                JSONObject newsObject;
+                JSONObject rootNewsObject = new JSONObject();
+
+                for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
+                    News news = eventSnapshot.getValue(News.class);
+                    try {
+                        newsObject = new JSONObject();
+                        newsObject.put("n_id", eventSnapshot.getKey());
+                        newsObject.put("title", news.title);
+                        newsObject.put("link", news.link);
+                        newsObject.put("newsStorageKey", news.newsStorageKey);
+                        newsObject.put("coverURL", news.coverURL);
+                        newsObject.put("coverName", news.coverName);
+                        newsObject.put("timestamp", news.timestamp);
+
+                        data.put(newsObject);
+                        rootNewsObject.put("news", data);
+                        FileOutputStream fos = openFileOutput("news.json", MODE_PRIVATE);
+                        fos.write(rootNewsObject.toString().getBytes());
+                        fos.flush();
+                        fos.close();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                        Log.e("Error: ", e.toString());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getMessage());
+            }
+        });
     }
 
     private ProgressDialog mProgressDialog;
