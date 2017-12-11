@@ -60,5 +60,10 @@
         <activity android:name=".SearchActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"/>
+
+        <activity android:name=".Event.news.EventDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme.Detail" />
+
     </application>
 </manifest>

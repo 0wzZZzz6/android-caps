@@ -76,10 +76,10 @@ public class BaseActivity extends AppCompatActivity {
                         eventObject.put("starred", event.starred);
 
                         if (event.allDay) {
-                            eventObject.put("date", event.date);
+                            eventObject.put("startDate", event.startDate);
                         } else {
-                            eventObject.put("fromDate", event.fromDate);
-                            eventObject.put("toDate", event.toDate);
+                            eventObject.put("startDate", event.startDate);
+                            eventObject.put("endDate", event.endDate);
                         }
 
                         data.put(eventObject);

@@ -59,28 +59,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="12dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="12dp"
-                    android:paddingTop="16dp"
-                    android:text="7 Tribes of Bukidnon"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerView_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="250dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
                     android:id="@+id/fragment_home_textView_events"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -98,8 +76,30 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:paddingTop="16dp"
+                    android:text="7 Tribes of Bukidnon"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="250dp" />
+            </LinearLayout>
 
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
+
 </android.support.v4.widget.SwipeRefreshLayout>

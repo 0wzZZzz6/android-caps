@@ -19,9 +19,8 @@ public class Event implements Serializable {
     public String title;
     public String location;
     public String description;
-    public long date;
-    public long fromDate;
-    public long toDate;
+    public long startDate;
+    public long endDate;
     public boolean allDay;
     public String fromTime;
     public String toTime;
@@ -36,7 +35,7 @@ public class Event implements Serializable {
     public Event() {}
 
     public Event(String e_id, String title, String location,
-                 String description, boolean allDay, long date, String fromTime, String toTime,
+                 String description, boolean allDay, long startDate, String fromTime, String toTime,
                  String coverURL, String coverName, String eventStorageKey, boolean starred,
                  List<String> imageURLS, List<String> imageNames) {
         this.e_id = e_id;
@@ -44,7 +43,7 @@ public class Event implements Serializable {
         this.location = location;
         this.description = description;
         this.allDay = allDay;
-        this.date = date;
+        this.startDate = startDate;
         this.fromTime = fromTime;
         this.toTime = toTime;
         this.coverURL = coverURL;
@@ -56,7 +55,7 @@ public class Event implements Serializable {
     }
 
     public Event(String e_id, String title, String location, String description,
-                 boolean allDay, long fromDate, long toDate, String fromTime, String toTime,
+                 boolean allDay, long startDate, long endDate, String fromTime, String toTime,
                  String coverURL, String coverName, String eventStorageKey, boolean starred,
                  List<String> imageURLS, List<String> imageNames) {
         this.e_id = e_id;
@@ -64,8 +63,8 @@ public class Event implements Serializable {
         this.location = location;
         this.description = description;
         this.allDay = allDay;
-        this.fromDate = fromDate;
-        this.toDate = toDate;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.fromTime = fromTime;
         this.toTime = toTime;
         this.coverURL = coverURL;
@@ -74,5 +73,13 @@ public class Event implements Serializable {
         this.starred = starred;
         this.imageURLS = imageURLS;
         this.imageNames = imageNames;
+    }
+
+    public List<String> getImageURLS() {
+        return imageURLS;
+    }
+
+    public void setImageURLS(List<String> imageURLS) {
+        this.imageURLS = imageURLS;
     }
 }

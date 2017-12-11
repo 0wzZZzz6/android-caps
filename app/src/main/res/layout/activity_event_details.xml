@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_event_details_coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -52,195 +53,261 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="15dp">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="15dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/activity_event_details_textView_month"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="DEC"
-                        android:textColor="@color/red" />
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/activity_event_details_textView_month"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DEC"
+                            android:textColor="@color/red" />
+
+                        <TextView
+                            android:id="@+id/activity_event_details_textView_day"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="6" />
+
+                    </LinearLayout>
 
                     <TextView
-                        android:id="@+id/activity_event_details_textView_day"
-                        android:layout_width="match_parent"
+                        android:id="@+id/activity_event_details_title"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="6" />
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:paddingBottom="12dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="15dp"
+                        android:text="Title"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/darker_gray" />
+
                 <TextView
-                    android:id="@+id/activity_event_details_title"
+                    android:id="@+id/activity_event_details_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="2"
-                    android:paddingBottom="12dp"
-                    android:paddingEnd="0dp"
-                    android:paddingStart="15dp"
-                    android:text="Title"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_map_marker_grey600_24dp"
+                    android:paddingTop="15dp"
+                    android:text="Time"
+                    android:textSize="14sp" />
 
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="5dp"
-                android:background="@android:color/darker_gray" />
-
-            <TextView
-                android:id="@+id/activity_event_details_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/ic_map_marker_grey600_24dp"
-                android:paddingTop="15dp"
-                android:text="Time"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/activity_event_details_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_clock_grey600_24dp"
-                android:drawablePadding="10dp"
-                android:paddingTop="15dp"
-                android:text="Time"
-                android:textSize="14sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingTop="15dp">
-
-                <ImageView
+                <TextView
+                    android:id="@+id/activity_event_details_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:src="@drawable/ic_note_text_grey600_24dp" />
+                    android:drawableLeft="@drawable/ic_clock_grey600_24dp"
+                    android:drawablePadding="10dp"
+                    android:paddingTop="15dp"
+                    android:text="Time"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="15dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:src="@drawable/ic_note_text_grey600_24dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:paddingBottom="5dp"
+                            android:paddingEnd="5dp"
+                            android:paddingStart="10dp"
+                            android:text="Description"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <!--<TextView-->
+                        <!--android:id="@+id/activity_event_details_description"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:ellipsize="end"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:maxLines="20"-->
+                        <!--android:paddingEnd="5dp"-->
+                        <!--android:paddingStart="10dp"-->
+                        <!--android:text="Location"-->
+                        <!--android:textSize="14sp" />-->
+
+                        <com.ms.square.android.expandabletextview.ExpandableTextView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/expand_text_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            expandableTextView:animDuration="200"
+                            expandableTextView:maxCollapsedLines="12">
+
+                            <TextView
+                                android:id="@id/expandable_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:textSize="14sp" />
+
+                            <ImageButton
+                                android:id="@id/expand_collapse"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end|bottom"
+                                android:background="@android:color/transparent"
+                                android:padding="14sp" />
+
+                        </com.ms.square.android.expandabletextview.ExpandableTextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/darker_gray" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:paddingBottom="5dp"
-                        android:paddingEnd="5dp"
-                        android:paddingStart="10dp"
-                        android:text="Description"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <!--<TextView-->
-                    <!--android:id="@+id/activity_event_details_description"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:ellipsize="end"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:maxLines="20"-->
-                    <!--android:paddingEnd="5dp"-->
-                    <!--android:paddingStart="10dp"-->
-                    <!--android:text="Location"-->
-                    <!--android:textSize="14sp" />-->
-
-                    <com.ms.square.android.expandabletextview.ExpandableTextView xmlns:android="http://schemas.android.com/apk/res/android"
-                        xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
-                        android:id="@+id/expand_text_view"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        expandableTextView:animDuration="200"
-                        expandableTextView:maxCollapsedLines="12">
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@id/expandable_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:textSize="14sp" />
-
-                        <ImageButton
-                            android:id="@id/expand_collapse"
+                        <Button
+                            android:id="@+id/activity_event_details_button_interested"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="end|bottom"
-                            android:background="@android:color/transparent"
-                            android:padding="14sp" />
+                            android:drawablePadding="5dp"
+                            android:drawableStart="@drawable/ic_star_grey600_24dp"
+                            android:text="Interested"
+                            android:textAllCaps="false" />
 
-                    </com.ms.square.android.expandabletextview.ExpandableTextView>
+                        <Button
+                            android:id="@+id/activity_event_details_button_going"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="5dp"
+                            android:drawableStart="@drawable/ic_check_grey600_24dp"
+                            android:text="Going"
+                            android:textAllCaps="false" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/statusLinearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/totalInterested"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="I" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="5dp"
+                            android:paddingStart="5dp"
+                            android:text="•" />
+
+                        <TextView
+                            android:id="@+id/totalGoing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="G" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="5dp"
-                android:background="@android:color/darker_gray" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/activity_event_details_button_interested"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="5dp"
-                    android:drawableStart="@drawable/ic_star_grey600_24dp"
-                    android:text="Interested"
-                    android:textAllCaps="false" />
-
-                <Button
-                    android:id="@+id/activity_event_details_button_going"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="5dp"
-                    android:drawableStart="@drawable/ic_check_grey600_24dp"
-                    android:text="Going"
-                    android:textAllCaps="false" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/darker_gray" />
 
             </LinearLayout>
 
-            <View
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView_gallery"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="5dp"
-                android:background="@android:color/darker_gray" />
+                android:layout_height="match_parent"
+                android:background="@color/cyan" />
 
         </LinearLayout>
-
     </android.support.v4.widget.NestedScrollView>
+
+    <!--<android.support.v4.widget.NestedScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/cyan"-->
+        <!--android:orientation="vertical"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+
+
+    <!--</android.support.v4.widget.NestedScrollView>-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/expanded_image"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:fitsSystemWindows="true"-->
+        <!--android:visibility="invisible" />-->
 
 </android.support.design.widget.CoordinatorLayout>

@@ -162,9 +162,8 @@ public class HomeFragment extends Fragment {
             BufferedInputStream bis = new BufferedInputStream(fis);
             StringBuilder b = new StringBuilder();
 
-            long date = 0;
-            long fDate = 0;
-            long tDate = 0;
+            long startDate = 0;
+            long endDate = 0;
 
             while (bis.available() != 0) {
                 char c = (char) bis.read();
@@ -197,20 +196,20 @@ public class HomeFragment extends Fragment {
                 List<String> imageNames = convertToArray(stringImageNames);
 
                 if (allDay) {
-                    date = JsonPath.read(document, jsonPath("events", i, "date"));
+                    startDate = JsonPath.read(document, jsonPath("events", i, "startDate"));
                 } else {
-                    fDate = JsonPath.read(document, jsonPath("events", i, "fromDate"));
-                    tDate = JsonPath.read(document, jsonPath("events", i, "toDate"));
+                    startDate = JsonPath.read(document, jsonPath("events", i, "startDate"));
+                    endDate = JsonPath.read(document, jsonPath("events", i, "endDate"));
                 }
 
                 if (starred) {
                     if (allDay) {
                         eventList.add(new Event(eid, title, location, description,
-                                allDay, date, fromTime, toTime, coverURL, coverName,
+                                allDay, startDate, fromTime, toTime, coverURL, coverName,
                                 eventStorageKey, starred, imageURLS, imageNames));
                     } else {
                         eventList.add(new Event(eid, title, location, description,
-                                allDay, fDate, tDate, fromTime, toTime, coverURL, coverName,
+                                allDay, startDate, endDate, fromTime, toTime, coverURL, coverName,
                                 eventStorageKey, starred, imageURLS, imageNames));
                     }
                 }
@@ -226,6 +225,13 @@ public class HomeFragment extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Collections.sort(eventList, new Comparator<Event>() {
+            @Override
+            public int compare(Event o1, Event o2) {
+                return Long.compare(o1.startDate, o2.startDate);
+            }
+        });
 
         return eventList;
     }
@@ -282,11 +288,6 @@ public class HomeFragment extends Fragment {
         });
         Collections.reverse(newsList);
 
-        for (News item : newsList) {
-            if(item.equals(newsList)){
-                Log.d(TAG, "asd");
-            }
-        }
         return newsList;
     }
 

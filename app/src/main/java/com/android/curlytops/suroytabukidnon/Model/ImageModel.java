@@ -1,4 +1,4 @@
-package com.android.curlytops.suroytabukidnon.Municipality.Tab_Item_Details;
+package com.android.curlytops.suroytabukidnon.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,13 +9,13 @@ import android.os.Parcelable;
 
 public class ImageModel implements Parcelable {
 
-    String name, url;
+    private String name, url;
 
     public ImageModel() {
 
     }
 
-    protected ImageModel(Parcel in) {
+    private ImageModel(Parcel in) {
         name = in.readString();
         url = in.readString();
     }

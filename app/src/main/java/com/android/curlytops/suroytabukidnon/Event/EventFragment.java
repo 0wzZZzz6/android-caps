@@ -247,10 +247,10 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
                         eventObject.put("starred", event.starred);
 
                         if (event.allDay) {
-                            eventObject.put("date", event.date);
+                            eventObject.put("startDate", event.startDate);
                         } else {
-                            eventObject.put("fromDate", event.fromDate);
-                            eventObject.put("toDate", event.toDate);
+                            eventObject.put("startDate", event.startDate);
+                            eventObject.put("endDate", event.endDate);
                         }
 
                         data.put(eventObject);
@@ -332,11 +332,11 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
                 List<String> imageNames = convertToArray(stringImageNames);
 
                 if (allDay) {
-                    date = JsonPath.read(document, jsonPath(i, "date"));
+                    date = JsonPath.read(document, jsonPath(i, "startDate"));
                     dates.add(ConvertCalendarDate(date));
                 } else {
-                    fDate = JsonPath.read(document, jsonPath(i, "fromDate"));
-                    tDate = JsonPath.read(document, jsonPath(i, "toDate"));
+                    fDate = JsonPath.read(document, jsonPath(i, "startDate"));
+                    tDate = JsonPath.read(document, jsonPath(i, "endDate"));
 
                     // test
                     fromDate = new Date(fDate);
@@ -403,12 +403,12 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
     private List<Event> getEventMonth(String month) {
         List<Event> events = new ArrayList<>();
         for (Event ev : eventList) {
-            if (ev.allDay && month.equalsIgnoreCase(getMonth(ev.date))) {
+            if (ev.allDay && month.equalsIgnoreCase(getMonth(ev.startDate))) {
                 events.add(ev);
             }
-            if (!ev.allDay && month.equalsIgnoreCase(getMonth(ev.fromDate))) {
+            if (!ev.allDay && month.equalsIgnoreCase(getMonth(ev.startDate))) {
                 events.add(ev);
-            } else if (!ev.allDay && month.equalsIgnoreCase(getMonth(ev.toDate))) {
+            } else if (!ev.allDay && month.equalsIgnoreCase(getMonth(ev.endDate))) {
                 events.add(ev);
             }
         }
@@ -602,7 +602,7 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
             Collections.sort(list, new Comparator<Event>() {
                 @Override
                 public int compare(Event e1, Event e2) {
-                    return Long.compare(e1.date, e2.date);
+                    return Long.compare(e1.startDate, e2.startDate);
                 }
             });
         }

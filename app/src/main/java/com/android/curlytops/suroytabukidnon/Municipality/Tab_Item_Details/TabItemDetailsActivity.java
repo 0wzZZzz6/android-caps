@@ -26,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.curlytops.suroytabukidnon.BaseActivity;
+import com.android.curlytops.suroytabukidnon.Model.ImageModel;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
 import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;

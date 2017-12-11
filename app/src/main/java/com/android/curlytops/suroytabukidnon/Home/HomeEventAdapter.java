@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.curlytops.suroytabukidnon.Event.EventDetailsActivity;
+import com.android.curlytops.suroytabukidnon.Event.news.EventDetailActivity;
 import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;
@@ -17,8 +18,6 @@ import com.bumptech.glide.Glide;
 import org.joda.time.DateTime;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -59,7 +58,8 @@ public class HomeEventAdapter extends RecyclerView.Adapter<HomeEventAdapter.Home
         holder.home_event_title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, EventDetailsActivity.class);
+//                Intent intent = new Intent(context, EventDetailsActivity.class);
+                Intent intent = new Intent(context, EventDetailActivity.class);
                 intent.putExtra("myEvent", item);
                 context.startActivity(intent);
             }
@@ -77,25 +77,25 @@ public class HomeEventAdapter extends RecyclerView.Adapter<HomeEventAdapter.Home
 
         String date;
         if (item.allDay) {
-            date = convertDate(item.date);
+            date = convertDate(item.startDate);
         } else {
-            DateTime fromDate = new DateTime(item.fromDate);
-            DateTime toDate = new DateTime(item.toDate);
+            DateTime fromDate = new DateTime(item.startDate);
+            DateTime toDate = new DateTime(item.endDate);
 
             if (fromDate.getMonthOfYear() == toDate.getMonthOfYear() &&
                     fromDate.getYear() == toDate.getYear()) {
 
-                return simpleDateFormat.format(item.fromDate) + " " +
-                        fromDate.getDayOfMonth() + " - " + toDate.getDayOfMonth() + ", " +
+                return simpleDateFormat.format(item.startDate) + " " +
+                        fromDate.getDayOfMonth() + " - " + toDate.getDayOfMonth() + " " +
                         fromDate.getYear();
             } else if (!(fromDate.getMonthOfYear() == toDate.getMonthOfYear()) &&
                     fromDate.getYear() == toDate.getYear()) {
-                return simpleDateFormat.format(item.fromDate) + " " + fromDate.getDayOfMonth()
+                return simpleDateFormat.format(item.startDate) + " " + fromDate.getDayOfMonth()
                         + " - " +
-                        simpleDateFormat.format(item.toDate) + " " + toDate.getDayOfMonth() + " ," +
+                        simpleDateFormat.format(item.endDate) + " " + toDate.getDayOfMonth() + " " +
                         fromDate.getYear();
             } else {
-                date = convertDate(item.fromDate) + " - " + convertDate(item.toDate);
+                date = convertDate(item.startDate) + " - " + convertDate(item.endDate);
             }
         }
 
@@ -103,7 +103,7 @@ public class HomeEventAdapter extends RecyclerView.Adapter<HomeEventAdapter.Home
     }
 
     private String convertDate(long date) {
-        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd yyyy");
         return formatter.format(date);
     }
 
