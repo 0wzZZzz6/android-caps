@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nested"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:background="@color/cyan"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -33,7 +35,7 @@
                         android:id="@+id/fragment_event_details_textView_month"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="DEC"
+                        android:text="@string/monthDetail"
                         android:textColor="@color/red" />
 
                     <TextView
@@ -41,7 +43,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="6" />
+                        android:text="@string/dayDetail" />
 
                 </LinearLayout>
 
@@ -50,11 +52,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
-                    android:maxLines="2"
+                    android:maxLines="4"
                     android:paddingBottom="12dp"
                     android:paddingEnd="0dp"
                     android:paddingStart="15dp"
-                    android:text="Title"
+                    android:text="@string/fragment_event_details_title"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -73,17 +75,17 @@
                 android:drawablePadding="10dp"
                 android:drawableStart="@drawable/ic_map_marker_grey600_24dp"
                 android:paddingTop="15dp"
-                android:text="Time"
+                android:text="@string/fragment_event_details_location"
                 android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/fragment_event_details_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_clock_grey600_24dp"
+                android:drawableStart="@drawable/ic_clock_grey600_24dp"
                 android:drawablePadding="10dp"
                 android:paddingTop="15dp"
-                android:text="Time"
+                android:text="@string/fragment_event_details_time"
                 android:textSize="14sp" />
 
             <LinearLayout
@@ -111,30 +113,17 @@
                         android:paddingBottom="5dp"
                         android:paddingEnd="5dp"
                         android:paddingStart="10dp"
-                        android:text="Description"
+                        android:text="@string/fragment_event_details_description"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <!--<TextView-->
-                    <!--android:id="@+id/activity_event_details_description"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:ellipsize="end"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:maxLines="20"-->
-                    <!--android:paddingEnd="5dp"-->
-                    <!--android:paddingStart="10dp"-->
-                    <!--android:text="Location"-->
-                    <!--android:textSize="14sp" />-->
-
-                    <com.ms.square.android.expandabletextview.ExpandableTextView
-                        xmlns:android="http://schemas.android.com/apk/res/android"
+                    <com.ms.square.android.expandabletextview.ExpandableTextView xmlns:android="http://schemas.android.com/apk/res/android"
                         xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
-                        android:id="@+id/fragment_event_details_details"
+                        android:id="@+id/fragment_event_details_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         expandableTextView:animDuration="200"
-                        expandableTextView:maxCollapsedLines="12">
+                        expandableTextView:maxCollapsedLines="5">
 
                         <TextView
                             android:id="@id/expandable_text"
@@ -161,6 +150,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:background="@android:color/darker_gray" />
 
@@ -179,18 +169,34 @@
                         android:id="@+id/fragment_event_details_button_interested"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
                         android:drawablePadding="5dp"
                         android:drawableStart="@drawable/ic_star_grey600_24dp"
-                        android:text="Interested"
+                        android:text="@string/fragment_event_details_interested"
                         android:textAllCaps="false" />
+
+                    <LinearLayout
+                        android:id="@+id/statusDivider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/darker_gray" />
+
+                    </LinearLayout>
 
                     <Button
                         android:id="@+id/fragment_event_details_button_going"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
                         android:drawablePadding="5dp"
                         android:drawableStart="@drawable/ic_check_grey600_24dp"
-                        android:text="Going"
+                        android:text="@string/fragment_event_details_going"
                         android:textAllCaps="false" />
 
                 </LinearLayout>
@@ -207,20 +213,20 @@
                         android:id="@+id/totalInterested"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="I" />
+                        android:text="@string/fragment_event_details_count_interested" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
-                        android:text="•" />
+                        android:text="@string/fragment_event_details_count_divider" />
 
                     <TextView
                         android:id="@+id/totalGoing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="G" />
+                        android:text="@string/fragment_event_details_count_going" />
 
                 </LinearLayout>
 
@@ -242,4 +248,4 @@
 
     </LinearLayout>
 
-</FrameLayout>
+</android.support.v4.widget.NestedScrollView>

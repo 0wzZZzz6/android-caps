@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +43,7 @@ import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
+import org.joda.time.DateTime;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,7 +58,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -202,7 +203,7 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
     }
 
     @OnClick(R.id.fragment_event_fab)
-    public void fabClick(View view) {
+    public void fabClick() {
         long millis = System.currentTimeMillis();
         widget.setCurrentDate(ConvertCalendarDate(millis));
         widget.setSelectedDate(ConvertCalendarDate(millis));
@@ -231,34 +232,35 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
                 for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
                     Event event = eventSnapshot.getValue(Event.class);
                     try {
-                        eventObject = new JSONObject();
-                        eventObject.put("e_id", eventSnapshot.getKey());
-                        eventObject.put("title", event.title);
-                        eventObject.put("description", event.description);
-                        eventObject.put("location", event.location);
-                        eventObject.put("allDay", event.allDay);
-                        eventObject.put("fromTime", event.fromTime);
-                        eventObject.put("toTime", event.toTime);
-                        eventObject.put("coverURL", event.coverURL);
-                        eventObject.put("coverName", event.coverName);
-                        eventObject.put("imageURLS", event.imageURLS);
-                        eventObject.put("imageNames", event.imageNames);
-                        eventObject.put("eventStorageKey", event.eventStorageKey);
-                        eventObject.put("starred", event.starred);
+                        if (event != null) {
+                            eventObject = new JSONObject();
+                            eventObject.put("e_id", eventSnapshot.getKey());
+                            eventObject.put("title", event.title);
+                            eventObject.put("description", event.description);
+                            eventObject.put("location", event.location);
+                            eventObject.put("allDay", event.allDay);
+                            eventObject.put("fromTime", event.fromTime);
+                            eventObject.put("toTime", event.toTime);
+                            eventObject.put("coverURL", event.coverURL);
+                            eventObject.put("coverName", event.coverName);
+                            eventObject.put("imageURLS", event.imageURLS);
+                            eventObject.put("imageNames", event.imageNames);
+                            eventObject.put("eventStorageKey", event.eventStorageKey);
+                            eventObject.put("starred", event.starred);
 
-                        if (event.allDay) {
-                            eventObject.put("startDate", event.startDate);
-                        } else {
-                            eventObject.put("startDate", event.startDate);
-                            eventObject.put("endDate", event.endDate);
+                            if (event.allDay) {
+                                eventObject.put("startDate", event.startDate);
+                            } else {
+                                eventObject.put("startDate", event.startDate);
+                                eventObject.put("endDate", event.endDate);
+                            }
+                            data.put(eventObject);
+                            rootEventObject.put("events", data);
+                            FileOutputStream fos = context.openFileOutput("event.json", MODE_PRIVATE);
+                            fos.write(rootEventObject.toString().getBytes());
+                            fos.flush();
+                            fos.close();
                         }
-
-                        data.put(eventObject);
-                        rootEventObject.put("events", data);
-                        FileOutputStream fos = context.openFileOutput("event.json", MODE_PRIVATE);
-                        fos.write(rootEventObject.toString().getBytes());
-                        fos.flush();
-                        fos.close();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     } catch (FileNotFoundException e) {
@@ -356,18 +358,18 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
 
                 if (milliseconds == 0) {// show all events
                     if (allDay) {
-                        eventList.add(new Event(eid, title, location, description, allDay, date, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
+                        eventList.add(new Event(eid, title, location, description, true, date, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
                     } else {
-                        eventList.add(new Event(eid, title, location, description, allDay, fDate, tDate, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
+                        eventList.add(new Event(eid, title, location, description, false, fDate, tDate, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
                     }
                 } else if (milliseconds == date) {// show only events sorted by longDate
                     if (allDay) {
-                        eventList.add(new Event(eid, title, location, description, allDay, date, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
+                        eventList.add(new Event(eid, title, location, description, true, date, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
                     }
                 }
 
                 if (!allDay && inRange(milliseconds, fromDate, toDate)) {
-                    eventList.add(new Event(eid, title, location, description, allDay, fDate, tDate, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
+                    eventList.add(new Event(eid, title, location, description, false, fDate, tDate, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
                 }
 
                 i++;
@@ -414,6 +416,41 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
         }
 
         return events;
+    }
+
+    private String getDate(Event item) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM");
+
+        String date;
+        if (item.allDay) {
+            date = convertDate(item.startDate);
+        } else {
+            DateTime fromDate = new DateTime(item.startDate);
+            DateTime toDate = new DateTime(item.endDate);
+
+            if (fromDate.getMonthOfYear() == toDate.getMonthOfYear() &&
+                    fromDate.getYear() == toDate.getYear()) {
+
+                return simpleDateFormat.format(item.startDate) + " " +
+                        fromDate.getDayOfMonth() + " - " + toDate.getDayOfMonth() + ", " +
+                        fromDate.getYear();
+            } else if (!(fromDate.getMonthOfYear() == toDate.getMonthOfYear()) &&
+                    fromDate.getYear() == toDate.getYear()) {
+                return simpleDateFormat.format(item.startDate) + " " + fromDate.getDayOfMonth()
+                        + " - " +
+                        simpleDateFormat.format(item.endDate) + " " + toDate.getDayOfMonth() + " ," +
+                        fromDate.getYear();
+            } else {
+                date = convertDate(item.startDate) + " - " + convertDate(item.endDate);
+            }
+        }
+
+        return date;
+    }
+
+    private String convertDate(long date) {
+        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
+        return formatter.format(date);
     }
 
     private String getMonth(long date) {
@@ -535,7 +572,7 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
                                @NonNull CalendarDay date, boolean selected) {
 
         boolean isEvent = false;
-        long millis = System.currentTimeMillis();
+//        long millis = System.currentTimeMillis();
 
         for (int i = 0; i < dates.size(); i++) {
             if (CalendarDay.from(date.getYear(), date.getMonth(), date.getDay()).equals(dates.get(i))) {
@@ -627,12 +664,13 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
                     .buildRound(letter, R.color.colorAccent);
 
             itemHolder.eventTitle.setText(event.title);
+            itemHolder.eventDate.setText(getDate(event));
             itemHolder.eventLocation.setText(event.location);
             itemHolder.eventLetter.setImageDrawable(textDrawable);
             itemHolder.eventItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(getContext(), EventDetailsActivity.class);
+                    Intent intent = new Intent(getContext(), EventDetailActivity.class);
                     intent.putExtra("myEvent", event);
                     getContext().startActivity(intent);
                 }
@@ -666,10 +704,12 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
         TextView eventTitle;
         @BindView(R.id.event_location)
         TextView eventLocation;
+        @BindView(R.id.event_date)
+        TextView eventDate;
         @BindView(R.id.event_letter)
         ImageView eventLetter;
         @BindView(R.id.event_item)
-        View eventItem;
+        LinearLayout eventItem;
 
         ItemViewHolder(View view) {
             super(view);

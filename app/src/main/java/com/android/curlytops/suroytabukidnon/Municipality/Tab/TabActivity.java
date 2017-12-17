@@ -1,19 +1,15 @@
 package com.android.curlytops.suroytabukidnon.Municipality.Tab;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 
 import com.android.curlytops.suroytabukidnon.BaseActivity;
 import com.android.curlytops.suroytabukidnon.Municipality.Tab.Fragment.About;
-import com.android.curlytops.suroytabukidnon.Municipality.Tab.Fragment.Tab2;
+import com.android.curlytops.suroytabukidnon.Municipality.Tab.Fragment.More;
 import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;
 
@@ -61,23 +57,8 @@ public class TabActivity extends BaseActivity {
 
         Bundle bundle = new Bundle();
         bundle.putString("_municipality", _municipality);
-        Tab2 tab2 = new Tab2();
-        tab2.setArguments(bundle);
-
-//        Drawable drawable = getResources().getDrawable(Integer.parseInt(_img));
-//
-//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), drawable);
-//
-//        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
-//            @SuppressWarnings("ResourceType")
-//            @Override
-//            public void onGenerated(Palette palette) {
-//                int vibrantColor = palette.getVibrantColor(R.color.grey_200);
-//                int vibrantDarkColor = palette.getDarkVibrantColor(R.color.grey_600);
-//                collapsingToolbarLayout.setContentScrimColor(vibrantColor);
-//                collapsingToolbarLayout.setStatusBarScrimColor(vibrantDarkColor);
-//            }
-//        });
+        More more = new More();
+        more.setArguments(bundle);
 
         Glide.with(this)
                 .load(_img)
@@ -87,7 +68,7 @@ public class TabActivity extends BaseActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new About(), "About");
-        adapter.addFragment(new Tab2(), "Tab2");
+        adapter.addFragment(new More(), "More");
         viewPager.setAdapter(adapter);
     }
 

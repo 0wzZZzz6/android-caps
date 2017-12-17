@@ -31,6 +31,22 @@
                     }
                 }
             ]
+        },
+        {
+            "outputFile": "C:\\Project\\Github\\android-caps\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Project\\Github\\android-caps\\lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,109,322,377",
+                        "endLines": "2,3,4,11",
+                        "endColumns": "53,212,54,12",
+                        "endOffsets": "104,317,372,732"
+                    }
+                }
+            ]
         }
     ]
 }

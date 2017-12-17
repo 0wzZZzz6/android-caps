@@ -18,6 +18,7 @@ import com.android.curlytops.suroytabukidnon.Event.EventFragment;
 import com.android.curlytops.suroytabukidnon.Helper.BottomNavigationViewHelper;
 import com.android.curlytops.suroytabukidnon.Home.HomeFragment;
 import com.android.curlytops.suroytabukidnon.Municipality.MunicipalityFragment;
+import com.android.curlytops.suroytabukidnon.Utils.MwmDataItem;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mapswithme.maps.api.MWMPoint;
 import com.mapswithme.maps.api.MapsWithMeApi;

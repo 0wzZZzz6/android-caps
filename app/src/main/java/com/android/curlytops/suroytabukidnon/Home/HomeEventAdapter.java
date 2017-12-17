@@ -9,8 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.curlytops.suroytabukidnon.Event.EventDetailsActivity;
-import com.android.curlytops.suroytabukidnon.Event.news.EventDetailActivity;
+import com.android.curlytops.suroytabukidnon.Event.EventDetailActivity;
 import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;

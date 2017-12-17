@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
@@ -35,7 +34,6 @@ public class BaseActivity extends AppCompatActivity {
     public static final String EXTRA_IMAGE = "url";
     public static final String EXTRA_ID = "id";
     public static final String EXTRA_MUNICIPALITY = "municipality";
-    public static final String EXTRA_DATE = "date";
 
     @Override
     public void setContentView(int layoutResID) {
@@ -60,34 +58,36 @@ public class BaseActivity extends AppCompatActivity {
                 for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
                     Event event = eventSnapshot.getValue(Event.class);
                     try {
-                        eventObject = new JSONObject();
-                        eventObject.put("e_id", eventSnapshot.getKey());
-                        eventObject.put("title", event.title);
-                        eventObject.put("description", event.description);
-                        eventObject.put("location", event.location);
-                        eventObject.put("allDay", event.allDay);
-                        eventObject.put("fromTime", event.fromTime);
-                        eventObject.put("toTime", event.toTime);
-                        eventObject.put("coverURL", event.coverURL);
-                        eventObject.put("coverName", event.coverName);
-                        eventObject.put("imageURLS", event.imageURLS);
-                        eventObject.put("imageNames", event.imageNames);
-                        eventObject.put("eventStorageKey", event.eventStorageKey);
-                        eventObject.put("starred", event.starred);
+                        if (event != null) {
+                            eventObject = new JSONObject();
+                            eventObject.put("e_id", eventSnapshot.getKey());
+                            eventObject.put("title", event.title);
+                            eventObject.put("description", event.description);
+                            eventObject.put("location", event.location);
+                            eventObject.put("allDay", event.allDay);
+                            eventObject.put("fromTime", event.fromTime);
+                            eventObject.put("toTime", event.toTime);
+                            eventObject.put("coverURL", event.coverURL);
+                            eventObject.put("coverName", event.coverName);
+                            eventObject.put("imageURLS", event.imageURLS);
+                            eventObject.put("imageNames", event.imageNames);
+                            eventObject.put("eventStorageKey", event.eventStorageKey);
+                            eventObject.put("starred", event.starred);
 
-                        if (event.allDay) {
-                            eventObject.put("startDate", event.startDate);
-                        } else {
-                            eventObject.put("startDate", event.startDate);
-                            eventObject.put("endDate", event.endDate);
+                            if (event.allDay) {
+                                eventObject.put("startDate", event.startDate);
+                            } else {
+                                eventObject.put("startDate", event.startDate);
+                                eventObject.put("endDate", event.endDate);
+                            }
+
+                            data.put(eventObject);
+                            rootEventObject.put("events", data);
+                            FileOutputStream fos = openFileOutput("event.json", MODE_PRIVATE);
+                            fos.write(rootEventObject.toString().getBytes());
+                            fos.flush();
+                            fos.close();
                         }
-
-                        data.put(eventObject);
-                        rootEventObject.put("events", data);
-                        FileOutputStream fos = openFileOutput("event.json", MODE_PRIVATE);
-                        fos.write(rootEventObject.toString().getBytes());
-                        fos.flush();
-                        fos.close();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     } catch (FileNotFoundException e) {
@@ -125,27 +125,29 @@ public class BaseActivity extends AppCompatActivity {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         MunicipalityItem municipalityItem = snapshot.getValue(MunicipalityItem.class);
                         try {
-                            object = new JSONObject();
-                            object.put("id", snapshot.getKey());
-                            object.put("title", municipalityItem.getTitle());
-                            object.put("location", municipalityItem.getLocation());
-                            object.put("contact", municipalityItem.getContact());
-                            object.put("category", municipalityItem.getCategory());
-                            object.put("imageURLS", municipalityItem.getImageURLS());
-                            object.put("imageNames", municipalityItem.getImageNames());
-                            object.put("municipalityStorageKey", municipalityItem.getMunicipalityStorageKey());
-                            object.put("coverURL", municipalityItem.getCoverURL());
-                            object.put("coverName", municipalityItem.getCoverName());
-                            object.put("starred", municipalityItem.getStarred());
-                            object.put("description", municipalityItem.getDescription());
-                            object.put("latlon", municipalityItem.getLatlon());
+                            if (municipalityItem != null) {
+                                object = new JSONObject();
+                                object.put("id", snapshot.getKey());
+                                object.put("title", municipalityItem.getTitle());
+                                object.put("location", municipalityItem.getLocation());
+                                object.put("contact", municipalityItem.getContact());
+                                object.put("category", municipalityItem.getCategory());
+                                object.put("imageURLS", municipalityItem.getImageURLS());
+                                object.put("imageNames", municipalityItem.getImageNames());
+                                object.put("municipalityStorageKey", municipalityItem.getMunicipalityStorageKey());
+                                object.put("coverURL", municipalityItem.getCoverURL());
+                                object.put("coverName", municipalityItem.getCoverName());
+                                object.put("starred", municipalityItem.getStarred());
+                                object.put("description", municipalityItem.getDescription());
+                                object.put("latlon", municipalityItem.getLatlon());
 
-                            data.put(object);
-                            municipalityObject.put(municipality, data);
-                            FileOutputStream fos = openFileOutput("municipality.json", Context.MODE_PRIVATE);
-                            fos.write(municipalityObject.toString().getBytes());
-                            fos.flush();
-                            fos.close();
+                                data.put(object);
+                                municipalityObject.put(municipality, data);
+                                FileOutputStream fos = openFileOutput("municipality.json", Context.MODE_PRIVATE);
+                                fos.write(municipalityObject.toString().getBytes());
+                                fos.flush();
+                                fos.close();
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         } catch (FileNotFoundException e) {
@@ -182,21 +184,23 @@ public class BaseActivity extends AppCompatActivity {
                 for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
                     News news = eventSnapshot.getValue(News.class);
                     try {
-                        newsObject = new JSONObject();
-                        newsObject.put("n_id", eventSnapshot.getKey());
-                        newsObject.put("title", news.title);
-                        newsObject.put("link", news.link);
-                        newsObject.put("newsStorageKey", news.newsStorageKey);
-                        newsObject.put("coverURL", news.coverURL);
-                        newsObject.put("coverName", news.coverName);
-                        newsObject.put("timestamp", news.timestamp);
+                        if (news != null) {
+                            newsObject = new JSONObject();
+                            newsObject.put("n_id", eventSnapshot.getKey());
+                            newsObject.put("title", news.title);
+                            newsObject.put("link", news.link);
+                            newsObject.put("newsStorageKey", news.newsStorageKey);
+                            newsObject.put("coverURL", news.coverURL);
+                            newsObject.put("coverName", news.coverName);
+                            newsObject.put("timestamp", news.timestamp);
 
-                        data.put(newsObject);
-                        rootNewsObject.put("news", data);
-                        FileOutputStream fos = openFileOutput("news.json", MODE_PRIVATE);
-                        fos.write(rootNewsObject.toString().getBytes());
-                        fos.flush();
-                        fos.close();
+                            data.put(newsObject);
+                            rootNewsObject.put("news", data);
+                            FileOutputStream fos = openFileOutput("news.json", MODE_PRIVATE);
+                            fos.write(rootNewsObject.toString().getBytes());
+                            fos.flush();
+                            fos.close();
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     } catch (FileNotFoundException e) {
@@ -236,5 +240,6 @@ public class BaseActivity extends AppCompatActivity {
     public String getUid() {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
+
 }
 

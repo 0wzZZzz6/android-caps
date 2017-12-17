@@ -22,5 +22,19 @@
 
     <string name="menu_logout">Log out</string>
     <string name="menu_search">Search</string>
+    <string name="monthDetail">JAN</string>
+    <string name="dayDetail">28</string>
+    <string name="fragment_event_details_title">Title</string>
+    <string name="fragment_event_details_location">Location</string>
+    <string name="fragment_event_details_time">Time</string>
+    <string name="fragment_event_details_description">Description</string>
+    <string name="fragment_event_details_interested">Interested</string>
+    <string name="fragment_event_details_going">Going</string>
+    <string name="fragment_event_details_count_interested">I</string>
+    <string name="fragment_event_details_count_divider">•</string>
+    <string name="fragment_event_details_count_going">G</string>
+    <string name="event_item_title">Event title</string>
+    <string name="event_item_address">Address</string>
+    <string name="event_item_date">Date</string>
 
 </resources>

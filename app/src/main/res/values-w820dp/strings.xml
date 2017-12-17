@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="monthDetail">JAN</string>
+    <string name="dayDetail">28</string>
+    <string name="fragment_event_details_title">Title</string>
+    <string name="fragment_event_details_location">Location</string>
+</resources>
