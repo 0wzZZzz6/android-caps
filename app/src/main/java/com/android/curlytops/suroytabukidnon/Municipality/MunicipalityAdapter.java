@@ -23,7 +23,6 @@ import butterknife.ButterKnife;
 /**
  * Created by jan_frncs
  */
-
 class MunicipalityAdapter extends RecyclerView.Adapter
         <MunicipalityAdapter.MunicipalityViewHolder> {
 

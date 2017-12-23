@@ -1,36 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/section_exapandable_item_view"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:background="@color/colorAccent">
+    android:background="@color/colorAccent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/section_expandable_header_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        tools:text="Title test text"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/section_expandable_header_arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="15dp"
-        android:src="@drawable/ic_arrow_drop_down_white_24dp" />
+        <ImageView
+            android:id="@+id/section_expandable_header_count"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="14dp"
+            android:src="@drawable/ic_star_grey600_24dp" />
+
+        <TextView
+            android:id="@+id/section_expandable_header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/section_expandable_header_count"
+            android:layout_marginStart="29dp"
+            android:layout_toEndOf="@+id/section_expandable_header_count"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="Title test text" />
+
+        <ImageView
+            android:id="@+id/section_expandable_header_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/section_expandable_header_title"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="0dp"
+            android:src="@drawable/ic_arrow_drop_down_white_24dp" />
+
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
+        android:layout_height="10dp"
         android:background="@color/white" />
 
-</RelativeLayout>
+</LinearLayout>

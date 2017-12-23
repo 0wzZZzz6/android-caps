@@ -9,91 +9,43 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="EventDetailFragment" />
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+    <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Home/HomeFragment.java" line="88" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="773f4abb-01a5-4844-841d-d8628ea59e69" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Connection/ConnectivityReceiver.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Connection/MyApplication.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tab_item_detail.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tab_item_detail.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values-v21/strings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values-w820dp/strings.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/news/EventDetailFragment.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailsActivity.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/news/EventDetailActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/news/GalleryAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Gallery/GalleryAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/news/GalleryItemClickListener.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Gallery/GalleryItemClickListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/news/GalleryPagerAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Gallery/GalleryPagerAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/news/GalleryViewPagerFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Gallery/GalleryViewPagerFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/news/ImageDetailFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Gallery/ImageDetailFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/Fragment/Tab2.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/Fragment/More.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/MwmDataItem.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Utils/MwmDataItem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/SearchActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Utils/SearchActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/SimpleDividerItemDecoration.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Utils/SimpleDividerItemDecoration.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/SplashScreen.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Utils/SplashScreen.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Model/Bookmark.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/incremental/debug-mergeJniLibs/merge-state" afterPath="$PROJECT_DIR$/lib/build/intermediates/incremental/debug-mergeJniLibs/merge-state" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_background_pattern.xml.flat" afterPath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_background_pattern.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_btn_back_gray.xml.flat" afterPath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_btn_back_gray.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_btn_back_gray_active.xml.flat" afterPath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_btn_back_gray_active.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_btn_back_green.xml.flat" afterPath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_btn_back_green.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_btn_back_green_active.xml.flat" afterPath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_btn_back_green_active.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_btn_gray_selector.xml.flat" afterPath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_btn_gray_selector.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_btn_green_selector.xml.flat" afterPath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_btn_green_selector.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_gray.xml.flat" afterPath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_gray.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_green.xml.flat" afterPath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_green.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_overflow.xml.flat" afterPath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_overflow.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_pattern.png.flat" afterPath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_pattern.png.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_shadow.xml.flat" afterPath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/drawable_shadow.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/layout_dlg_install_mwm.xml.flat" afterPath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/layout_dlg_install_mwm.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/values_values.arsc.flat" afterPath="$PROJECT_DIR$/lib/build/intermediates/res/merged/androidTest/debug/values_values.arsc.flat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/BaseActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/BaseActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Home/HomeEventAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Home/HomeEventAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/TabActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/TabActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Gallery/ImageDetailFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Gallery/ImageDetailFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Model/Event.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Model/Event.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Model/MunicipalityItem.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Model/MunicipalityItem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/MunicipalityAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/MunicipalityAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/Fragment/More.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/Fragment/More.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_event_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_event_detail.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/event_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/event_item.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_about.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_about.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_event_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_event_detail.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_image_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_image_detail.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tab_item_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tab_item_detail.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/section_expandable_header.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/section_expandable_header.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/tab_item_menu.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/tab_item_menu.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/blame/res/androidTest/debug/multi-v2/debug.json" afterPath="$PROJECT_DIR$/lib/build/intermediates/blame/res/androidTest/debug/multi-v2/debug.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/blame/res/androidTest/debug/multi-v2/values.json" afterPath="$PROJECT_DIR$/lib/build/intermediates/blame/res/androidTest/debug/multi-v2/values.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/blame/res/androidTest/debug/single/debug.json" afterPath="$PROJECT_DIR$/lib/build/intermediates/blame/res/androidTest/debug/single/debug.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/lib/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="$PROJECT_DIR$/lib/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterPath="$PROJECT_DIR$/lib/build/intermediates/incremental/mergeDebugAssets/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterPath="$PROJECT_DIR$/lib/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterPath="$PROJECT_DIR$/lib/build/intermediates/incremental/mergeDebugShaders/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/lib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/incremental/packageDebugResources/merger.xml" afterPath="$PROJECT_DIR$/lib/build/intermediates/incremental/packageDebugResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/intermediates/transforms/mergeJniLibs/debug/__content__.json" afterPath="$PROJECT_DIR$/lib/build/intermediates/transforms/mergeJniLibs/debug/__content__.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/lib/build/outputs/logs/manifest-merger-debug-report.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/lib.iml" afterPath="$PROJECT_DIR$/lib/lib.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
     </list>
     <ignored path="SuroyBukidnon.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -138,82 +90,208 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MunicipalityFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/MunicipalityFragment.java">
+      <file leaf-file-name="TabItemDetailActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="502">
+              <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding>
-                <element signature="docComment;class#MunicipalityFragment#0" expanded="false" />
-                <element signature="method#MunicipalityFragment#0;class#MunicipalityFragment#0" expanded="false" />
-                <element signature="method#newInstance#0;class#MunicipalityFragment#0" expanded="false" />
-                <element signature="method#onCreate#0;class#MunicipalityFragment#0" expanded="false" />
-                <element signature="method#onCreateView#0;class#MunicipalityFragment#0" expanded="false" />
-                <element signature="method#onViewCreated#0;class#MunicipalityFragment#0" expanded="false" />
-                <element signature="method#getMunicipalityJson#0;class#MunicipalityFragment#0" expanded="false" />
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#TabItemDetailActivity#0" expanded="false" />
+                <element signature="method#onCreate#0;class#TabItemDetailActivity#0" expanded="false" />
+                <element signature="method#onSupportNavigateUp#0;class#TabItemDetailActivity#0" expanded="false" />
+                <element signature="method#onCreateOptionsMenu#0;class#TabItemDetailActivity#0" expanded="false" />
+                <element signature="method#onOptionsItemSelected#0;class#TabItemDetailActivity#0" expanded="false" />
+                <element signature="method#bookmarkStatus#0;class#TabItemDetailActivity#0" expanded="false" />
+                <element signature="class#4096:5089" expanded="false" />
+                <element signature="method#onDataChange#0;class#4096:5089" expanded="false" />
+                <element signature="method#onCancelled#0;class#4096:5089" expanded="false" />
+                <element signature="method#onBookmarkClicked#0;class#TabItemDetailActivity#0" expanded="false" />
+                <element signature="class#5326:6862" expanded="false" />
+                <element signature="method#doTransaction#0;class#5326:6862" expanded="false" />
+                <element signature="method#onComplete#0;class#5326:6862" expanded="false" />
+                <element signature="method#details_fab#0;class#TabItemDetailActivity#0" expanded="false" />
+                <element signature="method#onStart#0;class#TabItemDetailActivity#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MunicipalityAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/MunicipalityAdapter.java">
+      <file leaf-file-name="tab_item_menu.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/tab_item_menu.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="26" column="6" lean-forward="false" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+            <state relative-caret-position="80">
+              <caret line="4" column="71" lean-forward="false" selection-start-line="4" selection-start-column="71" selection-end-line="4" selection-end-column="71" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="docComment;class#MunicipalityAdapter#0" expanded="false" />
-                <element signature="method#MunicipalityAdapter#0;class#MunicipalityAdapter#0" expanded="false" />
-                <element signature="method#onCreateViewHolder#0;class#MunicipalityAdapter#0" expanded="false" />
-                <element signature="method#onBindViewHolder#0;class#MunicipalityAdapter#0" expanded="false" />
-                <element signature="e#2257#2258#0" expanded="false" />
-                <element signature="e#2303#2304#0" expanded="false" />
-                <element signature="class#MunicipalityViewHolder#0;class#MunicipalityAdapter#0" expanded="false" />
-                <element signature="method#MunicipalityViewHolder#0;class#MunicipalityViewHolder#0;class#MunicipalityAdapter#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="About.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/Fragment/About.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="20" column="56" lean-forward="false" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_about.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_about.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="1" column="39" lean-forward="false" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
-              <folding>
-                <element signature="e#39#5019#0" expanded="false" />
-                <element signature="e#266#4972#0" expanded="false" />
-                <element signature="e#449#709#0" expanded="false" />
-                <element signature="e#719#1941#0" expanded="false" />
-                <element signature="e#903#1895#0" expanded="false" />
-                <element signature="e#1125#1335#0" expanded="false" />
-                <element signature="e#1353#1867#0" expanded="false" />
-                <element signature="e#1951#3125#0" expanded="false" />
-                <element signature="e#2135#3079#0" expanded="false" />
-                <element signature="e#2357#2567#0" expanded="false" />
-                <element signature="e#2585#3051#0" expanded="false" />
-                <element signature="e#3135#4034#0" expanded="false" />
-                <element signature="e#3303#3786#0" expanded="false" />
-                <element signature="e#3800#4009#0" expanded="false" />
-                <element signature="e#4044#4951#0" expanded="false" />
-                <element signature="e#4212#4703#0" expanded="false" />
-                <element signature="e#4717#4926#0" expanded="false" />
+                <element signature="e#694#712#0" expanded="true" />
+                <marker date="1514016052056" expanded="false" signature="486:507" ph="&quot;Search&quot;" />
               </folding>
             </state>
           </provider>
           <provider editor-type-id="android-designer2">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/BaseActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="125" column="0" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#BaseActivity#0" expanded="false" />
+                <element signature="method#firebaseEvents#0;class#BaseActivity#0" expanded="false" />
+                <element signature="class#1628:4482" expanded="false" />
+                <element signature="method#onDataChange#0;class#1628:4482" expanded="false" />
+                <element signature="method#onCancelled#0;class#1628:4482" expanded="false" />
+                <element signature="method#onCancelled#0;class#4994:7732" expanded="false" />
+                <element signature="method#firebaseNews#0;class#BaseActivity#0" expanded="false" />
+                <element signature="class#7977:10008" expanded="false" />
+                <element signature="method#onDataChange#0;class#7977:10008" expanded="false" />
+                <element signature="method#onCancelled#0;class#7977:10008" expanded="false" />
+                <element signature="method#showProgressDialog#0;class#BaseActivity#0" expanded="false" />
+                <element signature="method#hideProgressDialog#0;class#BaseActivity#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/LoginActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="112" column="5" lean-forward="false" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
+              <folding>
+                <element signature="docComment;class#LoginActivity#0" expanded="false" />
+                <element signature="method#onCreate#0;class#LoginActivity#0" expanded="false" />
+                <element signature="method#signUp#0;class#LoginActivity#0" expanded="false" />
+                <element signature="method#onAuthSuccess#0;class#LoginActivity#0" expanded="false" />
+                <element signature="method#usernameFromEmail#0;class#LoginActivity#0" expanded="false" />
+                <element signature="method#validateForm#0;class#LoginActivity#0" expanded="false" />
+                <element signature="method#writeNewUser#0;class#LoginActivity#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="210" column="23" lean-forward="false" selection-start-line="210" selection-start-column="23" selection-end-line="210" selection-end-column="23" />
+              <folding>
+                <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#BottomNavigation#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#switchFragment#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#showOnMWMMap#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onFirstRun#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#searchView#0;class#MainActivity#0" expanded="false" />
+                <element signature="class#7699:8072" expanded="false" />
+                <element signature="method#onQueryTextSubmit#0;class#7699:8072" expanded="false" />
+                <element signature="method#onQueryTextChange#0;class#7699:8072" expanded="false" />
+                <element signature="class#8123:8404" expanded="false" />
+                <element signature="method#onSearchViewShown#0;class#8123:8404" expanded="false" />
+                <element signature="method#onSearchViewClosed#0;class#8123:8404" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TabActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/TabActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="182">
+              <caret line="34" column="52" lean-forward="false" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
+              <folding>
+                <element signature="docComment;class#TabActivity#0" expanded="false" />
+                <element signature="method#onCreate#0;class#TabActivity#0" expanded="false" />
+                <element signature="method#setupViewPager#0;class#TabActivity#0" expanded="false" />
+                <element signature="method#onSupportNavigateUp#0;class#TabActivity#0" expanded="false" />
+                <element signature="method#UpperCaseFirstLetter#0;class#TabActivity#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TabItemDetailFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-338">
+              <caret line="231" column="0" lean-forward="false" selection-start-line="231" selection-start-column="0" selection-end-line="231" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#TabItemDetailFragment#0" expanded="false" />
+                <element signature="method#TabItemDetailFragment#0;class#TabItemDetailFragment#0" expanded="false" />
+                <element signature="method#onCreate#0;class#TabItemDetailFragment#0" expanded="false" />
+                <element signature="e#3437#3446#0" expanded="false" />
+                <element signature="method#doTransaction#0;class#6416:7617" expanded="false" />
+                <element signature="method#onComplete#0;class#6416:7617" expanded="false" />
+                <element signature="method#onCancelled#0;class#7732:9629" expanded="false" />
+                <element signature="class#ChipsAdapter#0;class#TabItemDetailFragment#0" expanded="false" />
+                <element signature="method#onCreateViewHolder#0;class#ChipsAdapter#0;class#TabItemDetailFragment#0" expanded="false" />
+                <element signature="method#onBindViewHolder#0;class#ChipsAdapter#0;class#TabItemDetailFragment#0" expanded="false" />
+                <element signature="class#ChipsViewHolder#0;class#ChipsAdapter#0;class#TabItemDetailFragment#0" expanded="false" />
+                <element signature="method#ChipsViewHolder#0;class#ChipsViewHolder#0;class#ChipsAdapter#0;class#TabItemDetailFragment#0" expanded="false" />
+                <element signature="method#onGalleryItemClickListener#0;class#TabItemDetailFragment#0" expanded="false" />
+                <element signature="method#checkConnection#0;class#TabItemDetailFragment#0" expanded="false" />
+                <element signature="method#showSnack#0;class#TabItemDetailFragment#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MunicipalityItem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Model/MunicipalityItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-120">
+              <caret line="15" column="29" lean-forward="false" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+              <folding>
+                <element signature="docComment;class#MunicipalityItem#0" expanded="false" />
+                <element signature="e#1489#1523#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Event.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Model/Event.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding>
+                <element signature="method#Event#1;class#Event#0" expanded="false" />
+                <element signature="method#Event#2;class#Event#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EventDetailFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="115" column="48" lean-forward="false" selection-start-line="115" selection-start-column="48" selection-end-line="115" selection-end-column="48" />
+              <folding>
+                <element signature="docComment;class#EventDetailFragment#0" expanded="false" />
+                <element signature="method#EventDetailFragment#0;class#EventDetailFragment#0" expanded="false" />
+                <element signature="method#onCreateView#0;class#EventDetailFragment#0" expanded="false" />
+                <element signature="method#onViewCreated#0;class#EventDetailFragment#0" expanded="false" />
+                <element signature="method#getDetails#0;class#EventDetailFragment#0" expanded="false" />
+                <element signature="method#getDate#0;class#EventDetailFragment#0" expanded="false" />
+                <element signature="method#getTime#0;class#EventDetailFragment#0" expanded="false" />
+                <element signature="method#convertTime#0;class#EventDetailFragment#0" expanded="false" />
+                <element signature="method#convertDate#0;class#EventDetailFragment#0" expanded="false" />
+                <element signature="method#button_interested#0;class#EventDetailFragment#0" expanded="false" />
+                <element signature="method#onReactButtonClicked#0;class#EventDetailFragment#0" expanded="false" />
+                <element signature="method#onComplete#0;class#8255:10041" expanded="false" />
+                <element signature="method#reactStatus#0;class#EventDetailFragment#0" expanded="false" />
+                <element signature="method#onCancelled#0;class#10150:13352" expanded="false" />
+                <element signature="method#onGalleryItemClickListener#0;class#EventDetailFragment#0" expanded="false" />
+                <element signature="method#checkConnection#0;class#EventDetailFragment#0" expanded="false" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
@@ -225,18 +303,13 @@
         <option value="ASClass" />
         <option value="resourceFile" />
         <option value="layoutResourceFile_vertical" />
-        <option value="Class" />
         <option value="valueResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getAllDay</find>
-      <find>Event</find>
-      <find>background</find>
-      <find>@color</find>
-      <find>activity_event_details_header</find>
       <find>activity_event_details_collapsingToolbar</find>
       <find>home_event_link</find>
       <find>data</find>
@@ -262,6 +335,11 @@
       <find>activity_event_details_coordinatorLayout</find>
       <find>Activity</find>
       <find>statusDivider</find>
+      <find>eventLetter</find>
+      <find>heart_status</find>
+      <find>heart</find>
+      <find>activity_tab_item_detail_coordinatorLayout</find>
+      <find>starred</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2876,15 +2954,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/bottom_sheet.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/gallery_item_expand.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/gallery_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/GalleryItemClickListener.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Model/ImageModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_gallery_view_pager.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/GalleryViewPagerFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/GalleryPagerAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/ImageDetailFragment.java" />
@@ -2905,28 +2974,37 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Utils/SplashScreen.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_tab_item_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tab_item_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/TabActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/Fragment/Tab2.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Gallery/GalleryAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_image_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Gallery/ImageDetailFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Connection/ConnectivityReceiver.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Connection/MyApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_event_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/BaseActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_event_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/event_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_about.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/MunicipalityAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/section_expandable_header.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-v21/fragment_tab_item_detail.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_image_detail.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Gallery/ImageDetailFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_event_detail.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tab_item_detail.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_event_detail.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_tab_item_detail.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Model/Bookmark.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/Fragment/More.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Model/Event.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/BaseActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Model/MunicipalityItem.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Utils/RandomString.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/tab_item_menu.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailActivity.java" />
       </list>
     </option>
   </component>
@@ -2985,132 +3063,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="android-caps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-caps" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-caps" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-caps" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="suroytabukidnon" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-caps" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="suroytabukidnon" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Municipality" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-caps" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="suroytabukidnon" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Municipality" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-caps" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="suroytabukidnon" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Municipality" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Fragment" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3232,6 +3184,76 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-caps" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-caps" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-caps" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="suroytabukidnon" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-caps" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="suroytabukidnon" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3357,8 +3379,54 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513483558987" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514016884947" />
+      </method>
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+      </Profilers>
+      <method>
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514016884948" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -3376,6 +3444,14 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="run" />
+      <option name="nocapture" value="true" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -3390,6 +3466,27 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
@@ -3494,8 +3591,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513483558989" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1514016884948" />
       </method>
     </configuration>
     <list size="1">
@@ -3607,20 +3703,21 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32550335" sideWeight="0.4871407" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3204698" sideWeight="0.4871407" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="true" show_stripe_button="true" weight="0.27685326" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" x="972" y="54" width="372" height="640" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" show_stripe_button="true" weight="0.27685326" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" x="972" y="54" width="372" height="640" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32718122" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.76342285" sideWeight="0.50907713" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24205749" sideWeight="0.48154363" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32718122" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24205749" sideWeight="0.5184564" order="7" side_tool="true" content_ui="tabs" />
@@ -3635,45 +3732,45 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32718122" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32885906" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Cargo" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23524962" sideWeight="0.5067114" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5285235" sideWeight="0.5136157" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32550335" sideWeight="0.5128593" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41275167" sideWeight="0.48638427" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66964287" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6677852" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Assistant" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Assistant" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32738096" sideWeight="0.49016643" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32550335" sideWeight="0.4871407" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" show_stripe_button="true" weight="0.27685326" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" x="972" y="54" width="372" height="640" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" show_stripe_button="true" weight="0.27685326" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" x="972" y="54" width="372" height="640" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32718122" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886904" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.76342285" sideWeight="0.50907713" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23524962" sideWeight="0.4875" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23524962" sideWeight="0.5125" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24205749" sideWeight="0.48154363" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32718122" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24205749" sideWeight="0.5184564" order="7" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -3715,144 +3812,16 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="40" />
+      <option name="time" value="41" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/apt/debug/com/android/curlytops/suroytabukidnon/Event/news/EventDetailFragment_ViewBinding.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_event_details.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="54" column="47" lean-forward="false" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Utils/SplashScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Utils/SimpleDividerItemDecoration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Utils/SearchActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Utils/MwmDataItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Gallery/GalleryPagerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailsActivity.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-v21/bottom_sheet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="166" column="45" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="166" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/tab_item_details.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Model/MunicipalityItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_tab_item_detail.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="170" column="49" lean-forward="false" selection-start-line="170" selection-start-column="49" selection-end-line="170" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailsActivity.java" />
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-26/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="9365" column="15" lean-forward="false" selection-start-line="9365" selection-start-column="15" selection-end-line="9365" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/Fragment/Tab2.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="77" column="31" lean-forward="true" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="249" column="0" lean-forward="false" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/TabActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="820">
-          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/Fragment/More.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="40" column="13" lean-forward="false" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tab_item_detail.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="62" column="39" lean-forward="false" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -3870,24 +3839,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Gallery/ImageDetailFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="65" column="23" lean-forward="false" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Gallery/GalleryViewPagerFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_image_detail.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="36" lean-forward="false" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -3926,13 +3881,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_event_detail.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Home/HomeFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -3952,31 +3900,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-26/java/lang/Throwable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="368" column="18" lean-forward="false" selection-start-line="368" selection-start-column="18" selection-end-line="368" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="112" column="5" lean-forward="true" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/BaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="245" column="0" lean-forward="true" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -3988,52 +3915,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-118">
-          <caret line="40" column="34" lean-forward="true" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="37" column="36" lean-forward="false" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_event_detail.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-489">
-          <caret line="202" column="0" lean-forward="true" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="709" column="30" lean-forward="false" selection-start-line="709" selection-start-column="30" selection-end-line="709" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/event_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="37" lean-forward="true" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="128" column="54" lean-forward="false" selection-start-line="128" selection-start-column="54" selection-end-line="128" selection-end-column="54" />
         </state>
       </provider>
     </entry>
@@ -4057,6 +3943,30 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_about.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="48" lean-forward="false" selection-start-line="1" selection-start-column="48" selection-end-line="1" selection-end-column="48" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/Fragment/About.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="20" column="56" lean-forward="false" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/MunicipalityAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/MunicipalityFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -4073,59 +3983,433 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/MunicipalityAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/event_item.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="26" column="6" lean-forward="false" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="docComment;class#MunicipalityAdapter#0" expanded="false" />
-            <element signature="method#MunicipalityAdapter#0;class#MunicipalityAdapter#0" expanded="false" />
-            <element signature="method#onCreateViewHolder#0;class#MunicipalityAdapter#0" expanded="false" />
-            <element signature="method#onBindViewHolder#0;class#MunicipalityAdapter#0" expanded="false" />
-            <element signature="e#2257#2258#0" expanded="false" />
-            <element signature="e#2303#2304#0" expanded="false" />
-            <element signature="class#MunicipalityViewHolder#0;class#MunicipalityAdapter#0" expanded="false" />
-            <element signature="method#MunicipalityViewHolder#0;class#MunicipalityViewHolder#0;class#MunicipalityAdapter#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="280">
+          <caret line="14" column="55" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="14" selection-end-column="55" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/Fragment/About.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/section_expandable_item.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="20" column="56" lean-forward="false" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+        <state relative-caret-position="280">
+          <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_about.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/section_expandable_header.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="39" lean-forward="false" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
+        <state relative-caret-position="171">
+          <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="663" column="61" lean-forward="false" selection-start-line="661" selection-start-column="10" selection-end-line="663" selection-end-column="61" />
+          <caret line="668" column="66" lean-forward="false" selection-start-line="668" selection-start-column="9" selection-end-line="668" selection-end-column="66" />
           <folding>
-            <element signature="e#39#5019#0" expanded="false" />
-            <element signature="e#266#4972#0" expanded="false" />
-            <element signature="e#449#709#0" expanded="false" />
-            <element signature="e#719#1941#0" expanded="false" />
-            <element signature="e#903#1895#0" expanded="false" />
-            <element signature="e#1125#1335#0" expanded="false" />
-            <element signature="e#1353#1867#0" expanded="false" />
-            <element signature="e#1951#3125#0" expanded="false" />
-            <element signature="e#2135#3079#0" expanded="false" />
-            <element signature="e#2357#2567#0" expanded="false" />
-            <element signature="e#2585#3051#0" expanded="false" />
-            <element signature="e#3135#4034#0" expanded="false" />
-            <element signature="e#3303#3786#0" expanded="false" />
-            <element signature="e#3800#4009#0" expanded="false" />
-            <element signature="e#4044#4951#0" expanded="false" />
-            <element signature="e#4212#4703#0" expanded="false" />
-            <element signature="e#4717#4926#0" expanded="false" />
+            <element signature="docComment;class#EventFragment#0" expanded="false" />
+            <element signature="method#EventFragment#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#newInstance#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#onCreate#0;class#EventFragment#0" expanded="false" />
+            <element signature="e#4271#4280#0" expanded="false" />
+            <element signature="class#4797:5720" expanded="false" />
+            <element signature="method#onStateChanged#0;class#4797:5720" expanded="false" />
+            <element signature="method#onSlide#0;class#4797:5720" expanded="false" />
+            <element signature="class#5952:6587" expanded="false" />
+            <element signature="method#onAnimationStart#0;class#5952:6587" expanded="false" />
+            <element signature="method#onAnimationRepeat#0;class#5952:6587" expanded="false" />
+            <element signature="class#6639:7027" expanded="false" />
+            <element signature="method#onAnimationStart#0;class#6639:7027" expanded="false" />
+            <element signature="method#onAnimationRepeat#0;class#6639:7027" expanded="false" />
+            <element signature="method#fabClick#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#firebaseEvents#0;class#EventFragment#0" expanded="false" />
+            <element signature="class#8093:11185" expanded="false" />
+            <element signature="method#onDataChange#0;class#8093:11185" expanded="false" />
+            <element signature="method#onCancelled#0;class#8093:11185" expanded="false" />
+            <element signature="method#readEvents#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#jsonPath#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#convertToArray#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#inRange#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#getEventMonth#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#getDate#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#convertDate#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#getMonth#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#getDay#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#textAsBitmap#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#SampleThis#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#ConvertCalendarDate#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#calendarViewWidget#0;class#EventFragment#0" expanded="false" />
+            <element signature="class#ApiSimulator#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#ApiSimulator#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#ApiSimulator#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#onDateSelected#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#SectionAdapter#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#EventSection#0;class#EventSection#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#getItemViewHolder#0;class#EventSection#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#getHeaderViewHolder#0;class#EventSection#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#onBindHeaderViewHolder#0;class#EventSection#0;class#EventFragment#0" expanded="false" />
+            <element signature="class#HeaderViewHolder#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#HeaderViewHolder#0;class#HeaderViewHolder#0;class#EventFragment#0" expanded="false" />
+            <element signature="method#ItemViewHolder#0;class#ItemViewHolder#0;class#EventFragment#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-v21/fragment_tab_item_detail.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_image_detail.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/apt/debug/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailFragment_ViewBinding.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Gallery/ImageDetailFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tab_item_detail.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="57" column="41" lean-forward="false" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_event_detail.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1120">
+          <caret line="56" column="4" lean-forward="false" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_tab_item_detail.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="142" column="12" lean-forward="false" selection-start-line="142" selection-start-column="12" selection-end-line="142" selection-end-column="12" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_event_detail.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="143" column="82" lean-forward="false" selection-start-line="119" selection-start-column="20" selection-end-line="143" selection-end-column="82" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="30" column="47" lean-forward="false" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-database-11.6.2.aar/c9ca26de521ec24362e63eb5822ca825/jars/classes.jar!/com/google/firebase/database/DatabaseReference.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="121" column="16" lean-forward="false" selection-start-line="121" selection-start-column="16" selection-end-line="121" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Model/Bookmark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-tasks-11.6.2.aar/33eeb66e8007f851f3dbf01d9ade1465/jars/classes.jar!/com/google/android/gms/tasks/Task.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="46" column="25" lean-forward="false" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/Fragment/More.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="168" column="61" lean-forward="false" selection-start-line="168" selection-start-column="61" selection-end-line="168" selection-end-column="61" />
+          <folding>
+            <element signature="docComment;class#More#0" expanded="false" />
+            <element signature="method#onCreate#0;class#More#0" expanded="false" />
+            <element signature="method#onCreateView#0;class#More#0" expanded="false" />
+            <element signature="method#readMunicipalityItems#0;class#More#0" expanded="false" />
+            <element signature="method#jsonPath#0;class#More#0" expanded="false" />
+            <element signature="method#sectionAdapter#0;class#More#0" expanded="false" />
+            <element signature="method#convertToArray#0;class#More#0" expanded="false" />
+            <element signature="method#getItemWithCategory#0;class#More#0" expanded="false" />
+            <element signature="class#ExpandableSection#0;class#More#0" expanded="false" />
+            <element signature="method#ExpandableSection#0;class#ExpandableSection#0;class#More#0" expanded="false" />
+            <element signature="method#getItemViewHolder#0;class#ExpandableSection#0;class#More#0" expanded="false" />
+            <element signature="method#onBindItemViewHolder#0;class#ExpandableSection#0;class#More#0" expanded="false" />
+            <element signature="method#getHeaderViewHolder#0;class#ExpandableSection#0;class#More#0" expanded="false" />
+            <element signature="method#onBindHeaderViewHolder#0;class#ExpandableSection#0;class#More#0" expanded="false" />
+            <element signature="class#HeaderViewHolder#0;class#More#0" expanded="false" />
+            <element signature="method#HeaderViewHolder#0;class#HeaderViewHolder#0;class#More#0" expanded="false" />
+            <element signature="class#ItemViewHolder#0;class#More#0" expanded="false" />
+            <element signature="method#ItemViewHolder#0;class#ItemViewHolder#0;class#More#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab/TabActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="34" column="52" lean-forward="false" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
+          <folding>
+            <element signature="docComment;class#TabActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#TabActivity#0" expanded="false" />
+            <element signature="method#setupViewPager#0;class#TabActivity#0" expanded="false" />
+            <element signature="method#onSupportNavigateUp#0;class#TabActivity#0" expanded="false" />
+            <element signature="method#UpperCaseFirstLetter#0;class#TabActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Event/EventDetailFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="115" column="48" lean-forward="false" selection-start-line="115" selection-start-column="48" selection-end-line="115" selection-end-column="48" />
+          <folding>
+            <element signature="docComment;class#EventDetailFragment#0" expanded="false" />
+            <element signature="method#EventDetailFragment#0;class#EventDetailFragment#0" expanded="false" />
+            <element signature="method#onCreateView#0;class#EventDetailFragment#0" expanded="false" />
+            <element signature="method#onViewCreated#0;class#EventDetailFragment#0" expanded="false" />
+            <element signature="method#getDetails#0;class#EventDetailFragment#0" expanded="false" />
+            <element signature="method#getDate#0;class#EventDetailFragment#0" expanded="false" />
+            <element signature="method#getTime#0;class#EventDetailFragment#0" expanded="false" />
+            <element signature="method#convertTime#0;class#EventDetailFragment#0" expanded="false" />
+            <element signature="method#convertDate#0;class#EventDetailFragment#0" expanded="false" />
+            <element signature="method#button_interested#0;class#EventDetailFragment#0" expanded="false" />
+            <element signature="method#onReactButtonClicked#0;class#EventDetailFragment#0" expanded="false" />
+            <element signature="method#onComplete#0;class#8255:10041" expanded="false" />
+            <element signature="method#reactStatus#0;class#EventDetailFragment#0" expanded="false" />
+            <element signature="method#onCancelled#0;class#10150:13352" expanded="false" />
+            <element signature="method#onGalleryItemClickListener#0;class#EventDetailFragment#0" expanded="false" />
+            <element signature="method#checkConnection#0;class#EventDetailFragment#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-26/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="116" column="19" lean-forward="false" selection-start-line="116" selection-start-column="19" selection-end-line="116" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Model/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="method#Event#1;class#Event#0" expanded="false" />
+            <element signature="method#Event#2;class#Event#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="112" column="5" lean-forward="false" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
+          <folding>
+            <element signature="docComment;class#LoginActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#LoginActivity#0" expanded="false" />
+            <element signature="method#signUp#0;class#LoginActivity#0" expanded="false" />
+            <element signature="method#onAuthSuccess#0;class#LoginActivity#0" expanded="false" />
+            <element signature="method#usernameFromEmail#0;class#LoginActivity#0" expanded="false" />
+            <element signature="method#validateForm#0;class#LoginActivity#0" expanded="false" />
+            <element signature="method#writeNewUser#0;class#LoginActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="210" column="23" lean-forward="false" selection-start-line="210" selection-start-column="23" selection-end-line="210" selection-end-column="23" />
+          <folding>
+            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#BottomNavigation#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#switchFragment#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#showOnMWMMap#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onFirstRun#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#searchView#0;class#MainActivity#0" expanded="false" />
+            <element signature="class#7699:8072" expanded="false" />
+            <element signature="method#onQueryTextSubmit#0;class#7699:8072" expanded="false" />
+            <element signature="method#onQueryTextChange#0;class#7699:8072" expanded="false" />
+            <element signature="class#8123:8404" expanded="false" />
+            <element signature="method#onSearchViewShown#0;class#8123:8404" expanded="false" />
+            <element signature="method#onSearchViewClosed#0;class#8123:8404" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-338">
+          <caret line="231" column="0" lean-forward="false" selection-start-line="231" selection-start-column="0" selection-end-line="231" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#TabItemDetailFragment#0" expanded="false" />
+            <element signature="method#TabItemDetailFragment#0;class#TabItemDetailFragment#0" expanded="false" />
+            <element signature="method#onCreate#0;class#TabItemDetailFragment#0" expanded="false" />
+            <element signature="e#3437#3446#0" expanded="false" />
+            <element signature="method#doTransaction#0;class#6416:7617" expanded="false" />
+            <element signature="method#onComplete#0;class#6416:7617" expanded="false" />
+            <element signature="method#onCancelled#0;class#7732:9629" expanded="false" />
+            <element signature="class#ChipsAdapter#0;class#TabItemDetailFragment#0" expanded="false" />
+            <element signature="method#onCreateViewHolder#0;class#ChipsAdapter#0;class#TabItemDetailFragment#0" expanded="false" />
+            <element signature="method#onBindViewHolder#0;class#ChipsAdapter#0;class#TabItemDetailFragment#0" expanded="false" />
+            <element signature="class#ChipsViewHolder#0;class#ChipsAdapter#0;class#TabItemDetailFragment#0" expanded="false" />
+            <element signature="method#ChipsViewHolder#0;class#ChipsViewHolder#0;class#ChipsAdapter#0;class#TabItemDetailFragment#0" expanded="false" />
+            <element signature="method#onGalleryItemClickListener#0;class#TabItemDetailFragment#0" expanded="false" />
+            <element signature="method#checkConnection#0;class#TabItemDetailFragment#0" expanded="false" />
+            <element signature="method#showSnack#0;class#TabItemDetailFragment#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/BaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="125" column="0" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#BaseActivity#0" expanded="false" />
+            <element signature="method#firebaseEvents#0;class#BaseActivity#0" expanded="false" />
+            <element signature="class#1628:4482" expanded="false" />
+            <element signature="method#onDataChange#0;class#1628:4482" expanded="false" />
+            <element signature="method#onCancelled#0;class#1628:4482" expanded="false" />
+            <element signature="method#onCancelled#0;class#4994:7732" expanded="false" />
+            <element signature="method#firebaseNews#0;class#BaseActivity#0" expanded="false" />
+            <element signature="class#7977:10008" expanded="false" />
+            <element signature="method#onDataChange#0;class#7977:10008" expanded="false" />
+            <element signature="method#onCancelled#0;class#7977:10008" expanded="false" />
+            <element signature="method#showProgressDialog#0;class#BaseActivity#0" expanded="false" />
+            <element signature="method#hideProgressDialog#0;class#BaseActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Model/MunicipalityItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-120">
+          <caret line="15" column="29" lean-forward="false" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+          <folding>
+            <element signature="docComment;class#MunicipalityItem#0" expanded="false" />
+            <element signature="e#1489#1523#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Utils/RandomString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="882">
+          <caret line="54" column="35" lean-forward="false" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/tab_item_menu.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="71" lean-forward="false" selection-start-line="4" selection-start-column="71" selection-end-line="4" selection-end-column="71" />
+          <folding>
+            <element signature="e#694#712#0" expanded="true" />
+            <marker date="1514016052056" expanded="false" signature="486:507" ph="&quot;Search&quot;" />
           </folding>
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/curlytops/suroytabukidnon/Municipality/Tab_Item_Details/TabItemDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#TabItemDetailActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#TabItemDetailActivity#0" expanded="false" />
+            <element signature="method#onSupportNavigateUp#0;class#TabItemDetailActivity#0" expanded="false" />
+            <element signature="method#onCreateOptionsMenu#0;class#TabItemDetailActivity#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#TabItemDetailActivity#0" expanded="false" />
+            <element signature="method#bookmarkStatus#0;class#TabItemDetailActivity#0" expanded="false" />
+            <element signature="class#4096:5089" expanded="false" />
+            <element signature="method#onDataChange#0;class#4096:5089" expanded="false" />
+            <element signature="method#onCancelled#0;class#4096:5089" expanded="false" />
+            <element signature="method#onBookmarkClicked#0;class#TabItemDetailActivity#0" expanded="false" />
+            <element signature="class#5326:6862" expanded="false" />
+            <element signature="method#doTransaction#0;class#5326:6862" expanded="false" />
+            <element signature="method#onComplete#0;class#5326:6862" expanded="false" />
+            <element signature="method#details_fab#0;class#TabItemDetailActivity#0" expanded="false" />
+            <element signature="method#onStart#0;class#TabItemDetailActivity#0" expanded="false" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>

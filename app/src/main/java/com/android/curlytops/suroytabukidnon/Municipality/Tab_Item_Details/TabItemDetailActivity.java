@@ -3,6 +3,7 @@ package com.android.curlytops.suroytabukidnon.Municipality.Tab_Item_Details;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -24,6 +25,9 @@ import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.mapswithme.maps.api.MapsWithMeApi;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -36,6 +40,8 @@ public class TabItemDetailActivity extends BaseActivity {
 
     private static final String TAG = "TabItemDetailActivity";
 
+    @BindView(R.id.activity_tab_item_detail_coordinatorLayout)
+    CoordinatorLayout coordinatorLayout;
     @BindView(R.id.activity_tab_item_detail_appBarLayout)
     AppBarLayout appBarLayout;
     @BindView(R.id.activity_tab_item_detail_collapsingToolbar)
@@ -48,12 +54,14 @@ public class TabItemDetailActivity extends BaseActivity {
     FloatingActionButton fab;
 
     DatabaseReference municipalityReference;
+    DatabaseReference bookmarkReference;
 
     String item_id;
     String municipality;
     MunicipalityItem municipalityItem;
-    Menu menu;
-    MenuItem menuItem;
+    private Menu menu;
+
+    Map<String, String> marked = new HashMap<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,15 +81,19 @@ public class TabItemDetailActivity extends BaseActivity {
                 getIntent().getSerializableExtra("municipalityItem");
         municipality = (String)
                 getIntent().getSerializableExtra("_municipality");
-        item_id = municipalityItem.getId();
+        item_id = municipalityItem.id;
+
         municipalityReference = FirebaseDatabase.getInstance()
                 .getReference("municipality")
                 .child(municipality).child(item_id);
 
-        Glide.with(this)
-                .load(municipalityItem.getCoverURL())
-                .into(header);
+        bookmarkReference = FirebaseDatabase.getInstance()
+                .getReference("bookmark")
+                .child(getUid());
 
+        Glide.with(this)
+                .load(municipalityItem.coverURL)
+                .into(header);
 
     }
 
@@ -93,19 +105,17 @@ public class TabItemDetailActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        this.menu = menu;
         getMenuInflater().inflate(R.menu.tab_item_menu, menu);
-        menuItem = menu.findItem(R.id.action_heart);
-        starStatus();
+        this.menu = menu;
+        bookmarkStatus();
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_heart: {
-                onStarClicked(municipalityReference);
-                starStatus();
+            case R.id.action_bookmark: {
+                onBookmarkClicked();
                 return true;
             }
             default:
@@ -113,7 +123,7 @@ public class TabItemDetailActivity extends BaseActivity {
         }
     }
 
-    public void starStatus() {
+    public void bookmarkStatus() {
         try {
             municipalityReference.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -121,12 +131,14 @@ public class TabItemDetailActivity extends BaseActivity {
                     MunicipalityItem municipalityItem = dataSnapshot.getValue(MunicipalityItem.class);
 
                     // Determine if the current user has liked this post and set UI accordingly
-                    if (municipalityItem.stars.containsKey(getUid())) {
-                        menuItem.setIcon(getResources()
-                                .getDrawable(R.drawable.ic_heart_white_24dp));
-                    } else {
-                        menuItem.setIcon(getResources()
-                                .getDrawable(R.drawable.ic_heart_outline_white_24dp));
+                    if (municipalityItem != null) {
+                        if (municipalityItem.bookmark.containsKey(getUid())) {
+                            menu.getItem(0).setIcon(getResources()
+                                    .getDrawable(R.drawable.ic_bookmark_white_24dp));
+                        } else {
+                            menu.getItem(0).setIcon(getResources()
+                                    .getDrawable(R.drawable.ic_bookmark_outline_white_24dp));
+                        }
                     }
 
                 }
@@ -140,9 +152,10 @@ public class TabItemDetailActivity extends BaseActivity {
         }
     }
 
-    // [START post_stars_transaction]
-    private void onStarClicked(DatabaseReference municipalityRef) {
-        municipalityRef.runTransaction(new Transaction.Handler() {
+    private void onBookmarkClicked() {
+        invalidateOptionsMenu();
+        marked.clear();
+        municipalityReference.runTransaction(new Transaction.Handler() {
             @Override
             public Transaction.Result doTransaction(MutableData mutableData) {
                 MunicipalityItem municipalityItem = mutableData.getValue(MunicipalityItem.class);
@@ -150,12 +163,19 @@ public class TabItemDetailActivity extends BaseActivity {
                     return Transaction.success(mutableData);
                 }
 
-                if (municipalityItem.stars.containsKey(getUid())) {
+                if (municipalityItem.bookmark.containsKey(getUid())) {
                     // Unstar the post and remove self from stars
-                    municipalityItem.stars.remove(getUid());
+                    String val = municipalityItem.bookmark.get(getUid());
+                    bookmarkReference.child(val).removeValue();
+
+                    municipalityItem.bookmark.remove(getUid());
                 } else {
                     // Star the post and add self to stars
-                    municipalityItem.stars.put(getUid(), true);
+                    String key = bookmarkReference.push().getKey();
+                    marked.put("item_id", item_id);
+                    bookmarkReference.child(key).setValue(marked);
+
+                    municipalityItem.bookmark.put(getUid(), key);
                 }
 
                 // Set value and report transaction success
@@ -171,17 +191,16 @@ public class TabItemDetailActivity extends BaseActivity {
             }
         });
     }
-    // [END post_stars_transaction]
 
     @OnClick(R.id.fab_directions)
     public void details_fab() {
-        String latlon = municipalityItem.getLatlon();
+        String latlon = municipalityItem.latlon;
         latlon = latlon.replace(" ", "");
         String[] parts = latlon.split(",");
         double lat = Double.parseDouble(parts[0]);
         double lon = Double.parseDouble(parts[1]);
 
-        MapsWithMeApi.showPointOnMap(this, lat, lon, municipalityItem.getTitle());
+        MapsWithMeApi.showPointOnMap(this, lat, lon, municipalityItem.title);
     }
 
     public String getUid() {
@@ -196,4 +215,5 @@ public class TabItemDetailActivity extends BaseActivity {
                 .add(R.id.content, TabItemDetailFragment.newInstance())
                 .commit();
     }
+
 }

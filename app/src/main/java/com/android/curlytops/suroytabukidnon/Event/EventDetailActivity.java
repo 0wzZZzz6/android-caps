@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
 
 public class EventDetailActivity extends BaseActivity {
 
-    @BindView(R.id.activity_event_details_coordinatorLayout)
+    @BindView(R.id.activity_event_detail_coordinatorLayout)
     CoordinatorLayout coordinatorLayout;
     @BindView(R.id.activity_event_detail_collapsingToolbar)
     CollapsingToolbarLayout collapsingToolbarLayout;

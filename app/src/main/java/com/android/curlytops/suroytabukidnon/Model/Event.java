@@ -1,9 +1,5 @@
 package com.android.curlytops.suroytabukidnon.Model;
 
-import android.support.annotation.NonNull;
-
-import com.google.firebase.database.IgnoreExtraProperties;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -12,27 +8,18 @@ import java.util.Map;
 /**
  * Created by jan_frncs
  */
-@IgnoreExtraProperties
 public class Event implements Serializable {
 
-    public String e_id;
-    public String title;
-    public String location;
-    public String description;
-    public long startDate;
-    public long endDate;
-    public boolean allDay;
-    public String fromTime;
-    public String toTime;
-
-    public String coverURL, coverName, eventStorageKey;
-    public boolean starred;
+    public String e_id, title, location, description, fromTime,
+            toTime, coverURL, coverName, eventStorageKey;
+    public long startDate, endDate;
+    public boolean allDay, starred;
     public List<String> imageURLS, imageNames;
-
     public Map<String, Boolean> interested = new HashMap<>();
     public Map<String, Boolean> going = new HashMap<>();
 
-    public Event() {}
+    public Event() {
+    }
 
     public Event(String e_id, String title, String location,
                  String description, boolean allDay, long startDate, String fromTime, String toTime,
@@ -75,11 +62,4 @@ public class Event implements Serializable {
         this.imageNames = imageNames;
     }
 
-    public List<String> getImageURLS() {
-        return imageURLS;
-    }
-
-    public void setImageURLS(List<String> imageURLS) {
-        this.imageURLS = imageURLS;
-    }
 }

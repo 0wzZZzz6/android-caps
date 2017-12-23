@@ -1,9 +1,11 @@
 package com.android.curlytops.suroytabukidnon.Municipality.Tab_Item_Details;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,15 +13,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.curlytops.suroytabukidnon.Event.EventDetailActivity;
-import com.android.curlytops.suroytabukidnon.Event.EventDetailFragment;
+import com.android.curlytops.suroytabukidnon.Connection.ConnectivityReceiver;
 import com.android.curlytops.suroytabukidnon.Gallery.GalleryAdapter;
 import com.android.curlytops.suroytabukidnon.Gallery.GalleryItemClickListener;
 import com.android.curlytops.suroytabukidnon.Gallery.GalleryViewPagerFragment;
@@ -31,7 +33,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
+import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,16 +53,16 @@ public class TabItemDetailFragment extends Fragment implements GalleryItemClickL
     public static final String TAG = TabItemDetailFragment.class.getSimpleName();
 
     @BindView(R.id.fragment_tab_item_title)
-    TextView tv_title;
-    @BindView(R.id.fragment_tab_item_detail1)
-    TextView tv_detail1;
-    @BindView(R.id.fragment_tab_item_detail2)
-    TextView tv_detail2;
-    @BindView(R.id.fragment_tab_item_detail3)
-    TextView tv_detail3;
+    TextView title;
+    @BindView(R.id.fragment_tab_item_location)
+    TextView location;
+    @BindView(R.id.fragment_tab_item_contact)
+    TextView contact;
+    @BindView(R.id.fragment_tab_item_description)
+    ExpandableTextView description;
 
     @BindView(R.id.heart_status)
-    ImageView heart_status;
+    ImageButton heart_status;
     @BindView(R.id.heart_count)
     TextView heart_count;
 
@@ -65,6 +70,13 @@ public class TabItemDetailFragment extends Fragment implements GalleryItemClickL
     RecyclerView rv_chips;
     @BindView(R.id.fragment_tab_item_rv_gallery)
     RecyclerView rv_gallery;
+
+    @BindView(R.id.myFrame)
+    FrameLayout frameLayout;
+    @BindView(R.id.reactView)
+    LinearLayout reactView;
+
+    TabItemDetailActivity tabItemDetailActivity;
 
     DatabaseReference municipalityReference;
 
@@ -101,12 +113,12 @@ public class TabItemDetailFragment extends Fragment implements GalleryItemClickL
         fab = tabItemDetailActivity.fab;
         municipalityItem = tabItemDetailActivity.municipalityItem;
         municipality = tabItemDetailActivity.municipality;
-        item_id = municipalityItem.getId();
+        item_id = municipalityItem.id;
         municipalityReference = FirebaseDatabase.getInstance()
                 .getReference("municipality")
                 .child(municipality).child(item_id);
 
-        List<String> imageURLS = municipalityItem.getImageURLS();
+        List<String> imageURLS = municipalityItem.imageURLS;
         for (int i = 0; i < imageURLS.size(); i++) {
             ImageModel imageModel = new ImageModel();
             imageModel.setName("Image " + i);
@@ -114,6 +126,13 @@ public class TabItemDetailFragment extends Fragment implements GalleryItemClickL
             data.add(imageModel);
         }
 
+        heart_status.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkConnection())
+                    onHeartClicked(municipalityReference);
+            }
+        });
 
         return view;
     }
@@ -122,15 +141,16 @@ public class TabItemDetailFragment extends Fragment implements GalleryItemClickL
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if(isAdded()){
+        if (isAdded()) {
             starStatus();
         }
 
-        tv_title.setText(municipalityItem.getTitle());
-        tv_detail1.setText(municipalityItem.getDescription());
-        tv_detail2.setText(municipalityItem.getContact());
+        title.setText(municipalityItem.title);
+        location.setText(municipalityItem.location);
+        contact.setText(municipalityItem.contact);
+        description.setText(municipalityItem.description);
 
-        chipsAdapter = new ChipsAdapter(municipalityItem.getCategory());
+        chipsAdapter = new ChipsAdapter(municipalityItem.category);
         rv_chips.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,
                 false));
         rv_chips.setHasFixedSize(false);
@@ -157,6 +177,37 @@ public class TabItemDetailFragment extends Fragment implements GalleryItemClickL
         });
     }
 
+    private void onHeartClicked(DatabaseReference municipalityRef) {
+        municipalityRef.runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(MutableData mutableData) {
+                MunicipalityItem municipalityItem = mutableData.getValue(MunicipalityItem.class);
+                if (municipalityItem == null) {
+                    return Transaction.success(mutableData);
+                }
+
+                if (municipalityItem.stars.containsKey(getUid())) {
+                    // Unstar the post and remove self from stars
+                    municipalityItem.stars.remove(getUid());
+                } else {
+                    // Star the post and add self to stars
+                    municipalityItem.stars.put(getUid(), true);
+                }
+
+                // Set value and report transaction success
+                mutableData.setValue(municipalityItem);
+                return Transaction.success(mutableData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b,
+                                   DataSnapshot dataSnapshot) {
+                // Transaction completed
+                Log.d(TAG, "postTransaction:onComplete:" + databaseError);
+            }
+        });
+    }
+
     public void starStatus() {
         try {
             municipalityReference.addValueEventListener(new ValueEventListener() {
@@ -164,15 +215,32 @@ public class TabItemDetailFragment extends Fragment implements GalleryItemClickL
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     MunicipalityItem municipalityItem = dataSnapshot.getValue(MunicipalityItem.class);
 
+                    reactView.setVisibility(View.VISIBLE);
+
                     // Determine if the current user has liked this post and set UI accordingly
-                    if (municipalityItem.stars.containsKey(getUid())) {
-                        heart_status.setBackground(getResources()
-                                .getDrawable(R.drawable.ic_heart_black_24dp));
-                        heart_count.setText("(" + municipalityItem.stars.size() + ")");
-                    } else {
-                        heart_status.setBackground(getResources()
-                                .getDrawable(R.drawable.ic_heart_outline_black_24dp));
-                        heart_count.setText("(" + municipalityItem.stars.size() + ")");
+                    if (municipalityItem != null) {
+                        String heartCount = null;
+                        if (municipalityItem.stars.size() == 1) {
+                            heart_count.setVisibility(View.VISIBLE);
+                            heartCount =
+                                    String.valueOf(municipalityItem.stars.size()) + " like";
+                        } else if (municipalityItem.stars.size() > 1) {
+                            heart_count.setVisibility(View.VISIBLE);
+                            heartCount =
+                                    String.valueOf(municipalityItem.stars.size()) + " likes";
+                        }
+
+                        if (isAdded()) {
+                            if (municipalityItem.stars.containsKey(getUid())) {
+                                heart_status.setBackground(getResources()
+                                        .getDrawable(R.drawable.ic_heart_black_24dp));
+                                heart_count.setText(heartCount);
+                            } else {
+                                heart_status.setBackground(getResources()
+                                        .getDrawable(R.drawable.ic_heart_outline_black_24dp));
+                                heart_count.setText(heartCount);
+                            }
+                        }
                     }
 
                 }
@@ -246,6 +314,33 @@ public class TabItemDetailFragment extends Fragment implements GalleryItemClickL
     @Override
     public void onResume() {
         super.onResume();
+    }
+
+    // Method to manually check connection status
+    private boolean checkConnection() {
+        boolean isConnected = ConnectivityReceiver.isConnected();
+        showSnack(isConnected);
+
+        return isConnected;
+    }
+
+    // Showing the status in Snackbar
+    private void showSnack(boolean isConnected) {
+        String message;
+
+        if (!isConnected) {
+            message = "Sorry! Not connected to internet";
+
+            Snackbar snackbar = Snackbar
+                    .make(frameLayout, message, Snackbar.LENGTH_LONG);
+
+            View sbView = snackbar.getView();
+            TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            sbView.setBackgroundColor(Color.RED);
+            snackbar.show();
+        }
+
     }
 
 }

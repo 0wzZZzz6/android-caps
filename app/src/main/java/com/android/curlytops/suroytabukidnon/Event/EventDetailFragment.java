@@ -113,7 +113,7 @@ public class EventDetailFragment extends Fragment implements GalleryItemClickLis
                 .getReference("events").child(event.e_id);
         getDetails();
 
-        List<String> imageURLS = event.getImageURLS();
+        List<String> imageURLS = event.imageURLS;
         for (int i = 0; i < imageURLS.size(); i++) {
             ImageModel imageModel = new ImageModel();
             imageModel.setName("Image " + i);
@@ -400,5 +400,11 @@ public class EventDetailFragment extends Fragment implements GalleryItemClickLis
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {
         showSnack(isConnected);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Toast.makeText(getContext(), "resumed mainfragment", Toast.LENGTH_SHORT).show();
     }
 }

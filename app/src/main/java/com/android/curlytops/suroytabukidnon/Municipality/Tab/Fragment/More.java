@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amulyakhare.textdrawable.TextDrawable;
+import com.android.curlytops.suroytabukidnon.Model.Image;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
 import com.android.curlytops.suroytabukidnon.Municipality.Tab.TabActivity;
 import com.android.curlytops.suroytabukidnon.Municipality.Tab_Item_Details.TabItemDetailActivity;
@@ -23,6 +25,7 @@ import com.jayway.jsonpath.JsonPath;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -111,7 +114,7 @@ public class More extends Fragment {
                     String latlon = JsonPath.read(document, jsonPath(i, "latlon"));
 
                     List<String> category = convertToArray(stringCategory);
-                    List<String> imageURLS =  convertToArray(stringImageURLS);
+                    List<String> imageURLS = convertToArray(stringImageURLS);
                     List<String> imageNames = convertToArray(stringImageNames);
 
                     itemList.add(new MunicipalityItem(iid, title, location, contact,
@@ -155,7 +158,7 @@ public class More extends Fragment {
     private List<MunicipalityItem> getItemWithCategory(String category) {
         List<MunicipalityItem> items = new ArrayList<>();
         for (MunicipalityItem municipalityItem : itemList) {
-            if (municipalityItem.getCategory().contains(category)) {
+            if (municipalityItem.category.contains(category)) {
                 items.add(municipalityItem);
             }
         }
@@ -193,12 +196,11 @@ public class More extends Fragment {
             final ItemViewHolder itemHolder = (ItemViewHolder) holder;
             final MunicipalityItem municipalityItem = list.get(position);
 
-            itemHolder.itemTextview.setText(municipalityItem.getTitle());
+            itemHolder.itemTextview.setText(municipalityItem.title);
 
             itemHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Intent intent = new Intent(getContext(), TabItemDetailsActivity.class);
                     Intent intent = new Intent(getContext(), TabItemDetailActivity.class);
                     intent.putExtra("municipalityItem", municipalityItem);
                     intent.putExtra("_municipality", id);
@@ -216,7 +218,13 @@ public class More extends Fragment {
         public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder) {
             final HeaderViewHolder headerHolder = (HeaderViewHolder) holder;
 
-            headerHolder.headerTitle.setText(title + " -- " + list.size());
+
+            int letter = list.size();
+            TextDrawable textDrawable = TextDrawable.builder()
+                    .buildRound(String.valueOf(letter), R.color.grey_100);
+
+            headerHolder.itemCount.setImageDrawable(textDrawable);
+            headerHolder.headerTitle.setText(title);
             headerHolder.headerView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -237,6 +245,8 @@ public class More extends Fragment {
         TextView headerTitle;
         @BindView(R.id.section_expandable_header_arrow)
         ImageView headerArrow;
+        @BindView(R.id.section_expandable_header_count)
+        ImageView itemCount;
 
         HeaderViewHolder(View view) {
             super(view);

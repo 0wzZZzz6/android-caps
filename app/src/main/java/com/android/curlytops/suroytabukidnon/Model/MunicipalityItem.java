@@ -13,17 +13,19 @@ import java.util.Map;
 public class MunicipalityItem implements Serializable{
 
     public Map<String, Boolean> stars = new HashMap<>();
-    private String id, title, location, contact, coverName, coverURL,
+    public Map<String, String> bookmark = new HashMap<>();
+    public String id, title, location, contact, coverName, coverURL,
             description, latlon, municipalityStorageKey;
-    private List<String> category, imageURLS, imageNames;
-    private boolean starred;
+
+    public List<String> category, imageURLS, imageNames;
+    public Boolean starred;
 
     public MunicipalityItem() {}
 
     public MunicipalityItem(String id, String title, String location, String contact,
                             List<String> category,String municipalityStorageKey,
                             List<String> imageURLS, List<String> imageNames,
-                            String coverURL, String coverName, boolean starred,
+                            String coverURL, String coverName, Boolean starred,
                             String description, String latlon) {
         this.id = id;
         this.title = title;
@@ -40,55 +42,55 @@ public class MunicipalityItem implements Serializable{
         this.latlon = latlon;
     }
 
-    public String getContact() {
-        return contact;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public List<String> getCategory() {
-        return category;
-    }
-
-    public List<String> getImageNames() {
-        return imageNames;
-    }
-
-    public List<String> getImageURLS() {
-        return imageURLS;
-    }
-
-    public String getCoverURL() {
-        return coverURL;
-    }
-
-    public String getCoverName() {
-        return coverName;
-    }
-
-    public boolean getStarred() {
-        return starred;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getLatlon() {
-        return latlon;
-    }
-
-    public String getMunicipalityStorageKey() {
-        return municipalityStorageKey;
-    }
+//    public String getContact() {
+//        return contact;
+//    }
+//
+//    public String getId() {
+//        return id;
+//    }
+//
+//    public String getLocation() {
+//        return location;
+//    }
+//
+//    public String getTitle() {
+//        return title;
+//    }
+//
+//    public List<String> getCategory() {
+//        return category;
+//    }
+//
+//    public List<String> getImageNames() {
+//        return imageNames;
+//    }
+//
+//    public List<String> getImageURLS() {
+//        return imageURLS;
+//    }
+//
+//    public String getCoverURL() {
+//        return coverURL;
+//    }
+//
+//    public String getCoverName() {
+//        return coverName;
+//    }
+//
+//    public boolean getStarred() {
+//        return starred;
+//    }
+//
+//    public String getDescription() {
+//        return description;
+//    }
+//
+//    public String getLatlon() {
+//        return latlon;
+//    }
+//
+//    public String getMunicipalityStorageKey() {
+//        return municipalityStorageKey;
+//    }
 }

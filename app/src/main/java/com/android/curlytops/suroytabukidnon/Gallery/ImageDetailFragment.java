@@ -62,8 +62,8 @@ public class ImageDetailFragment extends Fragment {
         final ImageModel image = getArguments().getParcelable(EXTRA_IMAGE);
         String transitionName = getArguments().getString(EXTRA_TRANSITION_NAME);
 
-//        final PhotoView imageView = view.findViewById(R.id.detail_image);
-        final ImageView imageView = view.findViewById(R.id.detail_image);
+        final PhotoView imageView = view.findViewById(R.id.detail_image);
+//        final ImageView imageView = view.findViewById(R.id.detail_image);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             imageView.setTransitionName(transitionName);
         }

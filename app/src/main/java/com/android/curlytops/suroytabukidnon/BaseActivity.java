@@ -128,18 +128,18 @@ public class BaseActivity extends AppCompatActivity {
                             if (municipalityItem != null) {
                                 object = new JSONObject();
                                 object.put("id", snapshot.getKey());
-                                object.put("title", municipalityItem.getTitle());
-                                object.put("location", municipalityItem.getLocation());
-                                object.put("contact", municipalityItem.getContact());
-                                object.put("category", municipalityItem.getCategory());
-                                object.put("imageURLS", municipalityItem.getImageURLS());
-                                object.put("imageNames", municipalityItem.getImageNames());
-                                object.put("municipalityStorageKey", municipalityItem.getMunicipalityStorageKey());
-                                object.put("coverURL", municipalityItem.getCoverURL());
-                                object.put("coverName", municipalityItem.getCoverName());
-                                object.put("starred", municipalityItem.getStarred());
-                                object.put("description", municipalityItem.getDescription());
-                                object.put("latlon", municipalityItem.getLatlon());
+                                object.put("title", municipalityItem.title);
+                                object.put("location", municipalityItem.location);
+                                object.put("contact", municipalityItem.contact);
+                                object.put("category", municipalityItem.category);
+                                object.put("imageURLS", municipalityItem.imageURLS);
+                                object.put("imageNames", municipalityItem.imageNames);
+                                object.put("municipalityStorageKey", municipalityItem.municipalityStorageKey);
+                                object.put("coverURL", municipalityItem.coverURL);
+                                object.put("coverName", municipalityItem.coverName);
+                                object.put("starred", municipalityItem.starred);
+                                object.put("description", municipalityItem.description);
+                                object.put("latlon", municipalityItem.latlon);
 
                                 data.put(object);
                                 municipalityObject.put(municipality, data);
