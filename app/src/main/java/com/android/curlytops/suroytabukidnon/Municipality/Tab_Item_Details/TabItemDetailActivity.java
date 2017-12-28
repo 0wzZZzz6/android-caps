@@ -85,10 +85,12 @@ public class TabItemDetailActivity extends BaseActivity {
 
         municipalityReference = FirebaseDatabase.getInstance()
                 .getReference("municipality")
-                .child(municipality).child(item_id);
+                .child(municipality)
+                .child(item_id);
 
         bookmarkReference = FirebaseDatabase.getInstance()
                 .getReference("bookmark")
+                .child("saved_places")
                 .child(getUid());
 
         Glide.with(this)
@@ -155,6 +157,7 @@ public class TabItemDetailActivity extends BaseActivity {
     private void onBookmarkClicked() {
         invalidateOptionsMenu();
         marked.clear();
+
         municipalityReference.runTransaction(new Transaction.Handler() {
             @Override
             public Transaction.Result doTransaction(MutableData mutableData) {
@@ -201,10 +204,6 @@ public class TabItemDetailActivity extends BaseActivity {
         double lon = Double.parseDouble(parts[1]);
 
         MapsWithMeApi.showPointOnMap(this, lat, lon, municipalityItem.title);
-    }
-
-    public String getUid() {
-        return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
     @Override

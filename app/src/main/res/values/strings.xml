@@ -38,5 +38,6 @@
     <string name="event_item_date">Date</string>
     <string name="heart_count">(1)</string>
     <string name="bookmark">bookmark</string>
+    <string name="account">Account</string>
 
 </resources>

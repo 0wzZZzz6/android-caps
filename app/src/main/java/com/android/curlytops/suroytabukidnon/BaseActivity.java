@@ -6,6 +6,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.android.curlytops.suroytabukidnon.Model.Bookmark;
 import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
 import com.android.curlytops.suroytabukidnon.Model.News;
@@ -31,21 +32,26 @@ import java.io.IOException;
 @SuppressLint("Registered")
 public class BaseActivity extends AppCompatActivity {
 
+    public static final String TAG = "BaseActivity";
+
     public static final String EXTRA_IMAGE = "url";
     public static final String EXTRA_ID = "id";
     public static final String EXTRA_MUNICIPALITY = "municipality";
 
+    DatabaseReference bookmarkReference_events;
+    DatabaseReference bookmarkReference_places;
+
+    String empty = "";
+
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
-        firebaseEvents();
-        firebaseMunicipalityItem();
-        firebaseNews();
     }
 
     public void firebaseEvents() {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference eventReference = database.getReference("events");
+        DatabaseReference eventReference = FirebaseDatabase
+                .getInstance()
+                .getReference("events");
 
         eventReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -170,8 +176,9 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void firebaseNews() {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference newsReference = database.getReference("news");
+        DatabaseReference newsReference = FirebaseDatabase
+                .getInstance()
+                .getReference("news");
 
         newsReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -217,6 +224,86 @@ public class BaseActivity extends AppCompatActivity {
                 System.out.println("The read failed: " + databaseError.getMessage());
             }
         });
+    }
+
+    public void firebaseBookmarked_events() {
+        bookmarkReference_events = FirebaseDatabase.getInstance()
+                .getReference("bookmark")
+                .child("saved_events");
+
+        bookmarkReference_places = FirebaseDatabase.getInstance()
+                .getReference("bookmark")
+                .child("saved_places");
+
+        bookmarkReference_events.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChild(getUid())) {
+                    bookmarkReference_events.child(getUid());
+
+                    bookmarkReference_events
+                            .child(getUid())
+                            .addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    JSONArray data = new JSONArray();
+                                    JSONObject bookmarkObject_event;
+                                    JSONObject root = new JSONObject();
+                                    FileOutputStream fos;
+
+                                    for (DataSnapshot bookmarkSnapshot : dataSnapshot.getChildren()) {
+                                        Bookmark bookmark = bookmarkSnapshot.getValue(Bookmark.class);
+                                        try {
+                                            if (bookmark != null) {
+                                                bookmarkObject_event = new JSONObject();
+                                                bookmarkObject_event.put("b_id", bookmarkSnapshot.getKey());
+                                                bookmarkObject_event.put("item_id", bookmark.item_id);
+
+                                                data.put(bookmarkObject_event);
+                                                root.put("bookmark_events", data);
+                                                fos = openFileOutput("bookmark_events.json", MODE_PRIVATE);
+                                                fos.write(root.toString().getBytes());
+                                                fos.flush();
+                                                fos.close();
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        } catch (FileNotFoundException e) {
+                                            e.printStackTrace();
+                                            Log.e("Error: ", e.toString());
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+                } else {
+                    try {
+                        FileOutputStream fos;
+                        fos = openFileOutput("bookmark_events.json", MODE_PRIVATE);
+                        fos.write(empty.getBytes());
+                        fos.flush();
+                        fos.close();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                        Log.e("Error: ", e.toString());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     private ProgressDialog mProgressDialog;

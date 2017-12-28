@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.curlytops.suroytabukidnon.Account.AccountFragment;
 import com.android.curlytops.suroytabukidnon.AppIntro.IntroActivity;
 import com.android.curlytops.suroytabukidnon.Event.EventFragment;
 import com.android.curlytops.suroytabukidnon.Helper.BottomNavigationViewHelper;
@@ -99,12 +100,12 @@ public class MainActivity extends BaseActivity {
 //                startActivity(new Intent(MainActivity.this, SearchActivity.class));
                 return true;
             }
-            case R.id.action_logout: {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                finish();
-                return true;
-            }
+//            case R.id.action_logout: {
+//                FirebaseAuth.getInstance().signOut();
+//                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+//                finish();
+//                return true;
+//            }
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -133,6 +134,11 @@ public class MainActivity extends BaseActivity {
                                 return true;
                             case R.id.bottom_navigation_map:
                                 showOnMWMMap(MwmDataItem.ITEMS);
+                                return true;
+                            case R.id.bottom_navigation_account:
+                                toolbar.setNavigationIcon(null);
+                                toolbar.animate();
+                                switchFragment(AccountFragment.newInstance());
                                 return true;
                         }
                         return false;
@@ -209,6 +215,7 @@ public class MainActivity extends BaseActivity {
         firebaseEvents();
         firebaseMunicipalityItem();
         firebaseNews();
+        firebaseBookmarked_events();
 
         if (getUid() == null) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));

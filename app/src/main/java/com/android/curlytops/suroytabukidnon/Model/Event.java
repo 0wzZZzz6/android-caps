@@ -17,6 +17,7 @@ public class Event implements Serializable {
     public List<String> imageURLS, imageNames;
     public Map<String, Boolean> interested = new HashMap<>();
     public Map<String, Boolean> going = new HashMap<>();
+    public Map<String, String> bookmark = new HashMap<>();
 
     public Event() {
     }

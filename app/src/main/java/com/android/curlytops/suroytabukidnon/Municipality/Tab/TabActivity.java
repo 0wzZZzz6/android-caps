@@ -54,7 +54,6 @@ public class TabActivity extends BaseActivity {
 
         viewPager.setCurrentItem(0, false);
 
-
         Bundle bundle = new Bundle();
         bundle.putString("_municipality", _municipality);
         More more = new More();
