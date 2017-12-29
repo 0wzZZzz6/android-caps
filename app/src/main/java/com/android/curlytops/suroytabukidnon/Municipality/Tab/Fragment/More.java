@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,7 @@ public class More extends Fragment {
         super.onCreate(savedInstanceState);
 
         id = ((TabActivity) getActivity()).get_id();
+        Log.d(TAG, id);
         categories = Arrays.asList(getResources().getStringArray(R.array.catergory));
         readMunicipalityItems();
     }

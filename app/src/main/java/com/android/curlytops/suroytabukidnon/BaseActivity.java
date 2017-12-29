@@ -10,6 +10,7 @@ import com.android.curlytops.suroytabukidnon.Model.Bookmark;
 import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
 import com.android.curlytops.suroytabukidnon.Model.News;
+import com.android.curlytops.suroytabukidnon.Model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +25,7 @@ import org.json.JSONObject;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Created by jan_frncs
@@ -304,6 +306,123 @@ public class BaseActivity extends AppCompatActivity {
             }
         });
 
+        bookmarkReference_places.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChild(getUid())) {
+                    bookmarkReference_places.child(getUid());
+
+                    bookmarkReference_places
+                            .child(getUid())
+                            .addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    JSONArray data = new JSONArray();
+                                    JSONObject bookmarkObject_places;
+                                    JSONObject root = new JSONObject();
+                                    FileOutputStream fos;
+
+                                    for (DataSnapshot bookmarkSnapshot : dataSnapshot.getChildren()) {
+                                        Bookmark bookmark = bookmarkSnapshot.getValue(Bookmark.class);
+                                        try {
+                                            if (bookmark != null) {
+                                                bookmarkObject_places = new JSONObject();
+                                                bookmarkObject_places.put("b_id", bookmarkSnapshot.getKey());
+                                                bookmarkObject_places.put("item_id", bookmark.item_id);
+
+                                                data.put(bookmarkObject_places);
+                                                root.put("bookmark_places", data);
+                                                fos = openFileOutput("bookmark_places.json", MODE_PRIVATE);
+                                                fos.write(root.toString().getBytes());
+                                                fos.flush();
+                                                fos.close();
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        } catch (FileNotFoundException e) {
+                                            e.printStackTrace();
+                                            Log.e("Error: ", e.toString());
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+                } else {
+                    try {
+                        FileOutputStream fos;
+                        fos = openFileOutput("bookmark_places.json", MODE_PRIVATE);
+                        fos.write(empty.getBytes());
+                        fos.flush();
+                        fos.close();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                        Log.e("Error: ", e.toString());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    public void firebaseUser() {
+        DatabaseReference userReference = FirebaseDatabase
+                .getInstance()
+                .getReference("users");
+
+        userReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                JSONArray data = new JSONArray();
+                JSONObject userObject;
+                JSONObject root = new JSONObject();
+
+                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                    if (Objects.equals(userSnapshot.getKey(), getUid())) {
+                        User user = userSnapshot.getValue(User.class);
+                        try {
+                            if (user != null) {
+                                userObject = new JSONObject();
+                                userObject.put("uid", userSnapshot.getKey());
+                                userObject.put("username", user.username);
+                                userObject.put("email", user.email);
+
+                                data.put(userObject);
+                                root.put("user", data);
+                                FileOutputStream fos = openFileOutput("user.json", MODE_PRIVATE);
+                                fos.write(root.toString().getBytes());
+                                fos.flush();
+                                fos.close();
+                            }
+                        }catch (JSONException e) {
+                            e.printStackTrace();
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                            Log.e("Error: ", e.toString());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private ProgressDialog mProgressDialog;

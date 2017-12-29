@@ -402,9 +402,4 @@ public class EventDetailFragment extends Fragment implements GalleryItemClickLis
         showSnack(isConnected);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        Toast.makeText(getContext(), "resumed mainfragment", Toast.LENGTH_SHORT).show();
-    }
 }

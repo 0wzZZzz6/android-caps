@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -216,11 +217,14 @@ public class MainActivity extends BaseActivity {
         firebaseMunicipalityItem();
         firebaseNews();
         firebaseBookmarked_events();
+        firebaseUser();
 
         if (getUid() == null) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
         }
+
+        Log.d(TAG, getUid());
     }
 
     private void searchView() {

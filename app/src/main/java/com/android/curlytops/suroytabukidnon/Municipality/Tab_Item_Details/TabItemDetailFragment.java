@@ -293,7 +293,8 @@ public class TabItemDetailFragment extends Fragment implements GalleryItemClickL
     }
 
     @Override
-    public void onGalleryItemClickListener(int position, ImageModel imageModel, ImageView imageView) {
+    public void onGalleryItemClickListener
+            (int position, ImageModel imageModel, ImageView imageView) {
         appBarLayout.setExpanded(false);
         fab.hide();
         GalleryViewPagerFragment galleryViewPagerFragment =
@@ -309,11 +310,6 @@ public class TabItemDetailFragment extends Fragment implements GalleryItemClickL
 
     public String getUid() {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
     }
 
     // Method to manually check connection status

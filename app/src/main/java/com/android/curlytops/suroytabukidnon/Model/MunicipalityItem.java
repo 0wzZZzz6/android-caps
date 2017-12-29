@@ -19,6 +19,7 @@ public class MunicipalityItem implements Serializable{
 
     public List<String> category, imageURLS, imageNames;
     public Boolean starred;
+    public String municipality;
 
     public MunicipalityItem() {}
 
@@ -42,55 +43,25 @@ public class MunicipalityItem implements Serializable{
         this.latlon = latlon;
     }
 
-//    public String getContact() {
-//        return contact;
-//    }
-//
-//    public String getId() {
-//        return id;
-//    }
-//
-//    public String getLocation() {
-//        return location;
-//    }
-//
-//    public String getTitle() {
-//        return title;
-//    }
-//
-//    public List<String> getCategory() {
-//        return category;
-//    }
-//
-//    public List<String> getImageNames() {
-//        return imageNames;
-//    }
-//
-//    public List<String> getImageURLS() {
-//        return imageURLS;
-//    }
-//
-//    public String getCoverURL() {
-//        return coverURL;
-//    }
-//
-//    public String getCoverName() {
-//        return coverName;
-//    }
-//
-//    public boolean getStarred() {
-//        return starred;
-//    }
-//
-//    public String getDescription() {
-//        return description;
-//    }
-//
-//    public String getLatlon() {
-//        return latlon;
-//    }
-//
-//    public String getMunicipalityStorageKey() {
-//        return municipalityStorageKey;
-//    }
+    public MunicipalityItem(String id, String municipality, String title, String location, String contact,
+                            List<String> category,String municipalityStorageKey,
+                            List<String> imageURLS, List<String> imageNames,
+                            String coverURL, String coverName, Boolean starred,
+                            String description, String latlon) {
+        this.id = id;
+        this.municipality = municipality;
+        this.title = title;
+        this.location = location;
+        this.contact = contact;
+        this.category = category;
+        this.municipalityStorageKey = municipalityStorageKey;
+        this.imageURLS = imageURLS;
+        this.imageNames = imageNames;
+        this.coverURL = coverURL;
+        this.coverName = coverName;
+        this.starred = starred;
+        this.description = description;
+        this.latlon = latlon;
+    }
+
 }

@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.curlytops.suroytabukidnon.Event.EventDetailActivity;
@@ -45,7 +44,7 @@ public class SavedEvents extends Fragment {
     List<Event> eventList = new ArrayList<>();
     List<Event> new_eventList = new ArrayList<>();
 
-    @BindView(R.id.recyclerview_savedEvents)
+    @BindView(R.id.recyclerview_bookmark)
     RecyclerView recyclerView;
 
     public static SavedEvents newInstance() {
@@ -58,7 +57,7 @@ public class SavedEvents extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_savedevents, container, false);
+        View view = inflater.inflate(R.layout.fragment_recyclerview_bookmark, container, false);
         ButterKnife.bind(this, view);
 
         readBookmark_events();
@@ -100,7 +99,6 @@ public class SavedEvents extends Fragment {
                             jsonPath(i, "b_id", jsonPathNode_bookmarkEvents));
                     String item_id = JsonPath.read(document,
                             jsonPath(i, "item_id", jsonPathNode_bookmarkEvents));
-
 
                     bookmarkList_events.add(new Bookmark(bid, item_id));
 
@@ -206,7 +204,7 @@ public class SavedEvents extends Fragment {
     private String jsonPath(int index, String keyword, String jsonPathNode) {
         return "$." + jsonPathNode + "[" + index + "]." + keyword;
     }
-    
+
     class SavedEventAdapter extends
             RecyclerView.Adapter<SavedEventAdapter.SavedEventViewHolder> {
 

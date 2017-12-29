@@ -571,6 +571,8 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
     public void onDateSelected(@NonNull MaterialCalendarView widget,
                                @NonNull CalendarDay date, boolean selected) {
 
+        Log.d(TAG, String.valueOf(date));
+
         boolean isEvent = false;
 //        long millis = System.currentTimeMillis();
 
