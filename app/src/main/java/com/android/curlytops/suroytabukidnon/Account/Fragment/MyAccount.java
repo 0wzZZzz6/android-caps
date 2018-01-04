@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.curlytops.suroytabukidnon.LoginActivity;
-import com.android.curlytops.suroytabukidnon.Model.Bookmark;
-import com.android.curlytops.suroytabukidnon.Model.User;
 import com.android.curlytops.suroytabukidnon.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.jayway.jsonpath.Configuration;
@@ -20,7 +18,6 @@ import com.jayway.jsonpath.JsonPath;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

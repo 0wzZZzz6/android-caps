@@ -33,11 +33,6 @@
                 android:layout_height="@dimen/actionBarSize"
                 app:popupTheme="@style/MyTheme.PopupOverlay" />
 
-            <com.miguelcatalan.materialsearchview.MaterialSearchView
-                android:id="@+id/search_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
         </FrameLayout>
 
     </android.support.design.widget.AppBarLayout>

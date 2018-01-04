@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.android.curlytops.suroytabukidnon.BaseActivity;
 import com.android.curlytops.suroytabukidnon.Model.Bookmark;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
 import com.android.curlytops.suroytabukidnon.Municipality.Tab_Item_Details.TabItemDetailActivity;
@@ -24,7 +25,6 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -39,13 +39,9 @@ public class SavedPlaces extends Fragment {
     private static final String TAG = "SavedPlaces";
     private static final String jsonPathNode_bookmarkplaces = "bookmark_places";
 
-    int itemLength = 0;
-
     List<MunicipalityItem> itemList = new ArrayList<>();
     List<MunicipalityItem> new_itemList = new ArrayList<>();
     List<Bookmark> bookmarkList_places = new ArrayList<>();
-
-    String[] municipalities;
 
     @BindView(R.id.recyclerview_bookmark)
     RecyclerView recyclerView;
@@ -63,12 +59,9 @@ public class SavedPlaces extends Fragment {
         View view = inflater.inflate(R.layout.fragment_recyclerview_bookmark, container, false);
         ButterKnife.bind(this, view);
 
-        municipalities = getResources().getStringArray(R.array.municipalityId);
+        itemList = new BaseActivity().readMunicipalityItems(getContext());
         readBookmark_places();
-        readMunicipalityItems();
         filterPlaces();
-        Log.d(TAG, itemList.size() + "itemList");
-        Log.d(TAG, bookmarkList_places.size() + "bookmarkList_places");
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setPadding(0, 0, 0, 52);
@@ -118,72 +111,6 @@ public class SavedPlaces extends Fragment {
         }
     }
 
-    private void readMunicipalityItems() {
-        itemList.clear();
-        try {
-            FileInputStream fis = getContext().openFileInput("municipality.json");
-            BufferedInputStream bis = new BufferedInputStream(fis);
-            StringBuilder b = new StringBuilder();
-            while (bis.available() != 0) {
-                char c = (char) bis.read();
-                b.append(c);
-            }
-            bis.close();
-            fis.close();
-            String json = b.toString();
-            Object document = Configuration.defaultConfiguration().jsonProvider().parse(json);
-
-            try {
-                for (String item : municipalities) {
-                    itemLength = JsonPath.read(document, "$." + item + ".length()");
-                    int i = 0;
-                    while (i < itemLength) {
-                        String iid = JsonPath.read(document,
-                                jsonPath(i, "id", item));
-                        String title = JsonPath.read(document,
-                                jsonPath(i, "title", item));
-                        String location = JsonPath.read(document,
-                                jsonPath(i, "location", item));
-                        String contact = JsonPath.read(document,
-                                jsonPath(i, "contact", item));
-                        String stringCategory = JsonPath.read(document,
-                                jsonPath(i, "category", item));
-                        String stringImageURLS = JsonPath.read(document,
-                                jsonPath(i, "imageURLS", item));
-                        String stringImageNames = JsonPath.read(document,
-                                jsonPath(i, "imageNames", item));
-                        String municipalityStorageKey = JsonPath.read(document,
-                                jsonPath(i, "municipalityStorageKey", item));
-                        String coverURL = JsonPath.read(document,
-                                jsonPath(i, "coverURL", item));
-                        String coverName = JsonPath.read(document,
-                                jsonPath(i, "coverName", item));
-                        boolean starred = JsonPath.read(document,
-                                jsonPath(i, "starred", item));
-                        String description = JsonPath.read(document,
-                                jsonPath(i, "description", item));
-                        String latlon = JsonPath.read(document,
-                                jsonPath(i, "latlon", item));
-
-                        List<String> category = convertToArray(stringCategory);
-                        List<String> imageURLS = convertToArray(stringImageURLS);
-                        List<String> imageNames = convertToArray(stringImageNames);
-
-                        itemList.add(new MunicipalityItem(iid, item, title, location, contact,
-                                category, municipalityStorageKey, imageURLS, imageNames,
-                                coverURL, coverName, starred, description, latlon));
-                        i++;
-                    }
-                }
-            } catch (Exception e) {
-                itemLength = 0;
-                e.printStackTrace();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     private void filterPlaces() {
         new_itemList.clear();
         for (int i = 0; i < bookmarkList_places.size(); i++) {
@@ -201,20 +128,12 @@ public class SavedPlaces extends Fragment {
         return "$." + item + "[" + index + "]." + keyword;
     }
 
-    private List<String> convertToArray(String item) {
-        String category = item.replaceAll("\\s+", "");
-        category = category.replace("[", "");
-        category = category.replace("]", "");
-
-        return new ArrayList<>(Arrays.asList(category.split(",")));
-    }
-
     class SavedPlacesAdapter extends
             RecyclerView.Adapter<SavedPlacesAdapter.SavedPlacesViewHolder> {
         private List<MunicipalityItem> itemList;
         private Context context;
 
-        public SavedPlacesAdapter(Context context, List<MunicipalityItem> new_itemList) {
+        SavedPlacesAdapter(Context context, List<MunicipalityItem> new_itemList) {
             this.itemList = new_itemList;
             this.context = context;
         }

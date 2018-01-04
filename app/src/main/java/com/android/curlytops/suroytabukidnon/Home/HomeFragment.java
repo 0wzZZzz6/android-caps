@@ -5,7 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +48,10 @@ public class HomeFragment extends Fragment {
     HomeAdapter homeAdapter;
     HomeEventAdapter homeEventAdapter;
     HomeNewsAdapter homeNewsAdapter;
+
+    SnapHelper snapHelperNews = new LinearSnapHelper();
+    SnapHelper snapHelperEvents = new LinearSnapHelper();
+    SnapHelper snapHelperTribes = new LinearSnapHelper();
 
     @BindView(R.id.fragment_home_swipeRefreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
@@ -122,6 +128,10 @@ public class HomeFragment extends Fragment {
         rv_events.setHasFixedSize(false);
         rv_events.setLayoutManager(linearLayout2);
         rv_events.setAdapter(homeEventAdapter);
+
+        snapHelperTribes.attachToRecyclerView(recyclerView);
+        snapHelperNews.attachToRecyclerView(rv_news);
+        snapHelperEvents.attachToRecyclerView(rv_events);
     }
 
     public List<Home> readHomeJson() {
@@ -304,4 +314,5 @@ public class HomeFragment extends Fragment {
     }
 
 }
+
 

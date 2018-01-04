@@ -27,7 +27,7 @@
 
     <style name="MyTheme.Detail" parent="MyTheme" />
 
-    <style name="MyTheme.MainActivity" parent="MyTheme"/>
+    <style name="MyTheme.MainActivity" parent="MyTheme" />
 
     <style name="MyTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

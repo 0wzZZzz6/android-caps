@@ -20,11 +20,11 @@ import com.android.curlytops.suroytabukidnon.Event.EventFragment;
 import com.android.curlytops.suroytabukidnon.Helper.BottomNavigationViewHelper;
 import com.android.curlytops.suroytabukidnon.Home.HomeFragment;
 import com.android.curlytops.suroytabukidnon.Municipality.MunicipalityFragment;
+import com.android.curlytops.suroytabukidnon.Search.SearchActivity;
 import com.android.curlytops.suroytabukidnon.Utils.MwmDataItem;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mapswithme.maps.api.MWMPoint;
 import com.mapswithme.maps.api.MapsWithMeApi;
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,8 +39,6 @@ public class MainActivity extends BaseActivity {
     public Toolbar toolbar;
     @BindView(R.id.activity_main_bottomNavigationView)
     BottomNavigationView bottomNavigationView;
-    @BindView(R.id.search_view)
-    MaterialSearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +49,6 @@ public class MainActivity extends BaseActivity {
         onFirstRun();
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        searchView();
 
         BottomNavigation();
         switchFragment(new HomeFragment());
@@ -62,16 +59,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-
-
-        if (searchView.isSearchOpen()) {
-            searchView.closeSearch();
-        } else {
-            if (doubleBackToExitPressedOnce) {
-                super.onBackPressed();
-                return;
-            }
-        }
 
         this.doubleBackToExitPressedOnce = true;
         Toast.makeText(this, "press again to exit app", Toast.LENGTH_SHORT).show();
@@ -88,9 +75,6 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
-
-        MenuItem item = menu.findItem(R.id.action_search);
-        searchView.setMenuItem(item);
         return true;
     }
 
@@ -98,15 +82,9 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_search: {
-//                startActivity(new Intent(MainActivity.this, SearchActivity.class));
+                startActivity(new Intent(MainActivity.this, SearchActivity.class));
                 return true;
             }
-//            case R.id.action_logout: {
-//                FirebaseAuth.getInstance().signOut();
-//                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-//                finish();
-//                return true;
-//            }
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -227,31 +205,4 @@ public class MainActivity extends BaseActivity {
         Log.d(TAG, getUid());
     }
 
-    private void searchView() {
-        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                //Do some magic
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                //Do some magic
-                return false;
-            }
-        });
-
-        searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
-            @Override
-            public void onSearchViewShown() {
-                //Do some magic
-            }
-
-            @Override
-            public void onSearchViewClosed() {
-                //Do some magic
-            }
-        });
-    }
 }

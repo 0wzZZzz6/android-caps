@@ -54,7 +54,7 @@ import butterknife.OnClick;
 public class EventDetailFragment extends Fragment implements GalleryItemClickListener,
         ConnectivityReceiver.ConnectivityReceiverListener {
 
-    public static final String TAG = EventDetailFragment.class.getSimpleName();
+    public static final String TAG = "EventDetailFragment";
     private static final String INTERESTED = "interested";
     private static final String GOING = "going";
 

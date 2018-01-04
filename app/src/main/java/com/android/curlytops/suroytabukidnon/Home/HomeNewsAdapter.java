@@ -24,7 +24,8 @@ import butterknife.ButterKnife;
  * Created by jan_frncs
  */
 
-public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.HomeNewsViewHolder>   {
+public class HomeNewsAdapter extends
+        RecyclerView.Adapter<HomeNewsAdapter.HomeNewsViewHolder> {
 
     private List<News> newsList;
     private Context context;
@@ -35,13 +36,14 @@ public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.HomeNe
     }
 
     @Override
-    public HomeNewsAdapter.HomeNewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_news_item, parent, false);
+    public HomeNewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from
+                (parent.getContext()).inflate(R.layout.home_news_item, parent, false);
         return new HomeNewsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(HomeNewsAdapter.HomeNewsViewHolder holder, int position) {
+    public void onBindViewHolder(HomeNewsViewHolder holder, int position) {
         final News item = newsList.get(position);
 
         holder.home_news_item_title.setText(item.title);
@@ -71,7 +73,8 @@ public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.HomeNe
     }
 
     class HomeNewsViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.home_news_item) View home_news_item;
+        @BindView(R.id.home_news_item)
+        View home_news_item;
         @BindView(R.id.home_news_item_title)
         TextView home_news_item_title;
         @BindView(R.id.home_news_item_imageView)

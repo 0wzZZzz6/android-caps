@@ -195,6 +195,15 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
         readEvents(0);
         SectionAdapter("default");
 
+        // search
+        List<Event> search_result = new ArrayList<>();
+        for(Event event : eventList){
+            if(event.title.toLowerCase().contains("penta")){
+                search_result.add(event);
+            }
+        }
+        Log.d(TAG, search_result.size() +" - size");
+
         return rootView;
     }
 

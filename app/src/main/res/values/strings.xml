@@ -39,5 +39,11 @@
     <string name="heart_count">(1)</string>
     <string name="bookmark">bookmark</string>
     <string name="account">Account</string>
+    <string name="title_activity_search">ActivitySearch</string>
+    <string name="places">Places</string>
+    <string name="events">Events</string>
+    <string name="no_item_found">No item found.</string>
+    <string name="ok">OK</string>
+    <string name="detail">Detail</string>
 
 </resources>

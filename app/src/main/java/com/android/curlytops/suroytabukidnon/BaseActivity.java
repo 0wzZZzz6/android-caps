@@ -17,14 +17,21 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.jayway.jsonpath.Configuration;
+import com.jayway.jsonpath.JsonPath;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -39,17 +46,20 @@ public class BaseActivity extends AppCompatActivity {
     public static final String EXTRA_IMAGE = "url";
     public static final String EXTRA_ID = "id";
     public static final String EXTRA_MUNICIPALITY = "municipality";
+    public static final String event_path = "events";
 
     DatabaseReference bookmarkReference_events;
     DatabaseReference bookmarkReference_places;
 
     String empty = "";
+    String[] municipalities;
 
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
     }
 
+    // start_write_json
     public void firebaseEvents() {
         DatabaseReference eventReference = FirebaseDatabase
                 .getInstance()
@@ -173,7 +183,6 @@ public class BaseActivity extends AppCompatActivity {
                 }
             });
         }
-
 
     }
 
@@ -406,7 +415,7 @@ public class BaseActivity extends AppCompatActivity {
                                 fos.flush();
                                 fos.close();
                             }
-                        }catch (JSONException e) {
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
@@ -423,6 +432,171 @@ public class BaseActivity extends AppCompatActivity {
 
             }
         });
+    }
+    // end_write_json
+
+    // start_read_json
+    public List<Event> readEvents(Context context) {
+        List<Event> eventList = new ArrayList<>();
+        try {
+            FileInputStream fis = context.openFileInput("event.json");
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            StringBuilder b = new StringBuilder();
+
+            long date = 0;
+            long fDate = 0;
+            long tDate = 0;
+
+            while (bis.available() != 0) {
+                char c = (char) bis.read();
+                b.append(c);
+            }
+            bis.close();
+            fis.close();
+
+            String json = b.toString();
+            Object document = Configuration.defaultConfiguration().jsonProvider().parse(json);
+            int length = JsonPath.read(document, "$.events.length()");
+
+            int i = 0;
+            while (i < length) {
+                String eid = JsonPath.read(document,
+                        jsonPath(i, "e_id", event_path));
+                String title = JsonPath.read(document,
+                        jsonPath(i, "title", event_path));
+                String location = JsonPath.read(document,
+                        jsonPath(i, "location", event_path));
+                String description = JsonPath.read(document,
+                        jsonPath(i, "description", event_path));
+                boolean allDay = JsonPath.read(document,
+                        jsonPath(i, "allDay", event_path));
+                String fromTime = JsonPath.read(document,
+                        jsonPath(i, "fromTime", event_path));
+                String toTime = JsonPath.read(document,
+                        jsonPath(i, "toTime", event_path));
+                String coverURL = JsonPath.read(document,
+                        jsonPath(i, "coverURL", event_path));
+                String coverName = JsonPath.read(document,
+                        jsonPath(i, "coverName", event_path));
+                String eventStorageKey = JsonPath.read(document,
+                        jsonPath(i, "eventStorageKey", event_path));
+                boolean starred = JsonPath.read(document,
+                        jsonPath(i, "starred", event_path));
+                String stringImageURLS = JsonPath.read(document,
+                        jsonPath(i, "imageURLS", event_path));
+                String stringImageNames = JsonPath.read(document,
+                        jsonPath(i, "imageNames", event_path));
+
+                List<String> imageURLS = convertToArray(stringImageURLS);
+                List<String> imageNames = convertToArray(stringImageNames);
+
+                if (allDay) {
+                    date = JsonPath.read(document,
+                            jsonPath(i, "startDate", event_path));
+                } else {
+                    fDate = JsonPath.read(document,
+                            jsonPath(i, "startDate", event_path));
+                    tDate = JsonPath.read(document,
+                            jsonPath(i, "endDate", event_path));
+                }
+
+                if (allDay) {
+                    eventList.add(new Event(eid, title, location, description, true, date, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
+                } else {
+                    eventList.add(new Event(eid, title, location, description, false, fDate, tDate, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
+                }
+
+                i++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return eventList;
+    }
+
+    public List<MunicipalityItem> readMunicipalityItems(Context context) {
+        List<MunicipalityItem> itemList = new ArrayList<>();
+        int itemLength;
+        municipalities = context.getResources().getStringArray(R.array.municipalityId);
+        try {
+            FileInputStream fis = context.openFileInput("municipality.json");
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            StringBuilder b = new StringBuilder();
+            while (bis.available() != 0) {
+                char c = (char) bis.read();
+                b.append(c);
+            }
+            bis.close();
+            fis.close();
+            String json = b.toString();
+            Object document = Configuration.defaultConfiguration().jsonProvider().parse(json);
+
+            try {
+                for (String item : municipalities) {
+                    itemLength = JsonPath.read(document, "$." + item + ".length()");
+                    int i = 0;
+                    while (i < itemLength) {
+                        String iid = JsonPath.read(document,
+                                jsonPath(i, "id", item));
+                        String title = JsonPath.read(document,
+                                jsonPath(i, "title", item));
+                        String location = JsonPath.read(document,
+                                jsonPath(i, "location", item));
+                        String contact = JsonPath.read(document,
+                                jsonPath(i, "contact", item));
+                        String stringCategory = JsonPath.read(document,
+                                jsonPath(i, "category", item));
+                        String stringImageURLS = JsonPath.read(document,
+                                jsonPath(i, "imageURLS", item));
+                        String stringImageNames = JsonPath.read(document,
+                                jsonPath(i, "imageNames", item));
+                        String municipalityStorageKey = JsonPath.read(document,
+                                jsonPath(i, "municipalityStorageKey", item));
+                        String coverURL = JsonPath.read(document,
+                                jsonPath(i, "coverURL", item));
+                        String coverName = JsonPath.read(document,
+                                jsonPath(i, "coverName", item));
+                        boolean starred = JsonPath.read(document,
+                                jsonPath(i, "starred", item));
+                        String description = JsonPath.read(document,
+                                jsonPath(i, "description", item));
+                        String latlon = JsonPath.read(document,
+                                jsonPath(i, "latlon", item));
+
+                        List<String> category = convertToArray(stringCategory);
+                        List<String> imageURLS = convertToArray(stringImageURLS);
+                        List<String> imageNames = convertToArray(stringImageNames);
+
+                        itemList.add(new MunicipalityItem(iid, item, title, location, contact,
+                                category, municipalityStorageKey, imageURLS, imageNames,
+                                coverURL, coverName, starred, description, latlon));
+                        i++;
+                    }
+                }
+            } catch (Exception e) {
+                itemLength = 0;
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return itemList;
+    }
+    // end_read_json
+
+
+    private List<String> convertToArray(String item) {
+        String category = item.replaceAll("\\s+", "");
+        category = category.replace("[", "");
+        category = category.replace("]", "");
+
+        return new ArrayList<>(Arrays.asList(category.split(",")));
+    }
+
+    private String jsonPath(int index, String keyword, String path) {
+        return "$." + path + "[" + index + "]." + keyword;
     }
 
     private ProgressDialog mProgressDialog;
