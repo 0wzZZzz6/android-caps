@@ -5,6 +5,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.android.curlytops.suroytabukidnon.BaseActivity;
@@ -22,14 +23,19 @@ import butterknife.ButterKnife;
  */
 public class TabActivity extends BaseActivity {
 
-    public String _id, _img, _municipality;
+    public String municipalityId, imageUrl, municipality;
     int mutedColor = R.attr.colorPrimary;
 
-    @BindView(R.id.tab_toolbar) Toolbar toolbar;
-    @BindView(R.id.tab_viewpager) ViewPager viewPager;
-    @BindView(R.id.tab_tablayout) TabLayout tabLayout;
-    @BindView(R.id.tab_collapse_toolbar) CollapsingToolbarLayout collapsingToolbarLayout;
-    @BindView(R.id.tab_header) ImageView tabHeader;
+    @BindView(R.id.tab_toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.tab_viewpager)
+    ViewPager viewPager;
+    @BindView(R.id.tab_tablayout)
+    TabLayout tabLayout;
+    @BindView(R.id.tab_collapse_toolbar)
+    CollapsingToolbarLayout collapsingToolbarLayout;
+    @BindView(R.id.tab_header)
+    ImageView tabHeader;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,14 +43,16 @@ public class TabActivity extends BaseActivity {
         setContentView(R.layout.tab_layout);
         ButterKnife.bind(this);
 
-        _id = getIntent().getExtras().getString(EXTRA_ID);
-        _img = getIntent().getExtras().getString(EXTRA_IMAGE);
-        _municipality = getIntent().getExtras().getString(EXTRA_MUNICIPALITY);
+        municipalityId = getIntent().getExtras().getString(MUNICIPALITY_ID);
+        imageUrl = getIntent().getExtras().getString(IMAGEURL);
+        municipality = getIntent().getExtras().getString(MUNICIPALITY);
+
+        Log.d("SHIELAMAE", municipalityId + " " + municipality);
 
         supportPostponeEnterTransition();
         setSupportActionBar(toolbar);
-        if(getSupportActionBar() != null){
-            getSupportActionBar().setTitle(UpperCaseFirstLetter(_id));
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(FormatTitle(municipality));
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
@@ -54,13 +62,13 @@ public class TabActivity extends BaseActivity {
 
         viewPager.setCurrentItem(0, false);
 
-        Bundle bundle = new Bundle();
-        bundle.putString("_municipality", _municipality);
-        More more = new More();
-        more.setArguments(bundle);
+//        Bundle bundle = new Bundle();
+//        bundle.putString("municipality", municipality);
+//        More more = new More();
+//        more.setArguments(bundle);
 
         Glide.with(this)
-                .load(_img)
+                .load(imageUrl)
                 .into(tabHeader);
     }
 
@@ -77,16 +85,20 @@ public class TabActivity extends BaseActivity {
         return true;
     }
 
-    private String UpperCaseFirstLetter(String title){
+    private String FormatTitle(String title) {
         if (title.equalsIgnoreCase("malaybalay") || title.equalsIgnoreCase("valencia")) {
-            return "City of " + title.substring(0, 1).toUpperCase() + title.substring(1);
+            return "City of " + title;
         } else {
-            return "Municipality of " + title.substring(0, 1).toUpperCase() + title.substring(1);
+            return "Municipality of " + title;
         }
     }
 
-    public String get_id() {
-        return _id;
+    public String getMunicipalityId() {
+        return municipalityId;
+    }
+
+    public String getMunicipality() {
+        return municipality;
     }
 }
 

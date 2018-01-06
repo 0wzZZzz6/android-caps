@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 
 import com.android.curlytops.suroytabukidnon.Model.Bookmark;
 import com.android.curlytops.suroytabukidnon.Model.Event;
@@ -31,6 +32,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,10 +46,11 @@ public class BaseActivity extends AppCompatActivity {
 
     public static final String TAG = "BaseActivity";
 
-    public static final String EXTRA_IMAGE = "url";
-    public static final String EXTRA_ID = "id";
-    public static final String EXTRA_MUNICIPALITY = "municipality";
+    public static final String IMAGEURL = "url";
+    public static final String MUNICIPALITY_ID = "id";
+    public static final String MUNICIPALITY = "municipality";
     public static final String event_path = "events";
+    public static final String news_path = "news";
 
     DatabaseReference bookmarkReference_events;
     DatabaseReference bookmarkReference_places;
@@ -91,6 +95,7 @@ public class BaseActivity extends AppCompatActivity {
                             eventObject.put("imageNames", event.imageNames);
                             eventObject.put("eventStorageKey", event.eventStorageKey);
                             eventObject.put("starred", event.starred);
+                            eventObject.put("taggedMunicipality", event.taggedMunicipality);
 
                             if (event.allDay) {
                                 eventObject.put("startDate", event.startDate);
@@ -486,9 +491,12 @@ public class BaseActivity extends AppCompatActivity {
                         jsonPath(i, "imageURLS", event_path));
                 String stringImageNames = JsonPath.read(document,
                         jsonPath(i, "imageNames", event_path));
+                String stringTaggedMunicipality = JsonPath.read(document,
+                        jsonPath(i, "taggedMunicipality", event_path));
 
                 List<String> imageURLS = convertToArray(stringImageURLS);
                 List<String> imageNames = convertToArray(stringImageNames);
+                List<String> taggedMunicipality = convertToArray(stringTaggedMunicipality);
 
                 if (allDay) {
                     date = JsonPath.read(document,
@@ -501,9 +509,13 @@ public class BaseActivity extends AppCompatActivity {
                 }
 
                 if (allDay) {
-                    eventList.add(new Event(eid, title, location, description, true, date, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
+                    eventList.add(new Event(eid, title, location, description, true, date,
+                            fromTime, toTime, coverURL, coverName, eventStorageKey, starred,
+                            imageURLS, imageNames, taggedMunicipality));
                 } else {
-                    eventList.add(new Event(eid, title, location, description, false, fDate, tDate, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
+                    eventList.add(new Event(eid, title, location, description, false, fDate,
+                            tDate, fromTime, toTime, coverURL, coverName, eventStorageKey, starred,
+                            imageURLS, imageNames, taggedMunicipality));
                 }
 
                 i++;
@@ -583,6 +595,68 @@ public class BaseActivity extends AppCompatActivity {
         }
 
         return itemList;
+    }
+
+    public List<News> readNews(Context context) {
+
+        List<News> newsList = new ArrayList<>();
+
+        try {
+            FileInputStream fis = context.openFileInput("news.json");
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            StringBuilder b = new StringBuilder();
+
+            while (bis.available() != 0) {
+                char c = (char) bis.read();
+                b.append(c);
+            }
+            bis.close();
+            fis.close();
+
+            String json = b.toString();
+            Object document = Configuration.defaultConfiguration().jsonProvider().parse(json);
+            int length = JsonPath.read(document, "$.news.length()");
+
+            int i = 0;
+            while (i < length) {
+                String nid = JsonPath.read(document,
+                        jsonPath(i, "n_id", news_path));
+                String title = JsonPath.read(document,
+                        jsonPath(i, "title", news_path));
+                String link = JsonPath.read(document,
+                        jsonPath(i, "link", news_path));
+                String newsStorageKey = JsonPath.read(document,
+                        jsonPath(i, "newsStorageKey", news_path));
+                String coverURL = JsonPath.read(document,
+                        jsonPath(i, "coverURL", news_path));
+                String coverName = JsonPath.read(document,
+                        jsonPath(i, "coverName", news_path));
+                long timestamp = JsonPath.read(document,
+                        jsonPath(i, "timestamp", news_path));
+
+                newsList.add(new News(nid, title, link, newsStorageKey,
+                        coverURL, coverName, timestamp));
+
+                i++;
+            }
+//            if (newsList.size() == 0) {
+//                textView_news.setVisibility(View.GONE);
+//            } else {
+//                textView_news.setVisibility(View.VISIBLE);
+//            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Collections.sort(newsList, new Comparator<News>() {
+            @Override
+            public int compare(News o1, News o2) {
+                return Long.compare(o1.timestamp, o2.timestamp);
+            }
+        });
+        Collections.reverse(newsList);
+
+        return newsList;
     }
     // end_read_json
 

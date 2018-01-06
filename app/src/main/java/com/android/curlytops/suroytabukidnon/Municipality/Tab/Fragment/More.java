@@ -47,7 +47,7 @@ public class More extends Fragment {
     SectionedRecyclerViewAdapter sectionAdapter;
     List<MunicipalityItem> itemList = new ArrayList<>();
     List<String> categories = new ArrayList<>();
-    String id = null;
+    String municipalityId;
     int itemLength = 0;
 
     @BindView(R.id.recyclerview)
@@ -57,8 +57,8 @@ public class More extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        id = ((TabActivity) getActivity()).get_id();
-        Log.d(TAG, id);
+        municipalityId = ((TabActivity) getActivity()).getMunicipalityId();
+        Log.d(TAG, municipalityId);
         categories = Arrays.asList(getResources().getStringArray(R.array.catergory));
         readMunicipalityItems();
     }
@@ -96,7 +96,7 @@ public class More extends Fragment {
             Object document = Configuration.defaultConfiguration().jsonProvider().parse(json);
 
             try {
-                itemLength = JsonPath.read(document, "$." + id + ".length()");
+                itemLength = JsonPath.read(document, "$." + municipalityId + ".length()");
                 int i = 0;
                 while (i < itemLength) {
                     String iid = JsonPath.read(document, jsonPath(i, "id"));
@@ -132,7 +132,7 @@ public class More extends Fragment {
     }
 
     private String jsonPath(int index, String keyword) {
-        return "$." + id + "[" + index + "]." + keyword;
+        return "$." + municipalityId + "[" + index + "]." + keyword;
     }
 
     public void sectionAdapter() {
@@ -203,10 +203,12 @@ public class More extends Fragment {
                 public void onClick(View v) {
                     Intent intent = new Intent(getContext(), TabItemDetailActivity.class);
                     intent.putExtra("municipalityItem", municipalityItem);
-                    intent.putExtra("_municipality", id);
+                    intent.putExtra("municipalityId", municipalityId);
                     startActivity(intent);
                 }
             });
+
+            Log.d(TAG, municipalityItem + " item    --   " + municipalityId + "  -- id");
         }
 
         @Override

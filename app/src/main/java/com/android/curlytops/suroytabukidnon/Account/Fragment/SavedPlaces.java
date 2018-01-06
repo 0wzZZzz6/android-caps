@@ -155,7 +155,7 @@ public class SavedPlaces extends Fragment {
                 public void onClick(View v) {
                     Intent intent = new Intent(getContext(), TabItemDetailActivity.class);
                     intent.putExtra("municipalityItem", item);
-                    intent.putExtra("_municipality", item.municipality);
+                    intent.putExtra("municipalityId", item.municipality);
                     startActivity(intent);
                 }
             });

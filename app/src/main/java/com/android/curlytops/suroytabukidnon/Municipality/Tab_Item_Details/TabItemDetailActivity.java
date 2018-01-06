@@ -62,7 +62,7 @@ public class TabItemDetailActivity extends BaseActivity {
     DatabaseReference bookmarkReference;
 
     String item_id;
-    String municipality;
+    String municipalityId;
     MunicipalityItem municipalityItem;
     private Menu menu;
 
@@ -84,13 +84,15 @@ public class TabItemDetailActivity extends BaseActivity {
 
         municipalityItem = (MunicipalityItem)
                 getIntent().getSerializableExtra("municipalityItem");
-        municipality = (String)
-                getIntent().getSerializableExtra("_municipality");
+        municipalityId = (String)
+                getIntent().getSerializableExtra("municipalityId");
         item_id = municipalityItem.id;
+
+        Log.d(TAG, municipalityItem + " item    --   " + municipalityId + "  -- id");
 
         municipalityReference = FirebaseDatabase.getInstance()
                 .getReference("municipality")
-                .child(municipality)
+                .child(municipalityId)
                 .child(item_id);
 
         bookmarkReference = FirebaseDatabase.getInstance()

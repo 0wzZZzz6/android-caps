@@ -56,11 +56,6 @@ public class MunicipalityFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.recyclerview, container, false);
@@ -111,6 +106,8 @@ public class MunicipalityFragment extends Fragment {
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
+
+
 
         return municipalityList;
     }

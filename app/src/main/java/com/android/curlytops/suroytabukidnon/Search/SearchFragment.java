@@ -34,7 +34,9 @@ import org.joda.time.DateTime;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,7 +48,6 @@ import butterknife.OnClick;
 
 public class SearchFragment extends Fragment {
     private static final String TAG = "SearchFragment";
-    private static final String jsonPathNode = "events";
 
     private static final String events = "events";
     private static final String places = "places";
@@ -69,6 +70,9 @@ public class SearchFragment extends Fragment {
     List<Event> eventList = new ArrayList<>();
     List<MunicipalityItem> search_result_places = new ArrayList<>();
     List<MunicipalityItem> itemList = new ArrayList<>();
+
+    Set<Event> hashed_search_result_events = new HashSet<>();
+    Set<MunicipalityItem> hashed_search_result_places = new HashSet<>();
 
     String search_mode = events;
     SearchAdapter searchAdapter;
@@ -146,7 +150,18 @@ public class SearchFragment extends Fragment {
                     if (event.title.toLowerCase().contains(query.toLowerCase())) {
                         search_result_events.add(event);
                     }
+
+                    for (String place : event.taggedMunicipality) {
+                        if (place.toLowerCase().contains(query.toLowerCase())) {
+                            search_result_events.add(event);
+                        }
+                    }
                 }
+
+                hashed_search_result_events.addAll(search_result_events);
+                search_result_events.clear();
+                search_result_events.addAll(hashed_search_result_events);
+
                 if (search_result_events.size() > 0) {
                     searchAdapter = new SearchAdapter
                             (getContext(), search_result_events,
@@ -163,7 +178,16 @@ public class SearchFragment extends Fragment {
                     if (item.title.toLowerCase().contains(query.toLowerCase())) {
                         search_result_places.add(item);
                     }
+
+                    if (item.municipality.toLowerCase().contains(query.toLowerCase())) {
+                        search_result_places.add(item);
+                    }
                 }
+
+                hashed_search_result_places.addAll(search_result_places);
+                search_result_places.clear();
+                search_result_places.addAll(hashed_search_result_places);
+
                 if (search_result_places.size() > 0) {
                     searchAdapter = new SearchAdapter
                             (getContext(), search_result_events,
@@ -288,7 +312,7 @@ public class SearchFragment extends Fragment {
                     public void onClick(View view) {
                         Intent intent = new Intent(getContext(), TabItemDetailActivity.class);
                         intent.putExtra("municipalityItem", item);
-                        intent.putExtra("_municipality", item.municipality);
+                        intent.putExtra("municipalityId", item.municipality);
                         startActivity(intent);
                     }
                 });

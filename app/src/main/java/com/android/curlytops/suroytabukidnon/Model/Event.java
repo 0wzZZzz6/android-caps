@@ -14,7 +14,7 @@ public class Event implements Serializable {
             toTime, coverURL, coverName, eventStorageKey;
     public long startDate, endDate;
     public boolean allDay, starred;
-    public List<String> imageURLS, imageNames;
+    public List<String> imageURLS, imageNames, taggedMunicipality;
     public Map<String, Boolean> interested = new HashMap<>();
     public Map<String, Boolean> going = new HashMap<>();
     public Map<String, String> bookmark = new HashMap<>();
@@ -25,7 +25,7 @@ public class Event implements Serializable {
     public Event(String e_id, String title, String location,
                  String description, boolean allDay, long startDate, String fromTime, String toTime,
                  String coverURL, String coverName, String eventStorageKey, boolean starred,
-                 List<String> imageURLS, List<String> imageNames) {
+                 List<String> imageURLS, List<String> imageNames, List<String> taggedMunicipality) {
         this.e_id = e_id;
         this.title = title;
         this.location = location;
@@ -40,12 +40,13 @@ public class Event implements Serializable {
         this.starred = starred;
         this.imageURLS = imageURLS;
         this.imageNames = imageNames;
+        this.taggedMunicipality = taggedMunicipality;
     }
 
     public Event(String e_id, String title, String location, String description,
                  boolean allDay, long startDate, long endDate, String fromTime, String toTime,
                  String coverURL, String coverName, String eventStorageKey, boolean starred,
-                 List<String> imageURLS, List<String> imageNames) {
+                 List<String> imageURLS, List<String> imageNames, List<String> taggedMunicipality) {
         this.e_id = e_id;
         this.title = title;
         this.location = location;
@@ -61,6 +62,7 @@ public class Event implements Serializable {
         this.starred = starred;
         this.imageURLS = imageURLS;
         this.imageNames = imageNames;
+        this.taggedMunicipality = taggedMunicipality;
     }
 
 }

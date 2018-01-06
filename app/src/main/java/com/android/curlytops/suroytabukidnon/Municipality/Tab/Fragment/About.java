@@ -7,27 +7,22 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.curlytops.suroytabukidnon.BaseActivity;
+import com.android.curlytops.suroytabukidnon.Event.EventDetailActivity;
+import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
 import com.android.curlytops.suroytabukidnon.Municipality.Tab.TabActivity;
 import com.android.curlytops.suroytabukidnon.Municipality.Tab_Item_Details.TabItemDetailActivity;
 import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;
-import com.github.curioustechizen.ago.RelativeTimeTextView;
-import com.jayway.jsonpath.Configuration;
-import com.jayway.jsonpath.JsonPath;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -41,17 +36,46 @@ public class About extends Fragment {
     private static final String TAG = "About";
 
     StarredAdapter starredAdapter;
+    TaggedAdapter taggedAdapter;
 
-    String id = null;
-    int itemLength = 0;
+    String id, municipality;
+    List<Event> newEventList = new ArrayList<>();
+    List<MunicipalityItem> newItemList = new ArrayList<>();
 
-    @BindView(R.id.fragment_about_starred)
+    @BindView(R.id.fragment_about_feature)
     RecyclerView recyclerView_starred;
+    @BindView(R.id.fragment_about_tagged)
+    RecyclerView recyclerView_tagged;
+
+    @BindView(R.id.taggedCount)
+    TextView taggedCount;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        id = ((TabActivity) getActivity()).get_id();
+
+        id = ((TabActivity) getActivity()).getMunicipalityId();
+        municipality = ((TabActivity) getActivity()).getMunicipality();
+
+        List<Event> eventList = new BaseActivity().readEvents(getContext());
+        List<MunicipalityItem> itemList = new BaseActivity().readMunicipalityItems(getContext());
+
+
+        for (Event event : eventList) {
+            List<String> item = event.taggedMunicipality;
+
+            if (item.contains(municipality)) {
+                newEventList.add(event);
+            }
+        }
+
+        for (MunicipalityItem item : itemList) {
+            String itemMunicipality = item.municipality;
+
+            if (item.starred && itemMunicipality.equalsIgnoreCase(municipality)) {
+                newItemList.add(item);
+            }
+        }
     }
 
     @Override
@@ -60,84 +84,20 @@ public class About extends Fragment {
         View view = inflater.inflate(R.layout.fragment_about, container, false);
         ButterKnife.bind(this, view);
 
-        starredAdapter = new StarredAdapter(getContext(), readMunicipalityItems());
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext(),
-                LinearLayoutManager.HORIZONTAL, false);
+        starredAdapter = new StarredAdapter(getContext(), newItemList);
         recyclerView_starred.setHasFixedSize(false);
-        recyclerView_starred.setLayoutManager(linearLayoutManager);
+        recyclerView_starred.setLayoutManager(new LinearLayoutManager(this.getContext(),
+                LinearLayoutManager.HORIZONTAL, false));
         recyclerView_starred.setAdapter(starredAdapter);
 
+        taggedCount.setText(String.valueOf(newEventList.size()));
+        taggedAdapter = new TaggedAdapter(getContext(), newEventList);
+        recyclerView_tagged.setHasFixedSize(false);
+        recyclerView_tagged.setLayoutManager(new LinearLayoutManager(this.getContext(),
+                LinearLayoutManager.HORIZONTAL, false));
+        recyclerView_tagged.setAdapter(taggedAdapter);
+
         return view;
-    }
-
-    private List<MunicipalityItem> readMunicipalityItems() {
-        List<MunicipalityItem> itemList = new ArrayList<>();
-        try {
-            FileInputStream fis = getContext().openFileInput("municipality.json");
-            BufferedInputStream bis = new BufferedInputStream(fis);
-            StringBuilder b = new StringBuilder();
-            while (bis.available() != 0) {
-                char c = (char) bis.read();
-                b.append(c);
-            }
-            bis.close();
-            fis.close();
-            String json = b.toString();
-            Object document = Configuration.defaultConfiguration().jsonProvider().parse(json);
-
-            try {
-                itemLength = JsonPath.read(document, "$." + id + ".length()");
-                int i = 0;
-                while (i < itemLength) {
-                    String iid = JsonPath.read(document, jsonPath(i, "id"));
-                    String title = JsonPath.read(document, jsonPath(i, "title"));
-                    String location = JsonPath.read(document, jsonPath(i, "location"));
-                    String contact = JsonPath.read(document, jsonPath(i, "contact"));
-                    String stringCategory = JsonPath.read(document, jsonPath(i, "category"));
-                    String stringImageURLS = JsonPath.read(document, jsonPath(i, "imageURLS"));
-                    String stringImageNames = JsonPath.read(document, jsonPath(i, "imageNames"));
-                    String municipalityStorageKey = JsonPath.read(document, jsonPath(i, "municipalityStorageKey"));
-                    String coverURL = JsonPath.read(document, jsonPath(i, "coverURL"));
-                    String coverName = JsonPath.read(document, jsonPath(i, "coverName"));
-                    boolean starred = JsonPath.read(document, jsonPath(i, "starred"));
-                    String description = JsonPath.read(document, jsonPath(i, "description"));
-                    String latlon = JsonPath.read(document, jsonPath(i, "latlon"));
-
-                    List<String> category = convertToArray(stringCategory);
-                    List<String> imageURLS = convertToArray(stringImageURLS);
-                    List<String> imageNames = convertToArray(stringImageNames);
-
-                    if (starred) {
-                        itemList.add(new MunicipalityItem(iid, title, location, contact,
-                                category, municipalityStorageKey, imageURLS, imageNames,
-                                coverURL, coverName, true, description, latlon));
-                    }
-
-                    i++;
-                }
-            } catch (Exception e) {
-                itemLength = 0;
-                e.printStackTrace();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Log.e(TAG, itemList.size() + "  size itemlist");
-
-        return itemList;
-    }
-
-    private String jsonPath(int index, String keyword) {
-        return "$." + id + "[" + index + "]." + keyword;
-    }
-
-    private List<String> convertToArray(String item) {
-        String category = item.replaceAll("\\s+", "");
-        category = category.replace("[", "");
-        category = category.replace("]", "");
-
-        return new ArrayList<>(Arrays.asList(category.split(",")));
     }
 
     class StarredAdapter extends
@@ -171,7 +131,7 @@ public class About extends Fragment {
                 public void onClick(View v) {
                     Intent intent = new Intent(getContext(), TabItemDetailActivity.class);
                     intent.putExtra("municipalityItem", item);
-                    intent.putExtra("_municipality", id);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                 }
             });
@@ -191,6 +151,61 @@ public class About extends Fragment {
             TextView title;
 
             StarredViewHolder(View itemView) {
+                super(itemView);
+                ButterKnife.bind(this, itemView);
+            }
+        }
+    }
+
+    class TaggedAdapter extends
+            RecyclerView.Adapter<TaggedAdapter.TaggedViewHolder> {
+
+        Context context;
+        List<Event> eventList = new ArrayList<>();
+
+        TaggedAdapter(Context context, List<Event> eventList) {
+            this.context = context;
+            this.eventList = eventList;
+        }
+
+        @Override
+        public TaggedViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from
+                    (parent.getContext()).inflate(R.layout.about_starred_item, parent, false);
+            return new TaggedViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(TaggedViewHolder holder, int position) {
+            final Event event = eventList.get(position);
+
+            Glide.with(this.context)
+                    .load(event.coverURL)
+                    .into(holder.cover);
+
+            holder.title.setText(event.title);
+            holder.title.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), EventDetailActivity.class);
+                    intent.putExtra("myEvent", event);
+                    startActivity(intent);
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return eventList.size();
+        }
+
+        class TaggedViewHolder extends RecyclerView.ViewHolder {
+            @BindView(R.id.about_starred_item_imageView)
+            ImageView cover;
+            @BindView(R.id.about_starred_item_title)
+            TextView title;
+
+            TaggedViewHolder(View itemView) {
                 super(itemView);
                 ButterKnife.bind(this, itemView);
             }

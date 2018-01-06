@@ -3,11 +3,13 @@ package com.android.curlytops.suroytabukidnon.Municipality;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.curlytops.suroytabukidnon.BaseActivity;
 import com.android.curlytops.suroytabukidnon.Model.Municipality;
@@ -32,6 +34,8 @@ class MunicipalityAdapter extends RecyclerView.Adapter
     MunicipalityAdapter(Context context, List<Municipality> list) {
         this.context = context;
         this.municipalityList = list;
+
+        Log.d("SHIELA", municipalityList.size() + "");
     }
 
     @Override
@@ -45,19 +49,21 @@ class MunicipalityAdapter extends RecyclerView.Adapter
     public void onBindViewHolder(MunicipalityViewHolder holder, int position) {
         final Municipality item = municipalityList.get(position);
 
-        holder.municipalityTitle.setText(item.title);
+        Log.d("SHIELA", item.id);
+
+        holder.municipalityTitle.setText(item.municipality);
 
         Glide.with(this.context)
-                .load(item.imgUrl)
+                .load(item.imageUrl)
                 .into(holder.municipalityImg);
 
         holder.municipalityTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, TabActivity.class);
-                intent.putExtra(BaseActivity.EXTRA_ID, item.id);
-                intent.putExtra(BaseActivity.EXTRA_IMAGE, item.imgUrl);
-                intent.putExtra(BaseActivity.EXTRA_MUNICIPALITY, item.municipality);
+                intent.putExtra(BaseActivity.MUNICIPALITY_ID, item.id);
+                intent.putExtra(BaseActivity.IMAGEURL, item.imageUrl);
+                intent.putExtra(BaseActivity.MUNICIPALITY, item.municipality);
                 context.startActivity(intent);
             }
         });

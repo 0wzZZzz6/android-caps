@@ -4,12 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Municipality.Tab_Item_Details.TabItemDetailActivity">
 
-    <!--<item-->
-        <!--android:id="@+id/action_heart"-->
-        <!--android:icon="@drawable/ic_heart_outline_white_24dp"-->
-        <!--android:orderInCategory="1"-->
-        <!--android:title="@string/menu_search"-->
-        <!--app:showAsAction="always" />-->
 
     <item
         android:icon="@drawable/ic_bookmark_outline_white_24dp"

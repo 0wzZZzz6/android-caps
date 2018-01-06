@@ -21,10 +21,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.curlytops.suroytabukidnon.BaseActivity;
 import com.android.curlytops.suroytabukidnon.Connection.ConnectivityReceiver;
 import com.android.curlytops.suroytabukidnon.Gallery.GalleryAdapter;
 import com.android.curlytops.suroytabukidnon.Gallery.GalleryItemClickListener;
 import com.android.curlytops.suroytabukidnon.Gallery.GalleryViewPagerFragment;
+import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.Model.ImageModel;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
 import com.android.curlytops.suroytabukidnon.R;
@@ -50,7 +52,7 @@ import butterknife.ButterKnife;
 
 public class TabItemDetailFragment extends Fragment implements GalleryItemClickListener {
 
-    public static final String TAG = TabItemDetailFragment.class.getSimpleName();
+    public static final String TAG = "TabItemDetailFragment";
 
     @BindView(R.id.fragment_tab_item_title)
     TextView title;
@@ -76,12 +78,10 @@ public class TabItemDetailFragment extends Fragment implements GalleryItemClickL
     @BindView(R.id.reactView)
     LinearLayout reactView;
 
-    TabItemDetailActivity tabItemDetailActivity;
-
     DatabaseReference municipalityReference;
 
     String item_id;
-    String municipality;
+    String id;
     MunicipalityItem municipalityItem;
     AppBarLayout appBarLayout;
     FloatingActionButton fab;
@@ -98,7 +98,6 @@ public class TabItemDetailFragment extends Fragment implements GalleryItemClickL
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Nullable
@@ -109,14 +108,17 @@ public class TabItemDetailFragment extends Fragment implements GalleryItemClickL
         ButterKnife.bind(this, view);
 
         TabItemDetailActivity tabItemDetailActivity = (TabItemDetailActivity) getActivity();
+
         appBarLayout = tabItemDetailActivity.appBarLayout;
         fab = tabItemDetailActivity.fab;
         municipalityItem = tabItemDetailActivity.municipalityItem;
-        municipality = tabItemDetailActivity.municipality;
-        item_id = municipalityItem.id;
+        id = tabItemDetailActivity.municipalityId;
+        item_id = tabItemDetailActivity.item_id;
+
         municipalityReference = FirebaseDatabase.getInstance()
                 .getReference("municipality")
-                .child(municipality).child(item_id);
+                .child(id)
+                .child(item_id);
 
         List<String> imageURLS = municipalityItem.imageURLS;
         for (int i = 0; i < imageURLS.size(); i++) {
@@ -160,7 +162,6 @@ public class TabItemDetailFragment extends Fragment implements GalleryItemClickL
         rv_gallery.setLayoutManager(new GridLayoutManager(getContext(), 3));
         rv_gallery.setHasFixedSize(true);
         rv_gallery.setAdapter(galleryAdapter);
-
 
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override

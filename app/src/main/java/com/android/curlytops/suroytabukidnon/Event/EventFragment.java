@@ -256,6 +256,7 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
                             eventObject.put("imageNames", event.imageNames);
                             eventObject.put("eventStorageKey", event.eventStorageKey);
                             eventObject.put("starred", event.starred);
+                            eventObject.put("taggedMunicipality", event.taggedMunicipality);
 
                             if (event.allDay) {
                                 eventObject.put("startDate", event.startDate);
@@ -338,9 +339,11 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
                 boolean starred = JsonPath.read(document, jsonPath(i, "starred"));
                 String stringImageURLS = JsonPath.read(document, jsonPath(i, "imageURLS"));
                 String stringImageNames = JsonPath.read(document, jsonPath(i, "imageNames"));
+                String stringTaggedMunicipality = JsonPath.read(document, jsonPath(i, "taggedMunicipality"));
 
                 List<String> imageURLS = convertToArray(stringImageURLS);
                 List<String> imageNames = convertToArray(stringImageNames);
+                List<String> taggedMunicipality = convertToArray(stringTaggedMunicipality);
 
                 if (allDay) {
                     date = JsonPath.read(document, jsonPath(i, "startDate"));
@@ -367,18 +370,26 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
 
                 if (milliseconds == 0) {// show all events
                     if (allDay) {
-                        eventList.add(new Event(eid, title, location, description, true, date, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
+                        eventList.add(new Event(eid, title, location, description, true, date,
+                                fromTime, toTime, coverURL, coverName, eventStorageKey, starred,
+                                imageURLS, imageNames, taggedMunicipality));
                     } else {
-                        eventList.add(new Event(eid, title, location, description, false, fDate, tDate, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
+                        eventList.add(new Event(eid, title, location, description, false, fDate,
+                                tDate, fromTime, toTime, coverURL, coverName, eventStorageKey, starred,
+                                imageURLS, imageNames, taggedMunicipality));
                     }
                 } else if (milliseconds == date) {// show only events sorted by longDate
                     if (allDay) {
-                        eventList.add(new Event(eid, title, location, description, true, date, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
+                        eventList.add(new Event(eid, title, location, description, true, date,
+                                fromTime, toTime, coverURL, coverName, eventStorageKey, starred,
+                                imageURLS, imageNames, taggedMunicipality));
                     }
                 }
 
                 if (!allDay && inRange(milliseconds, fromDate, toDate)) {
-                    eventList.add(new Event(eid, title, location, description, false, fDate, tDate, fromTime, toTime, coverURL, coverName, eventStorageKey, starred, imageURLS, imageNames));
+                    eventList.add(new Event(eid, title, location, description, false, fDate,
+                            tDate, fromTime, toTime, coverURL, coverName, eventStorageKey, starred,
+                            imageURLS, imageNames, taggedMunicipality));
                 }
 
                 i++;

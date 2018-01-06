@@ -45,5 +45,14 @@
     <string name="no_item_found">No item found.</string>
     <string name="ok">OK</string>
     <string name="detail">Detail</string>
+    <string name="going">Going</string>
+    <string name="interested">Interested</string>
+    <string name="i">I</string>
+    <string name="g">G</string>
+    <string name="divider">•</string>
+    <string name="_6">6</string>
+    <string name="dec">DEC</string>
+    <string name="time">Time</string>
+    <string name="description">Description</string>
 
 </resources>
