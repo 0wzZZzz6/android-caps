@@ -1,6 +1,7 @@
 package com.android.curlytops.suroytabukidnon.Home;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -83,12 +84,7 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         swipeRefreshLayout = rootView.findViewById(R.id.fragment_home_swipeRefreshLayout);
@@ -168,155 +164,6 @@ public class HomeFragment extends Fragment {
         }
 
         return homeList;
-    }
-
-//    public List<Event> readEventsJson() {
-//        List<Event> eventList = new ArrayList<>();
-//
-//        try {
-//            FileInputStream fis = getActivity().openFileInput("event.json");
-//            BufferedInputStream bis = new BufferedInputStream(fis);
-//            StringBuilder b = new StringBuilder();
-//
-//            long startDate = 0;
-//            long endDate = 0;
-//
-//            while (bis.available() != 0) {
-//                char c = (char) bis.read();
-//                b.append(c);
-//            }
-//            bis.close();
-//            fis.close();
-//
-//            String json = b.toString();
-//            Object document = Configuration.defaultConfiguration().jsonProvider().parse(json);
-//            int length = JsonPath.read(document, "$.events.length()");
-//
-//            int i = 0;
-//            while (i < length) {
-//                String eid = JsonPath.read(document, jsonPath("events", i, "e_id"));
-//                String municipality = JsonPath.read(document, jsonPath("events", i, "municipality"));
-//                String location = JsonPath.read(document, jsonPath("events", i, "location"));
-//                String description = JsonPath.read(document, jsonPath("events", i, "description"));
-//                boolean allDay = JsonPath.read(document, jsonPath("events", i, "allDay"));
-//                String fromTime = JsonPath.read(document, jsonPath("events", i, "fromTime"));
-//                String toTime = JsonPath.read(document, jsonPath("events", i, "toTime"));
-//                String coverURL = JsonPath.read(document, jsonPath("events", i, "coverURL"));
-//                String coverName = JsonPath.read(document, jsonPath("events", i, "coverName"));
-//                String eventStorageKey = JsonPath.read(document, jsonPath("events", i, "eventStorageKey"));
-//                boolean starred = JsonPath.read(document, jsonPath("events", i, "starred"));
-//                String stringImageURLS = JsonPath.read(document, jsonPath("events", i, "imageURLS"));
-//                String stringImageNames = JsonPath.read(document, jsonPath("events", i, "imageNames"));
-//
-//                List<String> imageURLS = convertToArray(stringImageURLS);
-//                List<String> imageNames = convertToArray(stringImageNames);
-//
-//                if (allDay) {
-//                    startDate = JsonPath.read(document, jsonPath("events", i, "startDate"));
-//                } else {
-//                    startDate = JsonPath.read(document, jsonPath("events", i, "startDate"));
-//                    endDate = JsonPath.read(document, jsonPath("events", i, "endDate"));
-//                }
-//
-//                if (starred) {
-//                    if (allDay) {
-//                        eventList.add(new Event(eid, municipality, location, description,
-//                                allDay, startDate, fromTime, toTime, coverURL, coverName,
-//                                eventStorageKey, starred, imageURLS, imageNames));
-//                    } else {
-//                        eventList.add(new Event(eid, municipality, location, description,
-//                                allDay, startDate, endDate, fromTime, toTime, coverURL, coverName,
-//                                eventStorageKey, starred, imageURLS, imageNames));
-//                    }
-//                }
-//
-//                i++;
-//            }
-//
-//            if (eventList.size() == 0) {
-//                textView_events.setVisibility(View.GONE);
-//            } else {
-//                textView_events.setVisibility(View.VISIBLE);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        Collections.sort(eventList, new Comparator<Event>() {
-//            @Override
-//            public int compare(Event o1, Event o2) {
-//                return Long.compare(o1.startDate, o2.startDate);
-//            }
-//        });
-//
-//        return eventList;
-//    }
-
-//    public List<News> readNewsJson() {
-//
-//        List<News> newsList = new ArrayList<>();
-//
-//        try {
-//            FileInputStream fis = getActivity().openFileInput("news.json");
-//            BufferedInputStream bis = new BufferedInputStream(fis);
-//            StringBuilder b = new StringBuilder();
-//
-//            while (bis.available() != 0) {
-//                char c = (char) bis.read();
-//                b.append(c);
-//            }
-//            bis.close();
-//            fis.close();
-//
-//            String json = b.toString();
-//            Object document = Configuration.defaultConfiguration().jsonProvider().parse(json);
-//            int length = JsonPath.read(document, "$.news.length()");
-//
-//            int i = 0;
-//            while (i < length) {
-//                String nid = JsonPath.read(document, jsonPath("news", i, "n_id"));
-//                String municipality = JsonPath.read(document, jsonPath("news", i, "municipality"));
-//                String link = JsonPath.read(document, jsonPath("news", i, "link"));
-//                String newsStorageKey = JsonPath.read(document, jsonPath("news", i, "newsStorageKey"));
-//                String coverURL = JsonPath.read(document, jsonPath("news", i, "coverURL"));
-//                String coverName = JsonPath.read(document, jsonPath("news", i, "coverName"));
-//                long timestamp = JsonPath.read(document, jsonPath("news", i, "timestamp"));
-//
-//                newsList.add(new News(nid, municipality, link, newsStorageKey,
-//                        coverURL, coverName, timestamp));
-//
-//                i++;
-//            }
-//            if (newsList.size() == 0) {
-//                textView_news.setVisibility(View.GONE);
-//            } else {
-//                textView_news.setVisibility(View.VISIBLE);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        Collections.sort(newsList, new Comparator<News>() {
-//            @Override
-//            public int compare(News o1, News o2) {
-//                return Long.compare(o1.timestamp, o2.timestamp);
-//            }
-//        });
-//        Collections.reverse(newsList);
-//
-//        return newsList;
-//    }
-
-    private String jsonPath(String node, int index, String keyword) {
-        return "$." + node + "[" + index + "]." + keyword;
-    }
-
-    private List<String> convertToArray(String item) {
-        String category = item.replaceAll("\\s+", "");
-        category = category.replace("[", "");
-        category = category.replace("]", "");
-
-        return new ArrayList<>(Arrays.asList(category.split(",")));
     }
 
 }

@@ -1,7 +1,9 @@
 package com.android.curlytops.suroytabukidnon.Event;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.Snackbar;
@@ -20,9 +22,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.curlytops.suroytabukidnon.Connection.ConnectivityReceiver;
-import com.android.curlytops.suroytabukidnon.Gallery.GalleryAdapter;
-import com.android.curlytops.suroytabukidnon.Gallery.GalleryItemClickListener;
-import com.android.curlytops.suroytabukidnon.Gallery.GalleryViewPagerFragment;
+import com.android.curlytops.suroytabukidnon.GrafixGallery.DetailActivity;
+import com.android.curlytops.suroytabukidnon.GrafixGallery.GalleryAdapter;
+import com.android.curlytops.suroytabukidnon.GrafixGallery.RecyclerItemClickListener;
 import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.Model.ImageModel;
 import com.android.curlytops.suroytabukidnon.R;
@@ -51,7 +53,7 @@ import butterknife.OnClick;
  * Created by jan_frncs
  */
 
-public class EventDetailFragment extends Fragment implements GalleryItemClickListener,
+public class EventDetailFragment extends Fragment implements
         ConnectivityReceiver.ConnectivityReceiverListener {
 
     public static final String TAG = "EventDetailFragment";
@@ -64,6 +66,7 @@ public class EventDetailFragment extends Fragment implements GalleryItemClickLis
     String day, month, dateTimeInfo;
     DatabaseReference eventReference;
     AppBarLayout appBarLayout;
+    GalleryAdapter galleryAdapter;
 
     @BindView(R.id.fragment_event_details_textView_month)
     TextView tv_month;
@@ -124,7 +127,7 @@ public class EventDetailFragment extends Fragment implements GalleryItemClickLis
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_event_detail, container, false);
         ButterKnife.bind(this, view);
@@ -133,7 +136,7 @@ public class EventDetailFragment extends Fragment implements GalleryItemClickLis
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         reactStatus();
 
@@ -144,10 +147,25 @@ public class EventDetailFragment extends Fragment implements GalleryItemClickLis
         tv_time.setText(dateTimeInfo);
         tv_description.setText(event.description);
 
-        GalleryAdapter galleryAdapter = new GalleryAdapter(data, this);
+        galleryAdapter = new GalleryAdapter(getContext(), data);
         rv_gallery.setLayoutManager(new GridLayoutManager(getContext(), 3));
         rv_gallery.setHasFixedSize(true);
         rv_gallery.setAdapter(galleryAdapter);
+
+        rv_gallery.addOnItemTouchListener(new RecyclerItemClickListener(getContext(),
+                new RecyclerItemClickListener.OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(View view, int position) {
+
+                        Intent intent =
+                                new Intent(getActivity(), DetailActivity.class);
+                        intent.putParcelableArrayListExtra("data", data);
+                        intent.putExtra("pos", position);
+                        startActivity(intent);
+
+                    }
+                }));
     }
 
     private void getDetails() {
@@ -349,20 +367,6 @@ public class EventDetailFragment extends Fragment implements GalleryItemClickLis
 
     public String getUid() {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
-    }
-
-    @Override
-    public void onGalleryItemClickListener(int position, ImageModel imageModel, ImageView imageView) {
-        appBarLayout.setExpanded(false);
-        GalleryViewPagerFragment galleryViewPagerFragment =
-                GalleryViewPagerFragment.newInstance(position, data);
-
-        getFragmentManager()
-                .beginTransaction()
-                .addSharedElement(imageView, ViewCompat.getTransitionName(imageView))
-                .addToBackStack(TAG)
-                .replace(R.id.content, galleryViewPagerFragment)
-                .commit();
     }
 
     // Method to manually check connection status

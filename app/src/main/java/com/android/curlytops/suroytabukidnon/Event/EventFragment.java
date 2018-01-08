@@ -124,12 +124,14 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_event, container, false);
         ButterKnife.bind(this, rootView);
         sectionAdapter = new SectionedRecyclerViewAdapter();
-        toolbar = ((MainActivity) getActivity()).toolbar;
+        if ((getActivity()) != null) {
+            toolbar = ((MainActivity) getActivity()).toolbar;
+        }
 
         behavior = BottomSheetBehavior.from(bottomSheet);
         behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
@@ -694,7 +696,7 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
                 public void onClick(View view) {
                     Intent intent = new Intent(getContext(), EventDetailActivity.class);
                     intent.putExtra("myEvent", event);
-                    getContext().startActivity(intent);
+                    startActivity(intent);
                 }
             });
         }

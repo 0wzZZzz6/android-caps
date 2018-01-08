@@ -120,6 +120,8 @@ public class BaseActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
+
+                Log.d("SHIELA", "has changes");
             }
 
             @Override
@@ -659,7 +661,6 @@ public class BaseActivity extends AppCompatActivity {
         return newsList;
     }
     // end_read_json
-
 
     private List<String> convertToArray(String item) {
         String category = item.replaceAll("\\s+", "");

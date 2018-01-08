@@ -46,7 +46,7 @@ public class EventDetailActivity extends BaseActivity {
     @BindView(R.id.activity_event_detail_collapsingToolbar)
     CollapsingToolbarLayout collapsingToolbarLayout;
     @BindView(R.id.activity_event_detail_appBarLayout)
-    public AppBarLayout appBarLayout;
+    AppBarLayout appBarLayout;
     @BindView(R.id.activity_event_detail_header)
     ImageView imageView_header;
     @BindView(R.id.activity_event_detail_toolbar)
@@ -60,6 +60,16 @@ public class EventDetailActivity extends BaseActivity {
     private Menu menu;
     Map<String, String> marked = new HashMap<>();
     String item_id;
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.content, EventDetailFragment.newInstance())
+                .commit();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,16 +87,7 @@ public class EventDetailActivity extends BaseActivity {
 
         event = getEvent();
         item_id = event.e_id;
-
-        Glide.with(this)
-                .load(event.coverURL)
-                .into(imageView_header);
-
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.content, EventDetailFragment.newInstance())
-                .commit();
-
+        
         eventReference = FirebaseDatabase.getInstance()
                 .getReference("events")
                 .child(item_id);
@@ -95,6 +96,10 @@ public class EventDetailActivity extends BaseActivity {
                 .getReference("bookmark")
                 .child("saved_events")
                 .child(getUid());
+
+        Glide.with(this)
+                .load(event.coverURL)
+                .into(imageView_header);
 
     }
 

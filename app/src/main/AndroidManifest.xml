@@ -49,7 +49,7 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/MyTheme.FullScreen" />
-              <activity
+        <activity
             android:name=".Event.EventDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyTheme.Detail" />
@@ -60,7 +60,10 @@
         <activity
             android:name=".Search.SearchActivity"
             android:label="@string/title_activity_search"
-            android:theme="@style/MyTheme"/>
+            android:theme="@style/MyTheme" />
+        <activity
+            android:name=".GrafixGallery.DetailActivity"
+            android:theme="@style/MyTheme.FullScreen" />
     </application>
 
 </manifest>

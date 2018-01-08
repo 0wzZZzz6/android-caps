@@ -57,7 +57,6 @@ public class HomeEventAdapter extends RecyclerView.Adapter<HomeEventAdapter.Home
         holder.home_event_title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(context, EventDetailsActivity.class);
                 Intent intent = new Intent(context, EventDetailActivity.class);
                 intent.putExtra("myEvent", item);
                 context.startActivity(intent);

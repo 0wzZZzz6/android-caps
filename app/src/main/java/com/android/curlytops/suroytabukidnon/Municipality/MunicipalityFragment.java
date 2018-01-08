@@ -43,8 +43,6 @@ public class MunicipalityFragment extends Fragment {
 
     private RecyclerView recyclerView;
 
-    SnapHelper snapHelper = new LinearSnapHelper();
-
     public MunicipalityFragment() {
     }
 
@@ -62,8 +60,6 @@ public class MunicipalityFragment extends Fragment {
         recyclerView = rootView.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setPadding(0, 0, 0, 52);
-
-        snapHelper.attachToRecyclerView(recyclerView);
 
         return rootView;
     }

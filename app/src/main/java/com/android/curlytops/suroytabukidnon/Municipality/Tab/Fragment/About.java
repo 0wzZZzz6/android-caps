@@ -38,7 +38,7 @@ public class About extends Fragment {
     StarredAdapter starredAdapter;
     TaggedAdapter taggedAdapter;
 
-    String id, municipality;
+    String municipalityId, municipality;
     List<Event> newEventList = new ArrayList<>();
     List<MunicipalityItem> newItemList = new ArrayList<>();
 
@@ -54,7 +54,7 @@ public class About extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        id = ((TabActivity) getActivity()).getMunicipalityId();
+        municipalityId = ((TabActivity) getActivity()).getMunicipalityId();
         municipality = ((TabActivity) getActivity()).getMunicipality();
 
         List<Event> eventList = new BaseActivity().readEvents(getContext());
@@ -131,7 +131,7 @@ public class About extends Fragment {
                 public void onClick(View v) {
                     Intent intent = new Intent(getContext(), TabItemDetailActivity.class);
                     intent.putExtra("municipalityItem", item);
-                    intent.putExtra("id", id);
+                    intent.putExtra("municipalityId", municipalityId);
                     startActivity(intent);
                 }
             });
