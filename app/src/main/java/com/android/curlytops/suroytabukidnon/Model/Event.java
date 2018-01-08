@@ -65,4 +65,7 @@ public class Event implements Serializable {
         this.taggedMunicipality = taggedMunicipality;
     }
 
+    public long getStartDate() {
+        return startDate;
+    }
 }

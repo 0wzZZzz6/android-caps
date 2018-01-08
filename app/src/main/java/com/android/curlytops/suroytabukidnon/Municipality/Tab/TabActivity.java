@@ -24,7 +24,6 @@ import butterknife.ButterKnife;
 public class TabActivity extends BaseActivity {
 
     public String municipalityId, imageUrl, municipality;
-    int mutedColor = R.attr.colorPrimary;
 
     @BindView(R.id.tab_toolbar)
     Toolbar toolbar;

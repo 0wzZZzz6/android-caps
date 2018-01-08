@@ -1,26 +1,20 @@
 package com.android.curlytops.suroytabukidnon.Municipality.Tab_Item_Details;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.android.curlytops.suroytabukidnon.BaseActivity;
-import com.android.curlytops.suroytabukidnon.Connection.ConnectivityReceiver;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
 import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -69,6 +63,15 @@ public class TabItemDetailActivity extends BaseActivity {
     Map<String, String> marked = new HashMap<>();
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.content, TabItemDetailFragment.newInstance())
+                .commit();
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -87,8 +90,6 @@ public class TabItemDetailActivity extends BaseActivity {
         municipalityId = (String)
                 getIntent().getSerializableExtra("municipalityId");
         item_id = municipalityItem.id;
-
-        Log.d(TAG, municipalityItem + " item    --   " + municipalityId + "  -- id");
 
         municipalityReference = FirebaseDatabase.getInstance()
                 .getReference("municipality")
@@ -124,7 +125,7 @@ public class TabItemDetailActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_bookmark: {
-                if (checkConnection())
+                if (checkConnection(coordinatorLayout))
                     onBookmarkClicked();
                 return true;
             }
@@ -212,42 +213,6 @@ public class TabItemDetailActivity extends BaseActivity {
         double lon = Double.parseDouble(parts[1]);
 
         MapsWithMeApi.showPointOnMap(this, lat, lon, municipalityItem.title);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.content, TabItemDetailFragment.newInstance())
-                .commit();
-    }
-
-    // Method to manually check connection status
-    private boolean checkConnection() {
-        boolean isConnected = ConnectivityReceiver.isConnected();
-        showSnack(isConnected);
-
-        return isConnected;
-    }
-
-    // Showing the status in Snackbar
-    private void showSnack(boolean isConnected) {
-        String message;
-
-        if (!isConnected) {
-            message = "Sorry! Not connected to internet";
-
-            Snackbar snackbar = Snackbar
-                    .make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
-
-            View sbView = snackbar.getView();
-            TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
-            textView.setTextColor(Color.WHITE);
-            sbView.setBackgroundColor(Color.RED);
-            snackbar.show();
-        }
-
     }
 
 }

@@ -3,10 +3,14 @@ package com.android.curlytops.suroytabukidnon;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
+import com.android.curlytops.suroytabukidnon.Connection.ConnectivityReceiver;
 import com.android.curlytops.suroytabukidnon.Model.Bookmark;
 import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
@@ -690,6 +694,32 @@ public class BaseActivity extends AppCompatActivity {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
         }
+    }
+
+    public boolean checkConnection(View view) {
+        boolean isConnected = ConnectivityReceiver.isConnected();
+        showSnack(isConnected, view);
+
+        return isConnected;
+    }
+
+    // Showing the status in Snackbar
+    public void showSnack(boolean isConnected, View view) {
+        String message;
+
+        if (!isConnected) {
+            message = "Sorry! Not connected to internet";
+
+            Snackbar snackbar = Snackbar
+                    .make(view, message, Snackbar.LENGTH_LONG);
+
+            View sbView = snackbar.getView();
+            TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            sbView.setBackgroundColor(Color.RED);
+            snackbar.show();
+        }
+
     }
 
     public String getUid() {

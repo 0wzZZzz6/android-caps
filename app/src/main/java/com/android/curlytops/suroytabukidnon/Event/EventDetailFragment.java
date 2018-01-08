@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,11 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.android.curlytops.suroytabukidnon.BaseActivity;
 import com.android.curlytops.suroytabukidnon.Connection.ConnectivityReceiver;
 import com.android.curlytops.suroytabukidnon.GrafixGallery.DetailActivity;
 import com.android.curlytops.suroytabukidnon.GrafixGallery.GalleryAdapter;
@@ -53,8 +51,7 @@ import butterknife.OnClick;
  * Created by jan_frncs
  */
 
-public class EventDetailFragment extends Fragment implements
-        ConnectivityReceiver.ConnectivityReceiverListener {
+public class EventDetailFragment extends Fragment {
 
     public static final String TAG = "EventDetailFragment";
     private static final String INTERESTED = "interested";
@@ -81,7 +78,7 @@ public class EventDetailFragment extends Fragment implements
     @BindView(R.id.fragment_event_details_description)
     ExpandableTextView tv_description;
 
-    @BindView(R.id.recyclerView_gallery)
+    @BindView(R.id.recyclerView_gallery_event)
     RecyclerView rv_gallery;
 
     @BindView(R.id.totalInterested)
@@ -110,8 +107,11 @@ public class EventDetailFragment extends Fragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         eventDetailActivity = (EventDetailActivity) getActivity();
-        event = eventDetailActivity.getEvent();
-        appBarLayout = eventDetailActivity.appBarLayout;
+        if (eventDetailActivity != null) {
+            event = eventDetailActivity.event;
+            appBarLayout = eventDetailActivity.appBarLayout;
+        }
+
         eventReference = FirebaseDatabase.getInstance()
                 .getReference("events").child(event.e_id);
         getDetails();
@@ -238,13 +238,13 @@ public class EventDetailFragment extends Fragment implements
 
     @OnClick(R.id.fragment_event_details_button_interested)
     public void button_interested() {
-        if (checkConnection())
+        if (new BaseActivity().checkConnection(eventDetailActivity.coordinatorLayout))
             onReactButtonClicked(eventReference, INTERESTED);
     }
 
     @OnClick(R.id.fragment_event_details_button_going)
     public void button_going() {
-        if (checkConnection())
+        if (new BaseActivity().checkConnection(eventDetailActivity.coordinatorLayout))
             onReactButtonClicked(eventReference, GOING);
     }
 
@@ -367,43 +367,6 @@ public class EventDetailFragment extends Fragment implements
 
     public String getUid() {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
-    }
-
-    // Method to manually check connection status
-    private boolean checkConnection() {
-        boolean isConnected = ConnectivityReceiver.isConnected();
-        showSnack(isConnected);
-
-        return isConnected;
-    }
-
-    // Showing the status in Snackbar
-    private void showSnack(boolean isConnected) {
-        String message;
-
-        if (!isConnected) {
-            message = "Sorry! Not connected to internet";
-
-            Snackbar snackbar = Snackbar
-                    .make(eventDetailActivity.coordinatorLayout, message, Snackbar.LENGTH_LONG);
-
-            View sbView = snackbar.getView();
-            TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
-            textView.setTextColor(Color.WHITE);
-            sbView.setBackgroundColor(Color.RED);
-            snackbar.show();
-        }
-
-
-    }
-
-    /**
-     * Callback will be triggered when there is change in
-     * network connection
-     */
-    @Override
-    public void onNetworkConnectionChanged(boolean isConnected) {
-        showSnack(isConnected);
     }
 
 }

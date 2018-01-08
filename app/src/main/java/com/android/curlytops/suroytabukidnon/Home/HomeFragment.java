@@ -2,14 +2,12 @@ package com.android.curlytops.suroytabukidnon.Home;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,18 +18,14 @@ import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.Model.Home;
 import com.android.curlytops.suroytabukidnon.Model.News;
 import com.android.curlytops.suroytabukidnon.R;
-import com.jayway.jsonpath.Configuration;
-import com.jayway.jsonpath.JsonPath;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.BufferedInputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -108,6 +102,13 @@ public class HomeFragment extends Fragment {
     private void content() {
         eventList = new BaseActivity().readEvents(getContext());
         newsList = new BaseActivity().readNews(getContext());
+
+        Collections.sort(eventList, new Comparator<Event>() {
+            @Override
+            public int compare(Event o1, Event o2) {
+                return Long.compare(o1.startDate, o2.startDate);
+            }
+        });
 
         homeAdapter = new HomeAdapter(this.getContext(), readHomeJson());
         homeEventAdapter = new HomeEventAdapter(this.getContext(), eventList);

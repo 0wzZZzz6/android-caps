@@ -128,6 +128,7 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_event, container, false);
         ButterKnife.bind(this, rootView);
+
         sectionAdapter = new SectionedRecyclerViewAdapter();
         if ((getActivity()) != null) {
             toolbar = ((MainActivity) getActivity()).toolbar;
@@ -192,21 +193,19 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
             }
         });
 
+
+
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         calendarViewWidget();
         firebaseEvents();
         readEvents(0);
         SectionAdapter("default");
-
-        // search
-        List<Event> search_result = new ArrayList<>();
-        for(Event event : eventList){
-            if(event.title.toLowerCase().contains("penta")){
-                search_result.add(event);
-            }
-        }
-        Log.d(TAG, search_result.size() +" - size");
-
-        return rootView;
     }
 
     public void collapseBottomSheet() {

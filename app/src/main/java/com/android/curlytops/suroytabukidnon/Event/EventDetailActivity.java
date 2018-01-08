@@ -1,21 +1,16 @@
 package com.android.curlytops.suroytabukidnon.Event;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.android.curlytops.suroytabukidnon.BaseActivity;
-import com.android.curlytops.suroytabukidnon.Connection.ConnectivityReceiver;
 import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;
@@ -61,7 +56,6 @@ public class EventDetailActivity extends BaseActivity {
     Map<String, String> marked = new HashMap<>();
     String item_id;
 
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -85,9 +79,9 @@ public class EventDetailActivity extends BaseActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        event = getEvent();
+        event = (Event) getIntent().getSerializableExtra("myEvent");
         item_id = event.e_id;
-        
+
         eventReference = FirebaseDatabase.getInstance()
                 .getReference("events")
                 .child(item_id);
@@ -101,10 +95,6 @@ public class EventDetailActivity extends BaseActivity {
                 .load(event.coverURL)
                 .into(imageView_header);
 
-    }
-
-    public Event getEvent() {
-        return (Event) getIntent().getSerializableExtra("myEvent");
     }
 
     @Override
@@ -125,7 +115,7 @@ public class EventDetailActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_bookmark: {
-                if (checkConnection())
+                if (checkConnection(coordinatorLayout))
                     onBookmarkClicked();
                 return true;
             }
@@ -201,34 +191,6 @@ public class EventDetailActivity extends BaseActivity {
                 Log.d(TAG, "postTransaction:onComplete:" + databaseError);
             }
         });
-    }
-
-    // Method to manually check connection status
-    private boolean checkConnection() {
-        boolean isConnected = ConnectivityReceiver.isConnected();
-        showSnack(isConnected);
-
-        return isConnected;
-    }
-
-    // Showing the status in Snackbar
-    private void showSnack(boolean isConnected) {
-        String message;
-
-        if (!isConnected) {
-            message = "Sorry! Not connected to internet";
-
-            Snackbar snackbar = Snackbar
-                    .make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
-
-            View sbView = snackbar.getView();
-            TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
-            textView.setTextColor(Color.WHITE);
-            sbView.setBackgroundColor(Color.RED);
-            snackbar.show();
-        }
-
-
     }
 
 }
