@@ -2,6 +2,7 @@ package com.android.curlytops.suroytabukidnon.Municipality.Tab.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -57,14 +58,15 @@ public class More extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        municipalityId = ((TabActivity) getActivity()).getMunicipalityId();
-        Log.d(TAG, municipalityId);
+        if ((getActivity()) != null) {
+            municipalityId = ((TabActivity) getActivity()).getMunicipalityId();
+        }
         categories = Arrays.asList(getResources().getStringArray(R.array.catergory));
         readMunicipalityItems();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view;
 
@@ -219,7 +221,6 @@ public class More extends Fragment {
         @Override
         public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder) {
             final HeaderViewHolder headerHolder = (HeaderViewHolder) holder;
-
 
             int letter = list.size();
             TextDrawable textDrawable = TextDrawable.builder()

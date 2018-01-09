@@ -106,6 +106,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void content() {
+        newEventList.clear();
         eventList = new BaseActivity().readEvents(getContext());
         newsList = new BaseActivity().readNews(getContext());
 
@@ -113,7 +114,6 @@ public class HomeFragment extends Fragment {
             if (event.starred)
                 newEventList.add(event);
         }
-
 
         if (newsList.size() > 0) {
             news.setVisibility(View.VISIBLE);

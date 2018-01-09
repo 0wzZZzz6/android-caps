@@ -10,7 +10,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +28,7 @@ import com.android.curlytops.suroytabukidnon.GrafixGallery.RecyclerItemClickList
 import com.android.curlytops.suroytabukidnon.Model.ImageModel;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
 import com.android.curlytops.suroytabukidnon.R;
+import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -85,6 +88,7 @@ public class TabItemDetailFragment extends Fragment {
     ArrayList<ImageModel> data = new ArrayList<>();
     ChipsAdapter chipsAdapter;
     GalleryAdapter galleryAdapter;
+    SnapHelper snapHelper = new GravitySnapHelper(Gravity.START);
 
     public TabItemDetailFragment() {
     }
@@ -147,10 +151,11 @@ public class TabItemDetailFragment extends Fragment {
         description.setText(municipalityItem.description);
 
         chipsAdapter = new ChipsAdapter(municipalityItem.category);
-        rv_chips.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,
-                false));
+        rv_chips.setLayoutManager(new LinearLayoutManager(getContext(),
+                LinearLayoutManager.HORIZONTAL, false));
         rv_chips.setHasFixedSize(false);
         rv_chips.setAdapter(chipsAdapter);
+        snapHelper.attachToRecyclerView(rv_chips);
 
         galleryAdapter = new GalleryAdapter(getContext(), data, viewMode_places);
         rv_gallery.setLayoutManager(new GridLayoutManager(getContext(), 3));

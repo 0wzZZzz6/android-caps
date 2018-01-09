@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import com.android.curlytops.suroytabukidnon.Municipality.Tab.TabActivity;
 import com.android.curlytops.suroytabukidnon.Municipality.Tab_Item_Detail.TabItemDetailActivity;
 import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;
+import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +46,8 @@ public class About extends Fragment {
     String municipalityId, municipality;
     List<Event> newEventList = new ArrayList<>();
     List<MunicipalityItem> newItemList = new ArrayList<>();
-    SnapHelper snapHelperPlaces = new LinearSnapHelper();
-    SnapHelper snapHelperEvents = new LinearSnapHelper();
+    SnapHelper snapHelperPlaces = new GravitySnapHelper(Gravity.START);
+    SnapHelper snapHelperEvents = new GravitySnapHelper(Gravity.START);
 
     @BindView(R.id.fragment_about_feature)
     RecyclerView recyclerView_starred;
@@ -55,16 +57,22 @@ public class About extends Fragment {
     @BindView(R.id.taggedCount)
     TextView taggedCount;
 
+    @BindView(R.id.fragment_about_featured_places)
+    View featured_places;
+    @BindView(R.id.fragment_about_tagged_events)
+    View tagged_events;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        municipalityId = ((TabActivity) getActivity()).getMunicipalityId();
-        municipality = ((TabActivity) getActivity()).getMunicipality();
+        if ((getActivity()) != null) {
+            municipalityId = ((TabActivity) getActivity()).getMunicipalityId();
+            municipality = ((TabActivity) getActivity()).getMunicipality();
+        }
 
         List<Event> eventList = new BaseActivity().readEvents(getContext());
         List<MunicipalityItem> itemList = new BaseActivity().readMunicipalityItems(getContext());
-
 
         for (Event event : eventList) {
             List<String> item = event.taggedMunicipality;
@@ -89,22 +97,34 @@ public class About extends Fragment {
         View view = inflater.inflate(R.layout.fragment_about, container, false);
         ButterKnife.bind(this, view);
 
-        starredAdapter = new StarredAdapter(getContext(), newItemList);
-        recyclerView_starred.setHasFixedSize(false);
-        recyclerView_starred.setLayoutManager(new LinearLayoutManager(this.getContext(),
-                LinearLayoutManager.HORIZONTAL, false));
-        recyclerView_starred.setAdapter(starredAdapter);
-        snapHelperPlaces.attachToRecyclerView(recyclerView_starred);
-
-        taggedCount.setText(String.valueOf(newEventList.size()));
-        taggedAdapter = new TaggedAdapter(getContext(), newEventList);
-        recyclerView_tagged.setHasFixedSize(false);
-        recyclerView_tagged.setLayoutManager(new LinearLayoutManager(this.getContext(),
-                LinearLayoutManager.HORIZONTAL, false));
-        recyclerView_tagged.setAdapter(taggedAdapter);
-        snapHelperEvents.attachToRecyclerView(recyclerView_tagged);
-
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        if (newItemList.size() > 0) {
+            featured_places.setVisibility(View.VISIBLE);
+            starredAdapter = new StarredAdapter(getContext(), newItemList);
+            recyclerView_starred.setHasFixedSize(false);
+            recyclerView_starred.setLayoutManager(new LinearLayoutManager(this.getContext(),
+                    LinearLayoutManager.HORIZONTAL, false));
+            recyclerView_starred.setAdapter(starredAdapter);
+            snapHelperPlaces.attachToRecyclerView(recyclerView_starred);
+        }
+
+        if (newEventList.size() > 0) {
+            tagged_events.setVisibility(View.VISIBLE);
+            taggedCount.setText(String.valueOf(newEventList.size()));
+            taggedAdapter = new TaggedAdapter(getContext(), newEventList);
+            recyclerView_tagged.setHasFixedSize(false);
+            recyclerView_tagged.setLayoutManager(new LinearLayoutManager(this.getContext(),
+                    LinearLayoutManager.HORIZONTAL, false));
+            recyclerView_tagged.setAdapter(taggedAdapter);
+            snapHelperEvents.attachToRecyclerView(recyclerView_tagged);
+        }
+
     }
 
     class StarredAdapter extends
