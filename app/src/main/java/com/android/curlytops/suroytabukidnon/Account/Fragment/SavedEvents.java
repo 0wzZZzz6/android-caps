@@ -1,8 +1,9 @@
 package com.android.curlytops.suroytabukidnon.Account.Fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,8 +11,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
 import com.android.curlytops.suroytabukidnon.BaseActivity;
 import com.android.curlytops.suroytabukidnon.Event.EventDetailActivity;
 import com.android.curlytops.suroytabukidnon.Model.Bookmark;
@@ -20,14 +24,24 @@ import com.android.curlytops.suroytabukidnon.R;
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
 
+import org.joda.time.DateTime;
+
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters;
+import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
+import io.github.luizgrp.sectionedrecyclerviewadapter.StatelessSection;
 
 /**
  * Created by jan_frncs
@@ -39,12 +53,15 @@ public class SavedEvents extends Fragment {
 
     private static final String jsonPathNode_bookmarkEvents = "bookmark_events";
 
-    List<Bookmark> bookmarkList_events = new ArrayList<>();
-    List<Event> eventList = new ArrayList<>();
-    List<Event> new_eventList = new ArrayList<>();
+
+    List<Event> filtered_events = new ArrayList<>();
 
     @BindView(R.id.recyclerview_bookmark)
     RecyclerView recyclerView;
+
+    SectionedRecyclerViewAdapter sectionedRecyclerViewAdapter;
+    String[] months;
+
 
     public static SavedEvents newInstance() {
         SavedEvents savedEvents = new SavedEvents();
@@ -54,28 +71,140 @@ public class SavedEvents extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_recyclerview_bookmark, container, false);
-        ButterKnife.bind(this, view);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        eventList = new BaseActivity().readEvents(getContext());
-        readBookmark_events();
+        months = getResources().getStringArray(R.array.months);
+        sectionedRecyclerViewAdapter = new SectionedRecyclerViewAdapter();
         filterEvents();
+    }
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setPadding(0, 0, 0, 52);
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view;
+
+
+        if (filtered_events.size() > 0) {
+            Log.d("SHIELAMAE", "not empty");
+            view = inflater.inflate(R.layout.fragment_recyclerview_bookmark, container, false);
+            ButterKnife.bind(this, view);
+        } else {
+            Log.d("SHIELAMAE", "empty");
+            view = inflater.inflate(R.layout.empty_state, container, false);
+        }
+
         return view;
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        SavedEventAdapter adapter = new SavedEventAdapter(getActivity(), new_eventList);
-        recyclerView.setAdapter(adapter);
+        if (filtered_events.size() > 0) {
+            filtered_events.clear();
+            filterEvents();
+            sectionedRecyclerViewAdapter.notifyDataSetChanged();
+            sectionedRecyclerViewAdapter.removeAllSections();
+            SectionAdapter();
+            Log.d("SHIELAMAE", filtered_events.size() + "");
+        }
     }
 
-    private void readBookmark_events() {
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (filtered_events.size() > 0) {
+            filtered_events.clear();
+            filterEvents();
+            sectionedRecyclerViewAdapter.notifyDataSetChanged();
+            sectionedRecyclerViewAdapter.removeAllSections();
+            SectionAdapter();
+            Log.d("SHIELAMAE", filtered_events.size() + "");
+        }
+    }
+
+    public void SectionAdapter() {
+        for (String month : months) {
+            List<Event> listEvents = sortEventList(month);
+            if (listEvents.size() > 0)
+                sectionedRecyclerViewAdapter.addSection(new EventSection(month, listEvents));
+        }
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(sectionedRecyclerViewAdapter);
+    }
+
+    private List<Event> sortEventList(String month) {
+        List<Event> events = new ArrayList<>();
+        for (Event ev : filtered_events) {
+            if (ev.allDay) {    // if event is allDay == true
+                if (month.equalsIgnoreCase(getMonth(ev.startDate)))
+                    events.add(ev);
+            } else {            // if event is allDay == false
+                if (month.equalsIgnoreCase(getMonth(ev.startDate))) {
+                    events.add(ev);
+                } else if (month.equalsIgnoreCase(getMonth(ev.endDate))) {
+                    events.add(ev);
+                }
+            }
+        }
+
+        return events;
+    }
+
+    private String getMonth(long date) {
+        String month = null;
+        Date tempDate = new Date(date);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(tempDate);
+        int monthNumeric = calendar.get(Calendar.MONTH);
+
+        for (int i = 0; i < 12; i++) {
+            if (i == monthNumeric) {
+                month = months[i];
+            }
+        }
+
+        return month;
+    }
+
+    private String getDate(Event item) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM");
+
+        String date;
+        if (item.allDay) {
+            date = convertDate(item.startDate);
+        } else {
+            DateTime fromDate = new DateTime(item.startDate);
+            DateTime toDate = new DateTime(item.endDate);
+
+            if (fromDate.getMonthOfYear() == toDate.getMonthOfYear() &&
+                    fromDate.getYear() == toDate.getYear()) {
+
+                return simpleDateFormat.format(item.startDate) + " " +
+                        fromDate.getDayOfMonth() + " - " + toDate.getDayOfMonth() + ", " +
+                        fromDate.getYear();
+            } else if (!(fromDate.getMonthOfYear() == toDate.getMonthOfYear()) &&
+                    fromDate.getYear() == toDate.getYear()) {
+                return simpleDateFormat.format(item.startDate) + " " + fromDate.getDayOfMonth()
+                        + " - " +
+                        simpleDateFormat.format(item.endDate) + " " + toDate.getDayOfMonth() + " ," +
+                        fromDate.getYear();
+            } else {
+                date = convertDate(item.startDate) + " - " + convertDate(item.endDate);
+            }
+        }
+
+        return date;
+    }
+
+    private String convertDate(long date) {
+        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
+        return formatter.format(date);
+    }
+
+    private List<Bookmark> readBookmark_events() {
+        List<Bookmark> bookmarkList_events = new ArrayList<>();
         try {
             FileInputStream fis = getContext().openFileInput("bookmark_events.json");
             BufferedInputStream bis = new BufferedInputStream(fis);
@@ -109,14 +238,19 @@ public class SavedEvents extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return bookmarkList_events;
     }
 
     private void filterEvents() {
+        List<Event> eventList = new BaseActivity().readEvents(getContext());
+        List<Bookmark> bookmarkList_events = readBookmark_events();
+
         for (int i = 0; i < bookmarkList_events.size(); i++) {
             for (int j = 0; j < eventList.size(); j++) {
                 if (bookmarkList_events.get(i).item_id.equalsIgnoreCase(eventList.get(j).e_id)) {
                     Log.d(TAG, eventList.get(j).e_id + " [bookmarked]");
-                    new_eventList.add(eventList.get(j));
+                    filtered_events.add(eventList.get(j));
                     eventList.remove(j);
                 }
             }
@@ -127,53 +261,97 @@ public class SavedEvents extends Fragment {
         return "$." + jsonPathNode + "[" + index + "]." + keyword;
     }
 
-    class SavedEventAdapter extends
-            RecyclerView.Adapter<SavedEventAdapter.SavedEventViewHolder> {
+    private class EventSection extends StatelessSection {
+        String title;
+        List<Event> list;
 
-        private List<Event> eventList;
-        private Context context;
+        EventSection(String title, List<Event> list) {
 
-        SavedEventAdapter(Context context, List<Event> eventList) {
-            this.context = context;
-            this.eventList = eventList;
-        }
+            super(new SectionParameters.Builder(R.layout.event_item)
+                    .headerResourceId(R.layout.event_item_header)
+                    .build());
 
-        @Override
-        public SavedEventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).
-                    inflate(R.layout.saved_events_item, parent, false);
-            return new SavedEventViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(SavedEventViewHolder holder, int position) {
-            final Event event = eventList.get(position);
-
-            holder.saved_event_title.setText(event.title);
-            holder.saved_event_title.setOnClickListener(new View.OnClickListener() {
+            this.title = title;
+            this.list = list;
+            Collections.sort(list, new Comparator<Event>() {
                 @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getContext(), EventDetailActivity.class);
-                    intent.putExtra("myEvent", event);
-                    getContext().startActivity(intent);
+                public int compare(Event e1, Event e2) {
+                    return Long.compare(e1.startDate, e2.startDate);
                 }
             });
         }
 
         @Override
-        public int getItemCount() {
-            return eventList.size();
+        public int getContentItemsTotal() {
+            return list.size();
         }
 
-        class SavedEventViewHolder extends RecyclerView.ViewHolder {
+        @Override
+        public RecyclerView.ViewHolder getItemViewHolder(View view) {
+            return new ItemViewHolder(view);
+        }
 
-            @BindView(R.id.saved_event_item_title)
-            TextView saved_event_title;
+        @Override
+        public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
+            final ItemViewHolder itemHolder = (ItemViewHolder) holder;
+            final Event event = list.get(position);
 
-            SavedEventViewHolder(View view) {
-                super(view);
-                ButterKnife.bind(this, view);
-            }
+            String letter = event.title.substring(0, 1).toUpperCase();
+            TextDrawable textDrawable = TextDrawable.builder()
+                    .buildRound(letter, R.color.colorAccent);
+
+            itemHolder.eventTitle.setText(event.title);
+            itemHolder.eventDate.setText(getDate(event));
+            itemHolder.eventLocation.setText(event.location);
+            itemHolder.eventLetter.setImageDrawable(textDrawable);
+            itemHolder.eventItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getContext(), EventDetailActivity.class);
+                    intent.putExtra("myEvent", event);
+                    startActivity(intent);
+                }
+            });
+        }
+
+        @Override
+        public RecyclerView.ViewHolder getHeaderViewHolder(View view) {
+            return new HeaderViewHolder(view);
+        }
+
+        @Override
+        public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder) {
+            HeaderViewHolder headerHolder = (HeaderViewHolder) holder;
+            headerHolder.eventHeaderMonth.setText(title);
         }
     }
+
+    class HeaderViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.event_header_month)
+        TextView eventHeaderMonth;
+
+        HeaderViewHolder(View view) {
+            super(view);
+            ButterKnife.bind(this, view);
+        }
+    }
+
+    class ItemViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.event_title)
+        TextView eventTitle;
+        @BindView(R.id.event_location)
+        TextView eventLocation;
+        @BindView(R.id.event_date)
+        TextView eventDate;
+        @BindView(R.id.event_letter)
+        ImageView eventLetter;
+        @BindView(R.id.event_item)
+        LinearLayout eventItem;
+
+        ItemViewHolder(View view) {
+            super(view);
+            ButterKnife.bind(this, view);
+        }
+    }
+
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/home_news_item"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    card_view:cardUseCompatPadding="true"
-    app:ignore="NamespaceTypo">
+    app:ignore="NamespaceTypo"
+    card_view:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="300dp"
@@ -20,37 +20,38 @@
             android:scaleType="centerCrop"
             android:src="@drawable/happy" />
 
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:alpha="0.2"
-            android:background="@color/grey_900" />
+            android:background="@drawable/scrim_bottom"
+            android:gravity="bottom"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/home_news_item_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:padding="10dp"
-            android:shadowColor="#000"
-            android:shadowRadius="7.0"
-            android:text="This is some random text"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/home_news_item_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:shadowColor="#000"
+                android:shadowRadius="7.0"
+                android:text="This is some random text"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
-        <com.github.curioustechizen.ago.RelativeTimeTextView
-            android:id="@+id/home_news_item_timestamp"
-            android:text="asd"
-            android:textColor="@color/white"
-            android:shadowColor="#000"
-            android:shadowRadius="7.0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:relative_time_prefix="Completed "
-            android:layout_margin="5dp"/>
+            <com.github.curioustechizen.ago.RelativeTimeTextView
+                android:id="@+id/home_news_item_timestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="5dp"
+                android:paddingBottom="5dp"
+                android:shadowColor="#000"
+                android:shadowRadius="7.0"
+                android:text="asd"
+                android:textColor="@color/white"
+                app:relative_time_prefix="Completed " />
+
+        </LinearLayout>
+
 
     </RelativeLayout>
 

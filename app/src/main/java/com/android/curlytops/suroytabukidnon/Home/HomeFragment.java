@@ -59,10 +59,6 @@ public class HomeFragment extends Fragment {
     @BindView(R.id.fragment_home_recyclerView_events)
     RecyclerView rv_events;
 
-    @BindView(R.id.fragment_home_textView_news)
-    TextView textView_news;
-    @BindView(R.id.fragment_home_textView_events)
-    TextView textView_events;
 
     @BindView(R.id.fragment_home_events)
     View events;
@@ -107,6 +103,7 @@ public class HomeFragment extends Fragment {
 
     private void content() {
         newEventList.clear();
+        newsList.clear();
         eventList = new BaseActivity().readEvents(getContext());
         newsList = new BaseActivity().readNews(getContext());
 
