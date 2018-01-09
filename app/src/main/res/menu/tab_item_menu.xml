@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Municipality.Tab_Item_Details.TabItemDetailActivity">
+    tools:context=".Municipality.Tab_Item_Detail.TabItemDetailActivity">
 
 
     <item

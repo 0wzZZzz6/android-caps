@@ -21,7 +21,7 @@ import com.android.curlytops.suroytabukidnon.Event.EventDetailActivity;
 import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
 import com.android.curlytops.suroytabukidnon.Municipality.Tab.TabActivity;
-import com.android.curlytops.suroytabukidnon.Municipality.Tab_Item_Details.TabItemDetailActivity;
+import com.android.curlytops.suroytabukidnon.Municipality.Tab_Item_Detail.TabItemDetailActivity;
 import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;
 

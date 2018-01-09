@@ -64,7 +64,13 @@ public class HomeFragment extends Fragment {
     @BindView(R.id.fragment_home_textView_events)
     TextView textView_events;
 
+    @BindView(R.id.fragment_home_events)
+    View events;
+    @BindView(R.id.fragment_home_news)
+    View news;
+
     List<Event> eventList = new ArrayList<>();
+    List<Event> newEventList = new ArrayList<>();
     List<News> newsList = new ArrayList<>();
 
     public HomeFragment() {
@@ -103,38 +109,48 @@ public class HomeFragment extends Fragment {
         eventList = new BaseActivity().readEvents(getContext());
         newsList = new BaseActivity().readNews(getContext());
 
-        Collections.sort(eventList, new Comparator<Event>() {
-            @Override
-            public int compare(Event o1, Event o2) {
-                return Long.compare(o1.startDate, o2.startDate);
-            }
-        });
+        for (Event event : eventList) {
+            if (event.starred)
+                newEventList.add(event);
+        }
+
+
+        if (newsList.size() > 0) {
+            news.setVisibility(View.VISIBLE);
+            homeNewsAdapter = new HomeNewsAdapter(this.getContext(), newsList);
+            LinearLayoutManager linearLayout1 = new LinearLayoutManager(this.getContext(),
+                    LinearLayoutManager.HORIZONTAL, false);
+            rv_news.setHasFixedSize(false);
+            rv_news.setLayoutManager(linearLayout1);
+            rv_news.setAdapter(homeNewsAdapter);
+            snapHelperNews.attachToRecyclerView(rv_news);
+        }
+
+        if (newEventList.size() > 0) {
+            Collections.sort(newEventList, new Comparator<Event>() {
+                @Override
+                public int compare(Event o1, Event o2) {
+                    return Long.compare(o1.startDate, o2.startDate);
+                }
+            });
+            events.setVisibility(View.VISIBLE);
+            homeEventAdapter = new HomeEventAdapter(this.getContext(), newEventList);
+            LinearLayoutManager linearLayout2 = new LinearLayoutManager(this.getContext(),
+                    LinearLayoutManager.HORIZONTAL, false);
+            rv_events.setHasFixedSize(false);
+            rv_events.setLayoutManager(linearLayout2);
+            rv_events.setAdapter(homeEventAdapter);
+            snapHelperEvents.attachToRecyclerView(rv_events);
+        }
 
         homeAdapter = new HomeAdapter(this.getContext(), readHomeJson());
-        homeEventAdapter = new HomeEventAdapter(this.getContext(), eventList);
-        homeNewsAdapter = new HomeNewsAdapter(this.getContext(), newsList);
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext(),
                 LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(homeAdapter);
-
-        LinearLayoutManager linearLayout1 = new LinearLayoutManager(this.getContext(),
-                LinearLayoutManager.HORIZONTAL, false);
-        rv_news.setHasFixedSize(false);
-        rv_news.setLayoutManager(linearLayout1);
-        rv_news.setAdapter(homeNewsAdapter);
-
-        LinearLayoutManager linearLayout2 = new LinearLayoutManager(this.getContext(),
-                LinearLayoutManager.HORIZONTAL, false);
-        rv_events.setHasFixedSize(false);
-        rv_events.setLayoutManager(linearLayout2);
-        rv_events.setAdapter(homeEventAdapter);
-
         snapHelperTribes.attachToRecyclerView(recyclerView);
-        snapHelperNews.attachToRecyclerView(rv_news);
-        snapHelperEvents.attachToRecyclerView(rv_events);
+
     }
 
     public List<Home> readHomeJson() {

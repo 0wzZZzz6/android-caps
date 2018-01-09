@@ -54,7 +54,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/MyTheme.Detail" />
         <activity
-            android:name=".Municipality.Tab_Item_Details.TabItemDetailActivity"
+            android:name=".Municipality.Tab_Item_Detail.TabItemDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyTheme.Detail" />
         <activity

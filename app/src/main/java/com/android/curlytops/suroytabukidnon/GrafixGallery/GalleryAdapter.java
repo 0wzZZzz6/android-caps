@@ -10,32 +10,40 @@ import android.widget.ImageView;
 import com.android.curlytops.suroytabukidnon.Model.ImageModel;
 import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Suleiman19 on 10/22/15.
+ * Created by jan_frncs
  */
 public class GalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    Context context;
-    List<ImageModel> data = new ArrayList<>();
+    private Context context;
+    private List<ImageModel> data = new ArrayList<>();
+    private String viewMode;
+    private static final String viewMode_events = "events";
+    private static final String viewMode_places = "places";
 
-    public GalleryAdapter(Context context, List<ImageModel> data) {
+    public GalleryAdapter(Context context, List<ImageModel> data, String viewMode) {
+        this.viewMode = viewMode;
         this.context = context;
         this.data = data;
     }
 
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder viewHolder;
-        View v;
-            v = LayoutInflater.from(parent.getContext()).inflate(
-                    R.layout.list_item, parent, false);
-            viewHolder = new MyItemHolder(v);
+        View view;
+        if (viewMode.equalsIgnoreCase(viewMode_events)) {
+            view = LayoutInflater.from(parent.getContext()).inflate(
+                    R.layout.gallery_item_events, parent, false);
+        } else {
+            view = LayoutInflater.from(parent.getContext()).inflate(
+                    R.layout.gallery_item_places, parent, false);
+        }
+
+        viewHolder = new MyItemHolder(view);
 
         return viewHolder;
     }
@@ -43,9 +51,9 @@ public class GalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-            Glide.with(context).load(data.get(position).getUrl())
-                    .thumbnail(0.5f)
-                    .into(((MyItemHolder) holder).mImg);
+        Glide.with(context).load(data.get(position).getUrl())
+                .thumbnail(0.5f)
+                .into(((MyItemHolder) holder).mImg);
 
     }
 
@@ -57,11 +65,10 @@ public class GalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public static class MyItemHolder extends RecyclerView.ViewHolder {
         ImageView mImg;
 
-
-        public MyItemHolder(View itemView) {
+        MyItemHolder(View itemView) {
             super(itemView);
 
-            mImg = (ImageView) itemView.findViewById(R.id.item_img);
+            mImg = itemView.findViewById(R.id.item_img);
         }
 
     }

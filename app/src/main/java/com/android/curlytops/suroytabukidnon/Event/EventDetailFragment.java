@@ -9,8 +9,12 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +30,7 @@ import com.android.curlytops.suroytabukidnon.GrafixGallery.RecyclerItemClickList
 import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.Model.ImageModel;
 import com.android.curlytops.suroytabukidnon.R;
+import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -56,6 +61,7 @@ public class EventDetailFragment extends Fragment {
     public static final String TAG = "EventDetailFragment";
     private static final String INTERESTED = "interested";
     private static final String GOING = "going";
+    private static final String viewMode_events = "events";
 
     EventDetailActivity eventDetailActivity;
     Event event;
@@ -64,6 +70,7 @@ public class EventDetailFragment extends Fragment {
     DatabaseReference eventReference;
     AppBarLayout appBarLayout;
     GalleryAdapter galleryAdapter;
+    SnapHelper snapHelper = new GravitySnapHelper(Gravity.START);
 
     @BindView(R.id.fragment_event_details_textView_month)
     TextView tv_month;
@@ -147,10 +154,12 @@ public class EventDetailFragment extends Fragment {
         tv_time.setText(dateTimeInfo);
         tv_description.setText(event.description);
 
-        galleryAdapter = new GalleryAdapter(getContext(), data);
-        rv_gallery.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        galleryAdapter = new GalleryAdapter(getContext(), data, viewMode_events);
+        rv_gallery.setLayoutManager(new LinearLayoutManager(getContext(),
+                LinearLayoutManager.HORIZONTAL, false));
         rv_gallery.setHasFixedSize(true);
         rv_gallery.setAdapter(galleryAdapter);
+        snapHelper.attachToRecyclerView(rv_gallery);
 
         rv_gallery.addOnItemTouchListener(new RecyclerItemClickListener(getContext(),
                 new RecyclerItemClickListener.OnItemClickListener() {
@@ -334,21 +343,23 @@ public class EventDetailFragment extends Fragment {
                                 statusLinearlayout.setVisibility(View.VISIBLE);
                                 statusLinearlayout.animate().alpha(1.0f);
 
-                                statusDivider.setVisibility(View.GONE);
+                                statusDivider.setVisibility(View.INVISIBLE);
                                 statusDivider.animate().alpha(0.0f);
 
-                                t_Interested = event.interested.size() + " interested";
-                                t_Going = event.going.size() + " going";
 
-                                totalInterested.setText(t_Interested);
-                                totalGoing.setText(t_Going);
                             } else {
-                                statusLinearlayout.setVisibility(View.GONE);
+                                statusLinearlayout.setVisibility(View.INVISIBLE);
                                 statusLinearlayout.animate().alpha(0.0f);
 
                                 statusDivider.setVisibility(View.VISIBLE);
                                 statusDivider.animate().alpha(1.0f);
                             }
+
+                            t_Interested = event.interested.size() + " interested";
+                            t_Going = event.going.size() + " going";
+
+                            totalInterested.setText(t_Interested);
+                            totalGoing.setText(t_Going);
                         }
                     } catch (Exception e) {
                         Log.d(TAG, e.getMessage());

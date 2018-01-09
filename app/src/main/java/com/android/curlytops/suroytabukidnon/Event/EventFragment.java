@@ -101,6 +101,7 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
     @BindView(R.id.fragment_event_fab)
     FloatingActionButton fab;
 
+
     boolean fabStat = false;
     boolean openFab = true;
 
@@ -193,8 +194,6 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
             }
         });
 
-
-
         return rootView;
     }
 
@@ -206,6 +205,8 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
         firebaseEvents();
         readEvents(0);
         SectionAdapter("default");
+        if (eventList.size() > 0)
+            bottomSheet.setVisibility(View.VISIBLE);
     }
 
     public void collapseBottomSheet() {

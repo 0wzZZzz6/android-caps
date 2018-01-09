@@ -30,9 +30,11 @@
             </FrameLayout>
 
             <LinearLayout
+                android:id="@+id/fragment_home_news"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/fragment_home_textView_news"
@@ -54,9 +56,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/fragment_home_events"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/fragment_home_textView_events"
@@ -66,7 +70,7 @@
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp"
                     android:paddingTop="16dp"
-                    android:text="Highlight Events"
+                    android:text="Featured Events"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
 
@@ -74,6 +78,7 @@
                     android:id="@+id/fragment_home_recyclerView_events"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
+
             </LinearLayout>
 
             <LinearLayout
