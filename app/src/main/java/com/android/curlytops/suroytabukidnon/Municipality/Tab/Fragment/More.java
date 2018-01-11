@@ -22,6 +22,7 @@ import com.android.curlytops.suroytabukidnon.Municipality.Tab_Item_Detail.TabIte
 import com.android.curlytops.suroytabukidnon.R;
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.Option;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -63,6 +64,8 @@ public class More extends Fragment {
         }
         categories = Arrays.asList(getResources().getStringArray(R.array.catergory));
         readMunicipalityItems();
+
+        Log.d(TAG, municipalityId);
     }
 
     @Override
@@ -85,7 +88,7 @@ public class More extends Fragment {
 
     public void readMunicipalityItems() {
         try {
-            FileInputStream fis = getContext().openFileInput("municipality.json");
+            FileInputStream fis = getContext().openFileInput("municipalityItem.json");
             BufferedInputStream bis = new BufferedInputStream(fis);
             StringBuilder b = new StringBuilder();
             while (bis.available() != 0) {
@@ -95,7 +98,11 @@ public class More extends Fragment {
             bis.close();
             fis.close();
             String json = b.toString();
-            Object document = Configuration.defaultConfiguration().jsonProvider().parse(json);
+            Object document = Configuration
+                    .defaultConfiguration()
+                    .addOptions(Option.ALWAYS_RETURN_LIST)
+                    .jsonProvider()
+                    .parse(json);
 
             try {
                 itemLength = JsonPath.read(document, "$." + municipalityId + ".length()");

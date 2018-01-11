@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.android.curlytops.suroytabukidnon.Connection.ConnectivityReceiver;
 import com.android.curlytops.suroytabukidnon.Model.Bookmark;
 import com.android.curlytops.suroytabukidnon.Model.Event;
+import com.android.curlytops.suroytabukidnon.Model.Municipality;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
 import com.android.curlytops.suroytabukidnon.Model.News;
 import com.android.curlytops.suroytabukidnon.Model.User;
@@ -34,12 +35,15 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Created by jan_frncs
@@ -138,6 +142,7 @@ public class BaseActivity extends AppCompatActivity {
     public void firebaseMunicipalityItem() {
         final JSONObject municipalityObject = new JSONObject();
         final String[] municipalities = getResources().getStringArray(R.array.municipalityId);
+        final List<String> list_municipality = new ArrayList<>();
 
         for (final String municipality : municipalities) {
             DatabaseReference municipalityReference = FirebaseDatabase.getInstance()
@@ -170,9 +175,11 @@ public class BaseActivity extends AppCompatActivity {
                                 object.put("description", municipalityItem.description);
                                 object.put("latlon", municipalityItem.latlon);
 
+                                list_municipality.add(municipality);
+
                                 data.put(object);
                                 municipalityObject.put(municipality, data);
-                                FileOutputStream fos = openFileOutput("municipality.json", Context.MODE_PRIVATE);
+                                FileOutputStream fos = openFileOutput("municipalityItem.json", Context.MODE_PRIVATE);
                                 fos.write(municipalityObject.toString().getBytes());
                                 fos.flush();
                                 fos.close();
@@ -185,6 +192,24 @@ public class BaseActivity extends AppCompatActivity {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                    }
+
+
+                    try {
+                        Set<String> hs = new HashSet<>();
+                        hs.addAll(list_municipality);
+                        list_municipality.clear();
+                        list_municipality.addAll(hs);
+
+                        FileOutputStream fos2 = openFileOutput("available_municipality.txt", Context.MODE_PRIVATE);
+                        fos2.write(list_municipality.toString().getBytes());
+                        fos2.flush();
+                        fos2.close();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                        Log.e("Error: ", e.toString());
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
 
@@ -248,7 +273,7 @@ public class BaseActivity extends AppCompatActivity {
         });
     }
 
-    public void firebaseBookmarked_events() {
+    public void firebaseBookmarked() {
         bookmarkReference_events = FirebaseDatabase.getInstance()
                 .getReference("bookmark")
                 .child("saved_events");
@@ -380,6 +405,12 @@ public class BaseActivity extends AppCompatActivity {
                         fos.write(empty.getBytes());
                         fos.flush();
                         fos.close();
+
+                        FileOutputStream fos2;
+                        fos2 = openFileOutput("list_bookmarkedPlaces.json", MODE_PRIVATE);
+                        fos2.write(empty.getBytes());
+                        fos2.flush();
+                        fos2.close();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                         Log.e("Error: ", e.toString());
@@ -536,9 +567,10 @@ public class BaseActivity extends AppCompatActivity {
     public List<MunicipalityItem> readMunicipalityItems(Context context) {
         List<MunicipalityItem> itemList = new ArrayList<>();
         int itemLength;
-        municipalities = context.getResources().getStringArray(R.array.municipalityId);
+//        final String[] municipalities = context.getResources().getStringArray(R.array.municipalityId);
+        final List<String> municipalities = readAvailableMunicipalities(context);
         try {
-            FileInputStream fis = context.openFileInput("municipality.json");
+            FileInputStream fis = context.openFileInput("municipalityItem.json");
             BufferedInputStream bis = new BufferedInputStream(fis);
             StringBuilder b = new StringBuilder();
             while (bis.available() != 0) {
@@ -551,42 +583,42 @@ public class BaseActivity extends AppCompatActivity {
             Object document = Configuration.defaultConfiguration().jsonProvider().parse(json);
 
             try {
-                for (String item : municipalities) {
-                    itemLength = JsonPath.read(document, "$." + item + ".length()");
+                for (String municipality : municipalities) {
+                    itemLength = JsonPath.read(document, "$." + municipality + ".length()");
                     int i = 0;
                     while (i < itemLength) {
                         String iid = JsonPath.read(document,
-                                jsonPath(i, "id", item));
+                                jsonPath(i, "id", municipality));
                         String title = JsonPath.read(document,
-                                jsonPath(i, "title", item));
+                                jsonPath(i, "title", municipality));
                         String location = JsonPath.read(document,
-                                jsonPath(i, "location", item));
+                                jsonPath(i, "location", municipality));
                         String contact = JsonPath.read(document,
-                                jsonPath(i, "contact", item));
+                                jsonPath(i, "contact", municipality));
                         String stringCategory = JsonPath.read(document,
-                                jsonPath(i, "category", item));
+                                jsonPath(i, "category", municipality));
                         String stringImageURLS = JsonPath.read(document,
-                                jsonPath(i, "imageURLS", item));
+                                jsonPath(i, "imageURLS", municipality));
                         String stringImageNames = JsonPath.read(document,
-                                jsonPath(i, "imageNames", item));
+                                jsonPath(i, "imageNames", municipality));
                         String municipalityStorageKey = JsonPath.read(document,
-                                jsonPath(i, "municipalityStorageKey", item));
+                                jsonPath(i, "municipalityStorageKey", municipality));
                         String coverURL = JsonPath.read(document,
-                                jsonPath(i, "coverURL", item));
+                                jsonPath(i, "coverURL", municipality));
                         String coverName = JsonPath.read(document,
-                                jsonPath(i, "coverName", item));
+                                jsonPath(i, "coverName", municipality));
                         boolean starred = JsonPath.read(document,
-                                jsonPath(i, "starred", item));
+                                jsonPath(i, "starred", municipality));
                         String description = JsonPath.read(document,
-                                jsonPath(i, "description", item));
+                                jsonPath(i, "description", municipality));
                         String latlon = JsonPath.read(document,
-                                jsonPath(i, "latlon", item));
+                                jsonPath(i, "latlon", municipality));
 
                         List<String> category = convertToArray(stringCategory);
                         List<String> imageURLS = convertToArray(stringImageURLS);
                         List<String> imageNames = convertToArray(stringImageNames);
 
-                        itemList.add(new MunicipalityItem(iid, item, title, location, contact,
+                        itemList.add(new MunicipalityItem(iid, municipality, title, location, contact,
                                 category, municipalityStorageKey, imageURLS, imageNames,
                                 coverURL, coverName, starred, description, latlon));
                         i++;
@@ -663,6 +695,62 @@ public class BaseActivity extends AppCompatActivity {
         Collections.reverse(newsList);
 
         return newsList;
+    }
+
+    public List<Municipality> getMunicipalityJson(Context context) {
+
+        List<Municipality> municipalityList = new ArrayList<>();
+        InputStream inputStream;
+        BufferedInputStream bufferedInputStream;
+        JSONArray jsonArray;
+        StringBuffer buffer;
+
+        try {
+            inputStream = context.getAssets().open("municipalities.json");
+            bufferedInputStream = new BufferedInputStream(inputStream);
+            buffer = new StringBuffer();
+            while (bufferedInputStream.available() != 0) {
+                char c = (char) bufferedInputStream.read();
+                buffer.append(c);
+            }
+            bufferedInputStream.close();
+            inputStream.close();
+
+            jsonArray = new JSONArray(buffer.toString());
+            for (int i = 0; i < jsonArray.length(); i++) {
+                String _id = jsonArray.getJSONObject(i).getString("ID");
+                String _municipality = jsonArray.getJSONObject(i).getString("MUNICIPALITY");
+                String _imgUrl = jsonArray.getJSONObject(i).getString("IMG_URL");
+                municipalityList.add(new Municipality(_id, _municipality, _imgUrl));
+                Log.d("json", _id + "-" + _municipality);
+            }
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+
+        return municipalityList;
+    }
+
+    public List<String> readAvailableMunicipalities(Context context){
+        String result = new String();
+        try {
+            FileInputStream fis = context.openFileInput("available_municipality.txt");
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            StringBuilder b = new StringBuilder();
+
+            while (bis.available() != 0) {
+                char c = (char) bis.read();
+                b.append(c);
+            }
+            bis.close();
+            fis.close();
+
+            result = b.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return convertToArray(result);
     }
     // end_read_json
 

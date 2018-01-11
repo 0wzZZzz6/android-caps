@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,12 @@ import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
 
+import org.joda.time.DateTime;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -115,6 +121,12 @@ public class About extends Fragment {
         }
 
         if (newEventList.size() > 0) {
+            Collections.sort(newEventList, new Comparator<Event>() {
+                @Override
+                public int compare(Event o1, Event o2) {
+                    return Long.compare(o1.startDate, o2.startDate);
+                }
+            });
             tagged_events.setVisibility(View.VISIBLE);
             taggedCount.setText(String.valueOf(newEventList.size()));
             taggedAdapter = new TaggedAdapter(getContext(), newEventList);
@@ -125,6 +137,41 @@ public class About extends Fragment {
             snapHelperEvents.attachToRecyclerView(recyclerView_tagged);
         }
 
+    }
+
+    private String getDate(Event item) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM");
+
+        String date;
+        if (item.allDay) {
+            date = convertDate(item.startDate);
+        } else {
+            DateTime fromDate = new DateTime(item.startDate);
+            DateTime toDate = new DateTime(item.endDate);
+
+            if (fromDate.getMonthOfYear() == toDate.getMonthOfYear() &&
+                    fromDate.getYear() == toDate.getYear()) {
+
+                return simpleDateFormat.format(item.startDate) + " " +
+                        fromDate.getDayOfMonth() + " - " + toDate.getDayOfMonth() + " " +
+                        fromDate.getYear();
+            } else if (!(fromDate.getMonthOfYear() == toDate.getMonthOfYear()) &&
+                    fromDate.getYear() == toDate.getYear()) {
+                return simpleDateFormat.format(item.startDate) + " " + fromDate.getDayOfMonth()
+                        + " - " +
+                        simpleDateFormat.format(item.endDate) + " " + toDate.getDayOfMonth() + " " +
+                        fromDate.getYear();
+            } else {
+                date = convertDate(item.startDate) + " - " + convertDate(item.endDate);
+            }
+        }
+
+        return date;
+    }
+
+    private String convertDate(long date) {
+        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd yyyy");
+        return formatter.format(date);
     }
 
     class StarredAdapter extends
@@ -153,6 +200,7 @@ public class About extends Fragment {
                     .load(item.coverURL)
                     .into(holder.cover);
             holder.title.setText(item.title);
+            holder.location.setText(item.location);
             holder.title.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -176,6 +224,8 @@ public class About extends Fragment {
             ImageView cover;
             @BindView(R.id.about_starred_item_title)
             TextView title;
+            @BindView(R.id.about_starred_item_location)
+            TextView location;
 
             StarredViewHolder(View itemView) {
                 super(itemView);
@@ -198,7 +248,7 @@ public class About extends Fragment {
         @Override
         public TaggedViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from
-                    (parent.getContext()).inflate(R.layout.about_starred_item, parent, false);
+                    (parent.getContext()).inflate(R.layout.home_event_starred, parent, false);
             return new TaggedViewHolder(view);
         }
 
@@ -206,17 +256,18 @@ public class About extends Fragment {
         public void onBindViewHolder(TaggedViewHolder holder, int position) {
             final Event event = eventList.get(position);
 
+            holder.home_event_title.setText(event.title);
+            holder.home_event_date.setText(getDate(event));
             Glide.with(this.context)
                     .load(event.coverURL)
-                    .into(holder.cover);
+                    .into(holder.home_event_cover);
 
-            holder.title.setText(event.title);
-            holder.title.setOnClickListener(new View.OnClickListener() {
+            holder.home_event_title.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getContext(), EventDetailActivity.class);
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, EventDetailActivity.class);
                     intent.putExtra("myEvent", event);
-                    startActivity(intent);
+                    context.startActivity(intent);
                 }
             });
         }
@@ -227,10 +278,14 @@ public class About extends Fragment {
         }
 
         class TaggedViewHolder extends RecyclerView.ViewHolder {
-            @BindView(R.id.about_starred_item_imageView)
-            ImageView cover;
-            @BindView(R.id.about_starred_item_title)
-            TextView title;
+            @BindView(R.id.home_event)
+            View home_event;
+            @BindView(R.id.home_event_title)
+            TextView home_event_title;
+            @BindView(R.id.home_event_date)
+            TextView home_event_date;
+            @BindView(R.id.home_event_cover)
+            ImageView home_event_cover;
 
             TaggedViewHolder(View itemView) {
                 super(itemView);

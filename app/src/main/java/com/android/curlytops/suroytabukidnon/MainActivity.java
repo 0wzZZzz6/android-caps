@@ -194,7 +194,7 @@ public class MainActivity extends BaseActivity {
         firebaseEvents();
         firebaseMunicipalityItem();
         firebaseNews();
-        firebaseBookmarked_events();
+        firebaseBookmarked();
         firebaseUser();
 
         if (getUid() == null) {

@@ -46,8 +46,6 @@ public class TabActivity extends BaseActivity {
         imageUrl = getIntent().getExtras().getString(IMAGEURL);
         municipality = getIntent().getExtras().getString(MUNICIPALITY);
 
-        Log.d("SHIELAMAE", municipalityId + " " + municipality);
-
         supportPostponeEnterTransition();
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
@@ -60,11 +58,6 @@ public class TabActivity extends BaseActivity {
         collapsingToolbarLayout.setTitleEnabled(false);
 
         viewPager.setCurrentItem(0, false);
-
-//        Bundle bundle = new Bundle();
-//        bundle.putString("municipality", municipality);
-//        More more = new More();
-//        more.setArguments(bundle);
 
         Glide.with(this)
                 .load(imageUrl)

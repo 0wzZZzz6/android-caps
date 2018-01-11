@@ -50,7 +50,6 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.StatelessSection;
 public class SavedEvents extends Fragment {
 
     private static final String TAG = "SavedEvents";
-
     private static final String jsonPathNode_bookmarkEvents = "bookmark_events";
 
 
@@ -83,7 +82,6 @@ public class SavedEvents extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view;
-
 
         if (filtered_events.size() > 0) {
             Log.d("SHIELAMAE", "not empty");
@@ -119,7 +117,6 @@ public class SavedEvents extends Fragment {
             sectionedRecyclerViewAdapter.notifyDataSetChanged();
             sectionedRecyclerViewAdapter.removeAllSections();
             SectionAdapter();
-            Log.d("SHIELAMAE", filtered_events.size() + "");
         }
     }
 
@@ -249,7 +246,6 @@ public class SavedEvents extends Fragment {
         for (int i = 0; i < bookmarkList_events.size(); i++) {
             for (int j = 0; j < eventList.size(); j++) {
                 if (bookmarkList_events.get(i).item_id.equalsIgnoreCase(eventList.get(j).e_id)) {
-                    Log.d(TAG, eventList.get(j).e_id + " [bookmarked]");
                     filtered_events.add(eventList.get(j));
                     eventList.remove(j);
                 }

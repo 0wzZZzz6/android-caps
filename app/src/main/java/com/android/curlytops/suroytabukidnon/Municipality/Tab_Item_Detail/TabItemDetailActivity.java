@@ -186,7 +186,6 @@ public class TabItemDetailActivity extends BaseActivity {
                     String key = bookmarkReference.push().getKey();
                     marked.put("item_id", item_id);
                     bookmarkReference.child(key).setValue(marked);
-
                     municipalityItem.bookmark.put(getUid(), key);
                 }
 

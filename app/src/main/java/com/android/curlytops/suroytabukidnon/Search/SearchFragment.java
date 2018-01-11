@@ -141,6 +141,8 @@ public class SearchFragment extends Fragment {
     private void search(String mode, String query) {
         search_result_events.clear();
         search_result_places.clear();
+        hashed_search_result_events.clear();
+        hashed_search_result_places.clear();
         if (imm != null)
             imm.hideSoftInputFromWindow(edit_txt.getWindowToken(), 0);
 
