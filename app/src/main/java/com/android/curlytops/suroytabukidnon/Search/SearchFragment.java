@@ -52,6 +52,7 @@ public class SearchFragment extends Fragment {
 
     private static final String events = "events";
     private static final String places = "places";
+    private static final String readAll = "all";
 
     @BindView(R.id.search_edit)
     EditText edit_txt;
@@ -90,7 +91,7 @@ public class SearchFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         eventList = new BaseActivity().readEvents(getContext());
-        itemList = new BaseActivity().readMunicipalityItems(getContext());
+        itemList = new BaseActivity().readMunicipalityItems(getContext(), readAll);
     }
 
     @Override
@@ -287,6 +288,11 @@ public class SearchFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(SearchViewHolder holder, int position) {
+
+            if (eventList.size() - 1 == position || itemList.size() - 1 == position) {
+                holder.search_item_divider.setVisibility(View.GONE);
+            }
+
             if (mode.equalsIgnoreCase(events)) {
                 final Event event = eventList.get(position);
 
@@ -372,6 +378,8 @@ public class SearchFragment extends Fragment {
             TextView searchItemTitle;
             @BindView(R.id.search_item_detail)
             TextView searchItemDetail;
+            @BindView(R.id.search_item_divider)
+            View search_item_divider;
 
             SearchViewHolder(View view) {
                 super(view);

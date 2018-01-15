@@ -18,21 +18,17 @@ import android.widget.TextView;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.android.curlytops.suroytabukidnon.BaseActivity;
 import com.android.curlytops.suroytabukidnon.Model.Bookmark;
+import com.android.curlytops.suroytabukidnon.Model.Municipality;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
-import com.android.curlytops.suroytabukidnon.Municipality.Tab.Fragment.More;
 import com.android.curlytops.suroytabukidnon.Municipality.Tab_Item_Detail.TabItemDetailActivity;
 import com.android.curlytops.suroytabukidnon.R;
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
-import com.jayway.jsonpath.Option;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -51,12 +47,15 @@ public class SavedPlaces extends Fragment {
 
     private static final String TAG = "SavedPlaces";
     private static final String jsonPathNode_bookmarkplaces = "bookmark_places";
+    private static final String readAll = "all";
 
     List<MunicipalityItem> filtered_places = new ArrayList<>();
     List<String> municipalities = new ArrayList<>();
 
     @BindView(R.id.recyclerview_bookmark)
     RecyclerView recyclerView;
+    @BindView(R.id.noBookmarked)
+    View noBookmarked;
 
     SectionedRecyclerViewAdapter sectionedRecyclerViewAdapter;
 
@@ -72,6 +71,12 @@ public class SavedPlaces extends Fragment {
         super.onCreate(savedInstanceState);
 
         municipalities = new BaseActivity().readAvailableMunicipalities(getContext());
+        Collections.sort(municipalities, new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+                return s1.compareToIgnoreCase(s2);
+            }
+        });
         sectionedRecyclerViewAdapter = new SectionedRecyclerViewAdapter();
         filterPlaces();
 
@@ -81,15 +86,17 @@ public class SavedPlaces extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view;
+        view = inflater.inflate(R.layout.fragment_recyclerview_bookmark, container, false);
+        ButterKnife.bind(this, view);
 
         if (filtered_places.size() > 0) {
             Log.d("SHIELAMAE", "not empty");
-            view = inflater.inflate(R.layout.fragment_recyclerview_bookmark,
-                    container, false);
-            ButterKnife.bind(this, view);
+            noBookmarked.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
         } else {
             Log.d("SHIELAMAE", "empty");
-            view = inflater.inflate(R.layout.empty_state, container, false);
+            noBookmarked.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
         }
 
         return view;
@@ -104,7 +111,6 @@ public class SavedPlaces extends Fragment {
             sectionedRecyclerViewAdapter.notifyDataSetChanged();
             sectionedRecyclerViewAdapter.removeAllSections();
             sectionAdapter();
-            Log.d("SHIELAMAE", filtered_places.size() + "");
         }
     }
 
@@ -117,7 +123,6 @@ public class SavedPlaces extends Fragment {
             sectionedRecyclerViewAdapter.notifyDataSetChanged();
             sectionedRecyclerViewAdapter.removeAllSections();
             sectionAdapter();
-            Log.d("SHIELAMAE", filtered_places.size() + "");
         }
     }
 
@@ -161,24 +166,26 @@ public class SavedPlaces extends Fragment {
     }
 
     private void filterPlaces() {
-        List<MunicipalityItem> itemList = new BaseActivity().readMunicipalityItems(getContext());
+        List<MunicipalityItem> itemList =
+                new BaseActivity().readMunicipalityItems(getContext(), readAll);
         List<Bookmark> bookmarkList_places = readBookmark_places();
 
         for (int i = 0; i < bookmarkList_places.size(); i++) {
             for (int j = 0; j < itemList.size(); j++) {
                 if (bookmarkList_places.get(i).item_id.equalsIgnoreCase(itemList.get(j).id)) {
+                    Log.d(TAG, String.format("filterPlaces: %s", itemList.get(j).municipality));
                     filtered_places.add(itemList.get(j));
                     itemList.remove(j);
                 }
             }
         }
 
-        Collections.sort(filtered_places, new Comparator<MunicipalityItem>() {
-            @Override
-            public int compare(MunicipalityItem o1, MunicipalityItem o2) {
-                return o1.municipalityStorageKey.compareToIgnoreCase(o2.municipalityStorageKey);
-            }
-        });
+//        Collections.sort(filtered_places, new Comparator<MunicipalityItem>() {
+//            @Override
+//            public int compare(MunicipalityItem o1, MunicipalityItem o2) {
+//                return o1.municipality.compareToIgnoreCase(o2.municipality);
+//            }
+//        });
     }
 
     private String jsonPath(int index, String keyword, String item) {
@@ -264,8 +271,6 @@ public class SavedPlaces extends Fragment {
             }
         }
 
-        Log.d(TAG, items.size() + "");
-
         return items;
     }
 
@@ -296,21 +301,23 @@ public class SavedPlaces extends Fragment {
 
         @Override
         public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
-
             final ItemViewHolder itemHolder = (ItemViewHolder) holder;
             final MunicipalityItem municipalityItem = list.get(position);
+
+            if (list.size() - 1 == position) {
+                itemHolder.saved_event_divider.setVisibility(View.GONE);
+            }
+
             itemHolder.saved_event_title.setText(municipalityItem.title);
-            String[] parts = municipalityItem.municipalityStorageKey.split("_");
-            final String municipality = parts[0];
             itemHolder.saved_event_title.setText(municipalityItem.title);
-            itemHolder.saved_event_item_municipality.setText(municipality);
+            itemHolder.saved_event_item_municipality.setText(municipalityItem.location);
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getContext(), TabItemDetailActivity.class);
                     intent.putExtra("municipalityItem", municipalityItem);
-                    intent.putExtra("municipalityId", municipality);
+                    intent.putExtra("municipalityId", municipalityItem.municipality);
                     startActivity(intent);
                 }
             });
@@ -330,7 +337,7 @@ public class SavedPlaces extends Fragment {
                     .buildRound(String.valueOf(letter), R.color.grey_100);
 
             headerHolder.itemCount.setImageDrawable(textDrawable);
-            headerHolder.headerTitle.setText(title);
+            headerHolder.headerTitle.setText(getMunicipality(title));
             headerHolder.headerView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -341,6 +348,18 @@ public class SavedPlaces extends Fragment {
                     sectionedRecyclerViewAdapter.notifyDataSetChanged();
                 }
             });
+        }
+
+        private String getMunicipality(String municipalityId) {
+            List<Municipality> municipalities = new BaseActivity().getMunicipalityJson(getContext());
+            String result = "";
+            for (Municipality municipality : municipalities) {
+                if (municipality.id.equalsIgnoreCase(municipalityId)) {
+                    result = municipality.municipality;
+                }
+            }
+
+            return result;
         }
     }
 
@@ -365,6 +384,8 @@ public class SavedPlaces extends Fragment {
         TextView saved_event_title;
         @BindView(R.id.saved_event_item_municipality)
         TextView saved_event_item_municipality;
+        @BindView(R.id.saved_event_divider)
+        View saved_event_divider;
 
         ItemViewHolder(View view) {
             super(view);

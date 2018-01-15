@@ -2,10 +2,12 @@ package com.android.curlytops.suroytabukidnon.GrafixGallery;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.curlytops.suroytabukidnon.Model.ImageModel;
 import com.android.curlytops.suroytabukidnon.R;
@@ -19,6 +21,7 @@ import java.util.List;
  */
 public class GalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private static final String TAG = "GalleryAdapter";
     private Context context;
     private List<ImageModel> data = new ArrayList<>();
     private String viewMode;
@@ -50,25 +53,43 @@ public class GalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
-        Glide.with(context).load(data.get(position).getUrl())
-                .thumbnail(0.5f)
-                .into(((MyItemHolder) holder).mImg);
-
+        if (data.size() > 6 && position == 5 && viewMode.equalsIgnoreCase(viewMode_places)) {
+            int more = data.size() - 5;
+            String textContent = "+" + more;
+            ((MyItemHolder) holder).textLayout.setVisibility(View.VISIBLE);
+            ((MyItemHolder) holder).textView.setText(textContent);
+            Glide.with(context).load(data.get(position).getUrl())
+                    .thumbnail(0.5f)
+                    .into(((MyItemHolder) holder).mImg);
+        } else {
+            Glide.with(context).load(data.get(position).getUrl())
+                    .thumbnail(0.5f)
+                    .into(((MyItemHolder) holder).mImg);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        if (data.size() > 6 && viewMode.equalsIgnoreCase(viewMode_places)) {
+            return 6;
+        } else {
+            return data.size();
+        }
+
+//        return data.size();
     }
 
     public static class MyItemHolder extends RecyclerView.ViewHolder {
         ImageView mImg;
+        View textLayout;
+        TextView textView;
 
         MyItemHolder(View itemView) {
             super(itemView);
 
             mImg = itemView.findViewById(R.id.item_img);
+            textLayout = itemView.findViewById(R.id.gallery_item_places_layout);
+            textView = itemView.findViewById(R.id.gallery_item_places_textView);
         }
 
     }

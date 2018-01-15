@@ -1,6 +1,5 @@
 package com.android.curlytops.suroytabukidnon;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -11,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.android.curlytops.suroytabukidnon.Connection.ConnectivityReceiver;
+import com.android.curlytops.suroytabukidnon.Model.AboutModel;
 import com.android.curlytops.suroytabukidnon.Model.Bookmark;
 import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.Model.Municipality;
@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.Option;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,7 +50,6 @@ import java.util.Set;
  * Created by jan_frncs
  */
 
-@SuppressLint("Registered")
 public class BaseActivity extends AppCompatActivity {
 
     public static final String TAG = "BaseActivity";
@@ -59,12 +59,13 @@ public class BaseActivity extends AppCompatActivity {
     public static final String MUNICIPALITY = "municipality";
     public static final String event_path = "events";
     public static final String news_path = "news";
+    public static final String about_path = "about";
+    private static final String readAll = "all";
 
     DatabaseReference bookmarkReference_events;
     DatabaseReference bookmarkReference_places;
 
     String empty = "";
-    String[] municipalities;
 
     @Override
     public void setContentView(int layoutResID) {
@@ -433,7 +434,7 @@ public class BaseActivity extends AppCompatActivity {
                 .getInstance()
                 .getReference("users");
 
-        userReference.addValueEventListener(new ValueEventListener() {
+        userReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 JSONArray data = new JSONArray();
@@ -474,6 +475,56 @@ public class BaseActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void firebaseAbout() {
+        final JSONObject aboutObject = new JSONObject();
+        final String[] municipalities = getResources().getStringArray(R.array.municipalityId);
+
+        for (final String municipality : municipalities) {
+            DatabaseReference aboutReference = FirebaseDatabase.getInstance()
+                    .getReference("about");
+
+            aboutReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    JSONObject object;
+                    JSONArray data = new JSONArray();
+
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        AboutModel aboutModel = snapshot.getValue(AboutModel.class);
+                        if (aboutModel != null && snapshot.getKey().equalsIgnoreCase(municipality)) {
+                            try {
+                                object = new JSONObject();
+                                object.put("description", aboutModel.description);
+                                object.put("imageURLS", aboutModel.imageURLS);
+                                object.put("imageNames", aboutModel.imageNames);
+
+                                data.put(object);
+                                aboutObject.put(municipality, data);
+                                FileOutputStream fos = openFileOutput("about.json", Context.MODE_PRIVATE);
+                                fos.write(aboutObject.toString().getBytes());
+                                fos.flush();
+                                fos.close();
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                                Log.e("Error: ", e.toString());
+                            } catch (IOException | JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    System.out.println("The read failed: " + databaseError.getMessage());
+                }
+            });
+        }
+
+
     }
     // end_write_json
 
@@ -564,11 +615,11 @@ public class BaseActivity extends AppCompatActivity {
         return eventList;
     }
 
-    public List<MunicipalityItem> readMunicipalityItems(Context context) {
+    public List<MunicipalityItem> readMunicipalityItems(Context context, String municipalityId) {
         List<MunicipalityItem> itemList = new ArrayList<>();
         int itemLength;
-//        final String[] municipalities = context.getResources().getStringArray(R.array.municipalityId);
         final List<String> municipalities = readAvailableMunicipalities(context);
+
         try {
             FileInputStream fis = context.openFileInput("municipalityItem.json");
             BufferedInputStream bis = new BufferedInputStream(fis);
@@ -583,47 +634,92 @@ public class BaseActivity extends AppCompatActivity {
             Object document = Configuration.defaultConfiguration().jsonProvider().parse(json);
 
             try {
-                for (String municipality : municipalities) {
-                    itemLength = JsonPath.read(document, "$." + municipality + ".length()");
+
+                if (municipalityId.equalsIgnoreCase(readAll)) {
+                    for (String municipality : municipalities) {
+                        itemLength = JsonPath.read(document, "$." + municipality + ".length()");
+                        int i = 0;
+                        while (i < itemLength) {
+                            String iid = JsonPath.read(document,
+                                    jsonPath(i, "id", municipality));
+                            String title = JsonPath.read(document,
+                                    jsonPath(i, "title", municipality));
+                            String location = JsonPath.read(document,
+                                    jsonPath(i, "location", municipality));
+                            String contact = JsonPath.read(document,
+                                    jsonPath(i, "contact", municipality));
+                            String stringCategory = JsonPath.read(document,
+                                    jsonPath(i, "category", municipality));
+                            String stringImageURLS = JsonPath.read(document,
+                                    jsonPath(i, "imageURLS", municipality));
+                            String stringImageNames = JsonPath.read(document,
+                                    jsonPath(i, "imageNames", municipality));
+                            String municipalityStorageKey = JsonPath.read(document,
+                                    jsonPath(i, "municipalityStorageKey", municipality));
+                            String coverURL = JsonPath.read(document,
+                                    jsonPath(i, "coverURL", municipality));
+                            String coverName = JsonPath.read(document,
+                                    jsonPath(i, "coverName", municipality));
+                            boolean starred = JsonPath.read(document,
+                                    jsonPath(i, "starred", municipality));
+                            String description = JsonPath.read(document,
+                                    jsonPath(i, "description", municipality));
+                            String latlon = JsonPath.read(document,
+                                    jsonPath(i, "latlon", municipality));
+
+                            List<String> category = convertToArray(stringCategory);
+                            List<String> imageURLS = convertToArray(stringImageURLS);
+                            List<String> imageNames = convertToArray(stringImageNames);
+
+                            itemList.add(new MunicipalityItem(iid, municipality, title, location, contact,
+                                    category, municipalityStorageKey, imageURLS, imageNames,
+                                    coverURL, coverName, starred, description, latlon));
+                            i++;
+                        }
+                    }
+                } else {
+                    itemLength = JsonPath.read(document, "$." + municipalityId + ".length()");
                     int i = 0;
                     while (i < itemLength) {
                         String iid = JsonPath.read(document,
-                                jsonPath(i, "id", municipality));
+                                jsonPath(i, "id", municipalityId));
                         String title = JsonPath.read(document,
-                                jsonPath(i, "title", municipality));
+                                jsonPath(i, "title", municipalityId));
                         String location = JsonPath.read(document,
-                                jsonPath(i, "location", municipality));
+                                jsonPath(i, "location", municipalityId));
                         String contact = JsonPath.read(document,
-                                jsonPath(i, "contact", municipality));
+                                jsonPath(i, "contact", municipalityId));
                         String stringCategory = JsonPath.read(document,
-                                jsonPath(i, "category", municipality));
+                                jsonPath(i, "category", municipalityId));
                         String stringImageURLS = JsonPath.read(document,
-                                jsonPath(i, "imageURLS", municipality));
+                                jsonPath(i, "imageURLS", municipalityId));
                         String stringImageNames = JsonPath.read(document,
-                                jsonPath(i, "imageNames", municipality));
+                                jsonPath(i, "imageNames", municipalityId));
                         String municipalityStorageKey = JsonPath.read(document,
-                                jsonPath(i, "municipalityStorageKey", municipality));
+                                jsonPath(i, "municipalityStorageKey", municipalityId));
                         String coverURL = JsonPath.read(document,
-                                jsonPath(i, "coverURL", municipality));
+                                jsonPath(i, "coverURL", municipalityId));
                         String coverName = JsonPath.read(document,
-                                jsonPath(i, "coverName", municipality));
+                                jsonPath(i, "coverName", municipalityId));
                         boolean starred = JsonPath.read(document,
-                                jsonPath(i, "starred", municipality));
+                                jsonPath(i, "starred", municipalityId));
                         String description = JsonPath.read(document,
-                                jsonPath(i, "description", municipality));
+                                jsonPath(i, "description", municipalityId));
                         String latlon = JsonPath.read(document,
-                                jsonPath(i, "latlon", municipality));
+                                jsonPath(i, "latlon", municipalityId));
 
                         List<String> category = convertToArray(stringCategory);
                         List<String> imageURLS = convertToArray(stringImageURLS);
                         List<String> imageNames = convertToArray(stringImageNames);
 
-                        itemList.add(new MunicipalityItem(iid, municipality, title, location, contact,
+                        itemList.add(new MunicipalityItem(iid, municipalityId, title, location, contact,
                                 category, municipalityStorageKey, imageURLS, imageNames,
                                 coverURL, coverName, starred, description, latlon));
                         i++;
                     }
                 }
+
+
             } catch (Exception e) {
                 itemLength = 0;
                 e.printStackTrace();
@@ -722,7 +818,6 @@ public class BaseActivity extends AppCompatActivity {
                 String _municipality = jsonArray.getJSONObject(i).getString("MUNICIPALITY");
                 String _imgUrl = jsonArray.getJSONObject(i).getString("IMG_URL");
                 municipalityList.add(new Municipality(_id, _municipality, _imgUrl));
-                Log.d("json", _id + "-" + _municipality);
             }
         } catch (IOException | JSONException e) {
             e.printStackTrace();
@@ -731,8 +826,8 @@ public class BaseActivity extends AppCompatActivity {
         return municipalityList;
     }
 
-    public List<String> readAvailableMunicipalities(Context context){
-        String result = new String();
+    public List<String> readAvailableMunicipalities(Context context) {
+        String result = "";
         try {
             FileInputStream fis = context.openFileInput("available_municipality.txt");
             BufferedInputStream bis = new BufferedInputStream(fis);
@@ -752,6 +847,62 @@ public class BaseActivity extends AppCompatActivity {
 
         return convertToArray(result);
     }
+
+    public AboutModel readAbout(Context context, String municipalityId) {
+        AboutModel aboutModel = new AboutModel();
+        try {
+            FileInputStream fis = context.openFileInput("about.json");
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            StringBuilder b = new StringBuilder();
+            while (bis.available() != 0) {
+                char c = (char) bis.read();
+                b.append(c);
+            }
+            bis.close();
+            fis.close();
+
+            String json = b.toString();
+            Configuration conf = Configuration.defaultConfiguration().addOptions(Option.DEFAULT_PATH_LEAF_TO_NULL);
+            try {
+                int itemLength = JsonPath
+                        .using(conf)
+                        .parse(json)
+                        .read("$." + municipalityId + ".length()");
+                if (itemLength > 0) {
+                    String description = JsonPath
+                            .using(conf)
+                            .parse(json)
+                            .read(jsonPath(0, "description", municipalityId));
+                    String stringImageURLS = JsonPath
+                            .using(conf)
+                            .parse(json)
+                            .read(jsonPath(0, "imageURLS", municipalityId));
+                    String stringImageNames = JsonPath
+                            .using(conf)
+                            .parse(json)
+                            .read(jsonPath(0, "imageNames", municipalityId));
+
+                    List<String> imageURLS = convertToArray(stringImageURLS);
+                    List<String> imageNames = convertToArray(stringImageNames);
+
+                    aboutModel.municipality = municipalityId;
+                    aboutModel.description = description;
+                    aboutModel.imageURLS = imageURLS;
+                    aboutModel.imageNames = imageNames;
+                    Log.d(TAG, "readAbout: " + municipalityId + " " + description);
+                } else {
+                    return aboutModel;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return aboutModel;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return aboutModel;
+    }
     // end_read_json
 
     private List<String> convertToArray(String item) {
@@ -768,9 +919,9 @@ public class BaseActivity extends AppCompatActivity {
 
     private ProgressDialog mProgressDialog;
 
-    public void showProgressDialog() {
+    public void showProgressDialog(Context context) {
         if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(this);
+            mProgressDialog = new ProgressDialog(context);
             mProgressDialog.setCancelable(false);
             mProgressDialog.setMessage("Loading...");
         }

@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
 import android.util.Log;
@@ -18,15 +18,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.curlytops.suroytabukidnon.BaseActivity;
 import com.android.curlytops.suroytabukidnon.Event.EventDetailActivity;
+import com.android.curlytops.suroytabukidnon.GrafixGallery.DetailActivity;
+import com.android.curlytops.suroytabukidnon.GrafixGallery.GalleryAdapter;
+import com.android.curlytops.suroytabukidnon.GrafixGallery.RecyclerItemClickListener;
+import com.android.curlytops.suroytabukidnon.Model.AboutModel;
 import com.android.curlytops.suroytabukidnon.Model.Event;
+import com.android.curlytops.suroytabukidnon.Model.ImageModel;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
 import com.android.curlytops.suroytabukidnon.Municipality.Tab.TabActivity;
 import com.android.curlytops.suroytabukidnon.Municipality.Tab_Item_Detail.TabItemDetailActivity;
 import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
+import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 import org.joda.time.DateTime;
 
@@ -44,19 +49,29 @@ import butterknife.ButterKnife;
  */
 public class About extends Fragment {
 
-    private static final String TAG = "About";
+    private static final String TAG = "AboutModel";
+    private static final String viewMode_places = "places";
 
     StarredAdapter starredAdapter;
     TaggedAdapter taggedAdapter;
+    GalleryAdapter galleryAdapter;
 
     String municipalityId, municipality;
+    AboutModel aboutModel = new AboutModel();
+    ArrayList<ImageModel> data = new ArrayList<>();
     List<Event> newEventList = new ArrayList<>();
     List<MunicipalityItem> newItemList = new ArrayList<>();
     SnapHelper snapHelperPlaces = new GravitySnapHelper(Gravity.START);
     SnapHelper snapHelperEvents = new GravitySnapHelper(Gravity.START);
 
+    @BindView(R.id.fragment_about_card_description)
+    View fragment_about_card_description;
+    @BindView(R.id.fragment_about_description)
+    ExpandableTextView description;
     @BindView(R.id.fragment_about_feature)
     RecyclerView recyclerView_starred;
+    @BindView(R.id.fragment_about_sample)
+    RecyclerView recyclerView_samples;
 
     @BindView(R.id.fragment_about_tagged)
     RecyclerView recyclerView_tagged;
@@ -67,6 +82,8 @@ public class About extends Fragment {
     View featured_places;
     @BindView(R.id.fragment_about_tagged_events)
     View tagged_events;
+    @BindView(R.id.fragment_about_tagged_samplePictures)
+    View sample_pictures;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,9 +93,12 @@ public class About extends Fragment {
             municipalityId = ((TabActivity) getActivity()).getMunicipalityId();
             municipality = ((TabActivity) getActivity()).getMunicipality();
         }
+        List<Event> eventList = ((TabActivity) getActivity()).eventList;
+        List<MunicipalityItem> itemList = ((TabActivity) getActivity()).itemList;
 
-        List<Event> eventList = new BaseActivity().readEvents(getContext());
-        List<MunicipalityItem> itemList = new BaseActivity().readMunicipalityItems(getContext());
+        if (((TabActivity) getActivity()).aboutModel != null) {
+            aboutModel = ((TabActivity) getActivity()).aboutModel;
+        }
 
         for (Event event : eventList) {
             List<String> item = event.taggedMunicipality;
@@ -110,6 +130,11 @@ public class About extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        if (aboutModel.description != null) {
+            fragment_about_card_description.setVisibility(View.VISIBLE);
+            description.setText(aboutModel.description);
+        }
+
         if (newItemList.size() > 0) {
             featured_places.setVisibility(View.VISIBLE);
             starredAdapter = new StarredAdapter(getContext(), newItemList);
@@ -135,6 +160,41 @@ public class About extends Fragment {
                     LinearLayoutManager.HORIZONTAL, false));
             recyclerView_tagged.setAdapter(taggedAdapter);
             snapHelperEvents.attachToRecyclerView(recyclerView_tagged);
+        }
+
+        try {
+            if (aboutModel.imageURLS.size() > 0) {
+                sample_pictures.setVisibility(View.VISIBLE);
+                List<String> imageURLS = aboutModel.imageURLS;
+                for (int i = 0; i < imageURLS.size(); i++) {
+                    ImageModel imageModel = new ImageModel();
+                    imageModel.setName("Image " + i);
+                    imageModel.setUrl(imageURLS.get(i));
+                    data.add(imageModel);
+                }
+
+                galleryAdapter = new GalleryAdapter(getContext(), data, viewMode_places);
+                recyclerView_samples.setLayoutManager(new GridLayoutManager(getContext(), 3));
+                recyclerView_samples.setHasFixedSize(true);
+                recyclerView_samples.setAdapter(galleryAdapter);
+
+                recyclerView_samples.addOnItemTouchListener(new RecyclerItemClickListener(getContext(),
+                        new RecyclerItemClickListener.OnItemClickListener() {
+
+                            @Override
+                            public void onItemClick(View view, int position) {
+
+                                Intent intent =
+                                        new Intent(getActivity(), DetailActivity.class);
+                                intent.putParcelableArrayListExtra("data", data);
+                                intent.putExtra("pos", position);
+                                startActivity(intent);
+
+                            }
+                        }));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
@@ -256,13 +316,12 @@ public class About extends Fragment {
         public void onBindViewHolder(TaggedViewHolder holder, int position) {
             final Event event = eventList.get(position);
 
-            holder.home_event_title.setText(event.title);
-            holder.home_event_date.setText(getDate(event));
             Glide.with(this.context)
                     .load(event.coverURL)
-                    .into(holder.home_event_cover);
-
-            holder.home_event_title.setOnClickListener(new View.OnClickListener() {
+                    .into(holder.home_event_item_imageView);
+            holder.home_event_item_title.setText(event.title);
+            holder.home_event_item_date.setText(getDate(event));
+            holder.home_event_item.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, EventDetailActivity.class);
@@ -278,14 +337,14 @@ public class About extends Fragment {
         }
 
         class TaggedViewHolder extends RecyclerView.ViewHolder {
-            @BindView(R.id.home_event)
-            View home_event;
-            @BindView(R.id.home_event_title)
-            TextView home_event_title;
-            @BindView(R.id.home_event_date)
-            TextView home_event_date;
-            @BindView(R.id.home_event_cover)
-            ImageView home_event_cover;
+            @BindView(R.id.home_event_item)
+            View home_event_item;
+            @BindView(R.id.home_event_item_title)
+            TextView home_event_item_title;
+            @BindView(R.id.home_event_item_date)
+            TextView home_event_item_date;
+            @BindView(R.id.home_event_item_imageView)
+            ImageView home_event_item_imageView;
 
             TaggedViewHolder(View itemView) {
                 super(itemView);

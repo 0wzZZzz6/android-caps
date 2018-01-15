@@ -28,6 +28,8 @@ import java.util.List;
  */
 public class MunicipalityFragment extends Fragment {
 
+    final static String TAG = "MunicipalityFragment";
+
     private RecyclerView recyclerView;
 
     public MunicipalityFragment() {
@@ -49,6 +51,12 @@ public class MunicipalityFragment extends Fragment {
         recyclerView.setPadding(0, 0, 0, 52);
 
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: hideDialog");
     }
 
     @Override

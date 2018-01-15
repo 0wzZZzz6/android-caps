@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Project\Github\android-caps\lib\build\intermediates\intermediate-jars\release\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="31b090f240304ae703043d9f2f56ea5b8eb12000">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\65.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\08d6faf1010cdc1545380836d95c037a\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\33.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.8.0.aar\70b7fc06f7fd1871c7c23f98ca53d7a9\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d2af2ef4d987d753f2e8ee2d1480ab964d5c7273">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\16.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.8.0.aar\3b207d7a2c4227c1ce06c4db7669e230\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="264ad23f9752aabecfa41115c52a25a023a08839">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\13.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\modules-2\files-2.1\net.minidev\json-smart\2.3\7396407491352ce4fa30de92efb158adb76b5b\json-smart-2.3.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="007396407491352ce4fa30de92efb158adb76b5b">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\49.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\firebase-common-11.8.0.aar\4e617075092be791c79c7e913ff404dc\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e6aeff19a2ce1eb896557be73cb9ceb56f8d1cf3">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\14.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\1.7.25\da76ca59f6a57ee3102f8f9bd9cee742973efa8a\slf4j-api-1.7.25.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="da76ca59f6a57ee3102f8f9bd9cee742973efa8a">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\50.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.0.2.aar\6f4ae80dacc12fb130ed23adf2d51dae\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ed6560f31a6a40b5965f5879d8f2eab1f68def05">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\39.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\firebase-database-11.8.0.aar\bdf29f0e9f835a29bd5cdd6aaf608930\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="1b982cc8b5ab6f788690238dbe3ac3bb19f88b1a">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\annotations\4.5.0\5c16a9f3c9e4c9b6dbea50374264ef26fb937423\annotations-4.5.0.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5c16a9f3c9e4c9b6dbea50374264ef26fb937423">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\48.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\play-services-base-11.8.0.aar\edd9f7fa53685fb8fd01f465ca9e79d9\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="233d88c6f961d2a84758dfe27b7af61318190c7b">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.8.1\bc373fb6bc7bca3035041b924f158fd2b946ee8d\butterknife-annotations-8.8.1.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="bc373fb6bc7bca3035041b924f158fd2b946ee8d">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\41.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\modules-2\files-2.1\com.jayway.jsonpath\json-path\2.4.0\765a4401ceb2dc8d40553c2075eb80a8fa35c2ae\json-path-2.4.0.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="765a4401ceb2dc8d40553c2075eb80a8fa35c2ae">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\30.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\disklrucache\4.5.0\86950b32ea96cceece316b829cbe47b735892551\disklrucache-4.5.0.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="86950b32ea96cceece316b829cbe47b735892551">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\47.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\firebase-auth-11.8.0.aar\24e2f5dccbb6321006508e8a70be92ac\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c5bc72ad3250d065128d1d7514279be703e57bd0">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\appintro-v4.2.2.aar\de774e8c2c315c905ea9bfff30a8ac9b\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="63e7f521cc66c17dd9a22fbf75925a7947bfef7a">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.0.2.aar\eb21402cae9427d5aeeb8aaf8d75e761\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ac2ce6027755bcf49442e70597bec0feb9064f68">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\44.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\27.0.2\b9ef4342c934a1a8b107506273dc8061662a322\support-annotations-27.0.2.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="0b9ef4342c934a1a8b107506273dc8061662a322">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\46.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\fastadapter-1.5.2.aar\b7d6b891e0b3a7ff0a708d9019708515\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ab56b2bdb734c6442014eb30048d54221ba3698b">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\design-27.0.2.aar\34903e6098b2a30a023ef5f951083e33\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="031cc16b7b6e77b3c050134ecab9fa5c2640a069">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\0075331b46e9e5dc2b1775a8e04d8247\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="04cd0cacbedcb338f64665b88bad64d145325fbd">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\butterknife-8.8.1.aar\0fa635f710bcacceaa4e66caa609dfe1\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6a2bcb61342d09fe9acf55c9daf63961c8866cc0">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\25.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\modules-2\files-2.1\joda-time\joda-time\2.9.9\f7b520c458572890807d143670c9b24f4de90897\joda-time-2.9.9.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f7b520c458572890807d143670c9b24f4de90897">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\27.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\com.amulyakhare.textdrawable-1.0.1.aar\7f57aa5c13952e2ed3b137a125080a05\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d237556caead5b93d97e18a071059a2c0045978e">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\24.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\flexbox-0.3.1.aar\4f535e8ae16edf1fa25f3d22157b1557\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2fe439230c8d6fb5427c255939ce9dc98b172150">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\20.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\12b1534e2449c499a2b1537937bd1aa9\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="caa03787689212c10939f308a55a8dc8a3333ed2">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\43.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\firebase-database-connection-11.8.0.aar\3ced951ebac39af4f7e25b61656c6b85\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ed04a0ae7198b0d5d0e965d6afdb0fe784dcfbee">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\11.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\PhotoView-2.1.3.aar\cd93157d46361c09a6c6c27039df84a7\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2115d9dd8708cb48e7481b1259ae9f00dc16a032">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\31.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.8.0.aar\c168fbe2f2613ee62dabeda14b32dd38\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="122de0d704f76d2bb5cb9db66e00fe90a0a41e78">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\12.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\fastadapter-extensions-1.5.1.aar\28074071b0235221b9f2c9f26d231fa8\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="1d971d40e8a631e9a293fedaba3de34ffa8d91ce">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\32.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\glide-4.5.0.aar\10c098fa7572fc1eaae828986d2db8db\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="fa0e9d2e5cf14f7d154c95672b3d37a845f09d57">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\23.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\transition-27.0.2.aar\0d9e1fbd216374c2d96a53314d55bbbf\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a5fa2e3704f51b30b7b47e12a3a2909728799583">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\37.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\modules-2\files-2.1\android.arch.lifecycle\common\1.0.3\7d7f60c4783872861222166f6164215f8951c7b1\common-1.0.3.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7d7f60c4783872861222166f6164215f8951c7b1">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\63.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\library-1.3.4.aar\6366b1664f920c8ac8047ad0b13b675f\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c3602395f624dcee44c338a32d8c8779b94b0d7c">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\26.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\palette-v7-27.0.2.aar\a1e52b18e813a88de7caf50f612531c5\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5ecd2525355de8083d4c1f11bcddb9141750e682">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\22.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\14cee089d982dcf2034bc6e2ca15a7db\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="618f75fe11febf263e3234c7da7dc892232a5608">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\36.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\fac7e32352b98a4595f0559a7c560ad7\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="25c8cb628374f9a2d59ff9e1172753751e9a9f84">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\42.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.0.2.aar\9774f8026cdfb7e34ad962e655bad409\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="9296d6f092fcdba4fafb6ac26546a39babdab46a">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\21.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\expandableTextView-0.1.4.aar\f925ffc95110251351391adee4253946\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b305cfd7ae732d7c146fe3046aea90f877c3892b">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\28.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.0.2.aar\62cee27ae31da141cf7239a44d4f117f\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="14bfdbf5594d4d7c320de20831849050788ab1e3">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\material-calendarview-1.4.3.aar\70f2454d8bf1c05c491b28437403dd9e\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5094eccf53998e9bcacfb85f80e7607b39b093fd">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\modules-2\files-2.1\android.arch.core\common\1.0.0\a2d487452376193fc8c103dd2b9bd5f2b1b44563\common-1.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\64.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\sectionedrecyclerviewadapter-1.1.3.aar\732487b28a0d344ed4af35e4d01bcc34\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="8caaa885c5f74a2555333b2f770b56c1a8d9aa87">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\modules-2\files-2.1\net.minidev\accessors-smart\1.2\c592b500269bfde36096641b01238a8350f8aa31\accessors-smart-1.2.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c592b500269bfde36096641b01238a8350f8aa31">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\58.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\51.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\3cf80a84d208926c01e716e53f5d005a\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d7cc5473b9cf4ea159a263cd477fb3ecb2987b96">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\62.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.8.0.aar\3f7033ac4bc9565e74f34bb784b7d012\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="42c9659c973e311ffdb645ed057e5053e0ab5c78">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\10.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\gravitysnaphelper-1.5.aar\44cb6c5ac9a98f47659cd8c04a408b06\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="25b06f3abe4fdc6f5175a4ca5b620dbe7d8f2d35">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\29.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.0.2.aar\5b3bfdd788196d9091c68c148cdeafa5\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="fe3916317a699975bcce0cba2d13fd2d8cf88922">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\38.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Program Files\Android\Android Studio Stable\gradle\m2repository\org\ow2\asm\asm\5.0.4\asm-5.0.4.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="0da08b8cce7bbf903602a25a3a163ae252435795">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\60.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\gifdecoder-4.5.0.aar\8be000d6530f1c77afb70bb965f5a280\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e6b659b5a5850e1bfd6d81393d35ca3b50297239">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\40.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\support-compat-27.0.2.aar\f3a1094d548ba3770c9ecc8103741573\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b432e82447a3af781e927b9ba0bbb9fe2a496d4a">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\45.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.8.0.aar\f92842cfba3c125dfd696f349ec35b31\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5ad3911825107d8dd4b017fdecebfd23c08048dd">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\17.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jan_frncs\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\d56c3e07fbd43d8491632d5279f39224\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="bcd0bcdef85b31a656af76e39c0c95ce70800772">
+        <dex dex="C:\Project\Github\android-caps\app\build\intermediates\transforms\preDex\release\18.jar" />
+    </item>
+
+</items>

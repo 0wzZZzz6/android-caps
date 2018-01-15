@@ -196,6 +196,7 @@ public class MainActivity extends BaseActivity {
         firebaseNews();
         firebaseBookmarked();
         firebaseUser();
+        firebaseAbout();
 
         if (getUid() == null) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));

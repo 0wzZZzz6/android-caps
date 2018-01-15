@@ -205,9 +205,14 @@ public class More extends Fragment {
             final ItemViewHolder itemHolder = (ItemViewHolder) holder;
             final MunicipalityItem municipalityItem = list.get(position);
 
-            itemHolder.itemTextview.setText(municipalityItem.title);
+            if(list.size() - 1 == position) {
+                itemHolder.section_expandable_item_divider.setVisibility(View.GONE);
+            }
 
-            itemHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            itemHolder.section_expandable_item_title.setText(municipalityItem.title);
+            itemHolder.section_expandable_item_location.setText(municipalityItem.location);
+
+            itemHolder.section_expandable_item.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getContext(), TabItemDetailActivity.class);
@@ -265,12 +270,14 @@ public class More extends Fragment {
     }
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.section_exapandable_item_view)
-        View itemView;
-        @BindView(R.id.section_exapandable_item_imageview)
-        ImageView itemImageview;
-        @BindView(R.id.section_exapandable_item_textview)
-        TextView itemTextview;
+        @BindView(R.id.section_expandable_item)
+        View section_expandable_item;
+        @BindView(R.id.section_expandable_item_title)
+        TextView section_expandable_item_title;
+        @BindView(R.id.section_expandable_item_location)
+        TextView section_expandable_item_location;
+        @BindView(R.id.section_expandable_item_divider)
+        View section_expandable_item_divider;
 
         ItemViewHolder(View view) {
             super(view);

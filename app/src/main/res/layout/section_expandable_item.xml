@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:id="@+id/section_exapandable_item_view"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:clickable="true"
-    android:focusable="true">
-
-    <ImageView
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="15dp"
-        android:id="@+id/section_exapandable_item_imageview" />
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingEnd="10dp"
+    android:id="@+id/section_expandable_item"
+    android:paddingStart="10dp">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/section_expandable_item_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/section_exapandable_item_imageview"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="5dp"
-        tools:text="Item test text"
+        android:paddingTop="10dp"
+        android:text="Title"
         android:ellipsize="end"
-        android:singleLine="true"
-        android:id="@+id/section_exapandable_item_textview" />
+        android:maxLines="1"
+        android:textColor="#000"
+        android:textSize="16sp" />
 
+    <TextView
+        android:id="@+id/section_expandable_item_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:paddingBottom="10dp"
+        android:text="Municiaplity"
+        android:textColor="@color/grey_600"
+        android:textSize="14sp" />
 
-</RelativeLayout>
+    <View
+        android:id="@+id/section_expandable_item_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/green_400" />
+
+</LinearLayout>

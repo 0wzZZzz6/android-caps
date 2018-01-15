@@ -311,4 +311,5 @@ public class TabItemDetailFragment extends Fragment {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
+
 }

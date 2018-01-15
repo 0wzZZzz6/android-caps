@@ -48,13 +48,12 @@ public class HomeEventAdapter extends RecyclerView.Adapter<HomeEventAdapter.Home
     public void onBindViewHolder(HomeEventAdapter.HomeEventViewHolder holder, int position) {
         final Event item = eventList.get(position);
 
-        holder.home_event_title.setText(item.title);
-        holder.home_event_date.setText(getDate(item));
         Glide.with(this.context)
                 .load(item.coverURL)
-                .into(holder.home_event_cover);
-
-        holder.home_event_title.setOnClickListener(new View.OnClickListener() {
+                .into(holder.home_event_item_imageView);
+        holder.home_event_item_title.setText(item.title);
+        holder.home_event_item_date.setText(getDate(item));
+        holder.home_event_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, EventDetailActivity.class);
@@ -106,14 +105,14 @@ public class HomeEventAdapter extends RecyclerView.Adapter<HomeEventAdapter.Home
     }
 
     class HomeEventViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.home_event)
-        View home_event;
-        @BindView(R.id.home_event_title)
-        TextView home_event_title;
-        @BindView(R.id.home_event_date)
-        TextView home_event_date;
-        @BindView(R.id.home_event_cover)
-        ImageView home_event_cover;
+        @BindView(R.id.home_event_item)
+        View home_event_item;
+        @BindView(R.id.home_event_item_title)
+        TextView home_event_item_title;
+        @BindView(R.id.home_event_item_date)
+        TextView home_event_item_date;
+        @BindView(R.id.home_event_item_imageView)
+        ImageView home_event_item_imageView;
 
         HomeEventViewHolder(View itemView) {
             super(itemView);

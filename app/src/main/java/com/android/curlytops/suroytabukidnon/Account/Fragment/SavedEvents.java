@@ -57,6 +57,8 @@ public class SavedEvents extends Fragment {
 
     @BindView(R.id.recyclerview_bookmark)
     RecyclerView recyclerView;
+    @BindView(R.id.noBookmarked)
+    View noBookmarked;
 
     SectionedRecyclerViewAdapter sectionedRecyclerViewAdapter;
     String[] months;
@@ -82,14 +84,17 @@ public class SavedEvents extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view;
+        view = inflater.inflate(R.layout.fragment_recyclerview_bookmark, container, false);
+        ButterKnife.bind(this, view);
 
         if (filtered_events.size() > 0) {
             Log.d("SHIELAMAE", "not empty");
-            view = inflater.inflate(R.layout.fragment_recyclerview_bookmark, container, false);
-            ButterKnife.bind(this, view);
+            noBookmarked.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
         } else {
             Log.d("SHIELAMAE", "empty");
-            view = inflater.inflate(R.layout.empty_state, container, false);
+            noBookmarked.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
         }
 
         return view;

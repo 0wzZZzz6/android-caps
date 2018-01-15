@@ -3,21 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:paddingEnd="10dp"
+    android:paddingStart="10dp">
 
     <TextView
         android:id="@+id/saved_event_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingTop="10dp"
         android:text="Title"
+        android:textColor="#000"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/saved_event_item_municipality"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:paddingBottom="10dp"
         android:text="Municiaplity"
-        android:textSize="16sp" />
+        android:textColor="@color/grey_600"
+        android:textSize="14sp" />
+
+    <View
+        android:id="@+id/saved_event_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/green_400" />
 
 </LinearLayout>
 

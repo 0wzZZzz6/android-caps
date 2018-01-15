@@ -9,10 +9,15 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import com.android.curlytops.suroytabukidnon.BaseActivity;
+import com.android.curlytops.suroytabukidnon.Model.AboutModel;
+import com.android.curlytops.suroytabukidnon.Model.Event;
+import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
 import com.android.curlytops.suroytabukidnon.Municipality.Tab.Fragment.About;
 import com.android.curlytops.suroytabukidnon.Municipality.Tab.Fragment.More;
 import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +41,16 @@ public class TabActivity extends BaseActivity {
     @BindView(R.id.tab_header)
     ImageView tabHeader;
 
+    public List<Event> eventList;
+    public List<MunicipalityItem> itemList;
+    public AboutModel aboutModel = new AboutModel();
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +60,11 @@ public class TabActivity extends BaseActivity {
         municipalityId = getIntent().getExtras().getString(MUNICIPALITY_ID);
         imageUrl = getIntent().getExtras().getString(IMAGEURL);
         municipality = getIntent().getExtras().getString(MUNICIPALITY);
+
+        eventList = readEvents(this);
+        itemList = readMunicipalityItems(this, municipalityId);
+
+        aboutModel = readAbout(this, municipalityId);
 
         supportPostponeEnterTransition();
         setSupportActionBar(toolbar);

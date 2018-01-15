@@ -67,7 +67,7 @@ public class TabItemDetailActivity extends BaseActivity {
         super.onStart();
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.content, TabItemDetailFragment.newInstance())
+                .replace(R.id.content, TabItemDetailFragment.newInstance())
                 .commit();
     }
 

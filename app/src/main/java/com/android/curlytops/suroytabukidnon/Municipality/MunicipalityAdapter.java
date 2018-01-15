@@ -3,13 +3,11 @@ package com.android.curlytops.suroytabukidnon.Municipality;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.curlytops.suroytabukidnon.BaseActivity;
 import com.android.curlytops.suroytabukidnon.Model.Municipality;
@@ -34,8 +32,6 @@ class MunicipalityAdapter extends RecyclerView.Adapter
     MunicipalityAdapter(Context context, List<Municipality> list) {
         this.context = context;
         this.municipalityList = list;
-
-        Log.d("SHIELA", municipalityList.size() + "");
     }
 
     @Override
@@ -48,8 +44,6 @@ class MunicipalityAdapter extends RecyclerView.Adapter
     @Override
     public void onBindViewHolder(MunicipalityViewHolder holder, int position) {
         final Municipality item = municipalityList.get(position);
-
-        Log.d("SHIELA", item.id);
 
         holder.municipalityTitle.setText(item.municipality);
 
@@ -75,9 +69,12 @@ class MunicipalityAdapter extends RecyclerView.Adapter
     }
 
     class MunicipalityViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.municipality_item) View municipalityView;
-        @BindView(R.id.municipality_title) TextView municipalityTitle;
-        @BindView(R.id.munipality_img) ImageView municipalityImg;
+        @BindView(R.id.municipality_item)
+        View municipalityView;
+        @BindView(R.id.municipality_title)
+        TextView municipalityTitle;
+        @BindView(R.id.munipality_img)
+        ImageView municipalityImg;
 
         MunicipalityViewHolder(View view) {
             super(view);

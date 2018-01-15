@@ -63,7 +63,7 @@ public class LoginActivity extends BaseActivity {
             return;
         }
 
-        showProgressDialog();
+        showProgressDialog(this);
         String email = mEmailField.getText().toString();
         String password = mPasswordField.getText().toString();
 
@@ -91,7 +91,7 @@ public class LoginActivity extends BaseActivity {
             return;
         }
 
-        showProgressDialog();
+        showProgressDialog(this);
         String email = mEmailField.getText().toString();
         String password = mPasswordField.getText().toString();
 

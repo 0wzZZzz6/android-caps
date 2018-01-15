@@ -46,14 +46,13 @@ public class HomeNewsAdapter extends
     public void onBindViewHolder(HomeNewsViewHolder holder, int position) {
         final News item = newsList.get(position);
 
-        holder.home_news_item_title.setText(item.title);
         Glide.with(this.context)
                 .load(item.coverURL)
                 .into(holder.home_news_item_imageView);
 
+        holder.home_news_item_title.setText(item.title);
         holder.home_news_item_timestamp.setReferenceTime(item.timestamp);
-
-        holder.home_news_item_title.setOnClickListener(new View.OnClickListener() {
+        holder.home_news_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String url = item.link;
