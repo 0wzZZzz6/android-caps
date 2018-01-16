@@ -75,8 +75,8 @@ public class About extends Fragment {
 
     @BindView(R.id.fragment_about_tagged)
     RecyclerView recyclerView_tagged;
-    @BindView(R.id.taggedCount)
-    TextView taggedCount;
+//    @BindView(R.id.taggedCount)
+//    TextView taggedCount;
 
     @BindView(R.id.fragment_about_featured_places)
     View featured_places;
@@ -153,7 +153,7 @@ public class About extends Fragment {
                 }
             });
             tagged_events.setVisibility(View.VISIBLE);
-            taggedCount.setText(String.valueOf(newEventList.size()));
+//            taggedCount.setText(String.valueOf(newEventList.size()));
             taggedAdapter = new TaggedAdapter(getContext(), newEventList);
             recyclerView_tagged.setHasFixedSize(false);
             recyclerView_tagged.setLayoutManager(new LinearLayoutManager(this.getContext(),

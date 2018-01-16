@@ -343,7 +343,7 @@ public class EventDetailFragment extends Fragment {
 
 
                             } else {
-                                statusLinearlayout.setVisibility(View.INVISIBLE);
+                                statusLinearlayout.setVisibility(View.GONE);
                                 statusLinearlayout.animate().alpha(0.0f);
 
                                 statusDivider.setVisibility(View.VISIBLE);

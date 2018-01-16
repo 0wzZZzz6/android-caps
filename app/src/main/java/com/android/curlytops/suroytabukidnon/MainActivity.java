@@ -59,9 +59,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-
         this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "press again to exit app", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Tap again to exit", Toast.LENGTH_SHORT).show();
 
         new Handler().postDelayed(new Runnable() {
 
