@@ -13,6 +13,9 @@ import com.android.curlytops.suroytabukidnon.Event.EventDetailActivity;
 import com.android.curlytops.suroytabukidnon.Model.Event;
 import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.joda.time.DateTime;
 
@@ -48,8 +51,15 @@ public class HomeEventAdapter extends RecyclerView.Adapter<HomeEventAdapter.Home
     public void onBindViewHolder(HomeEventAdapter.HomeEventViewHolder holder, int position) {
         final Event item = eventList.get(position);
 
+        RequestOptions options = new RequestOptions()
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.suroybukidnon)
+                .priority(Priority.HIGH);
+
         Glide.with(this.context)
                 .load(item.coverURL)
+                .apply(options)
                 .into(holder.home_event_item_imageView);
         holder.home_event_item_title.setText(item.title);
         holder.home_event_item_date.setText(getDate(item));

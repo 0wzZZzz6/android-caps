@@ -18,7 +18,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/damulog" />
+            android:background="@color/md_green_500" />
 
         <!--<View-->
         <!--android:layout_width="match_parent"-->

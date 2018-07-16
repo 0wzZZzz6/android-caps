@@ -22,6 +22,7 @@ import com.android.curlytops.suroytabukidnon.Home.HomeFragment;
 import com.android.curlytops.suroytabukidnon.Municipality.MunicipalityFragment;
 import com.android.curlytops.suroytabukidnon.Search.SearchActivity;
 import com.android.curlytops.suroytabukidnon.Utils.MwmDataItem;
+import com.crashlytics.android.Crashlytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mapswithme.maps.api.MWMPoint;
 import com.mapswithme.maps.api.MapsWithMeApi;
@@ -59,6 +60,13 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        ;
+
         this.doubleBackToExitPressedOnce = true;
         Toast.makeText(this, "Tap again to exit", Toast.LENGTH_SHORT).show();
 
@@ -177,12 +185,10 @@ public class MainActivity extends BaseActivity {
 
 
         // Check auth on Activity start
-        if (mAuth.getCurrentUser() != null) {
-//            onAuthSuccess(mAuth.getCurrentUser());
-            Toast.makeText(this, "go to mainActivity", Toast.LENGTH_SHORT).show();
-        } else {
+        if (mAuth.getCurrentUser() == null) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
+
         }
 
     }

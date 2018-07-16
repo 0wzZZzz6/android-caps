@@ -13,6 +13,9 @@ import android.widget.TextView;
 import com.android.curlytops.suroytabukidnon.Model.News;
 import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.github.curioustechizen.ago.RelativeTimeTextView;
 
 import java.util.List;
@@ -46,8 +49,15 @@ public class HomeNewsAdapter extends
     public void onBindViewHolder(HomeNewsViewHolder holder, int position) {
         final News item = newsList.get(position);
 
+        RequestOptions options = new RequestOptions()
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.suroybukidnon)
+                .priority(Priority.HIGH);
+
         Glide.with(this.context)
                 .load(item.coverURL)
+                .apply(options)
                 .into(holder.home_news_item_imageView);
 
         holder.home_news_item_title.setText(item.title);

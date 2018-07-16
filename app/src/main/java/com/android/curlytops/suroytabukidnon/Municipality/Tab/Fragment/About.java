@@ -30,6 +30,9 @@ import com.android.curlytops.suroytabukidnon.Municipality.Tab.TabActivity;
 import com.android.curlytops.suroytabukidnon.Municipality.Tab_Item_Detail.TabItemDetailActivity;
 import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 
@@ -75,8 +78,6 @@ public class About extends Fragment {
 
     @BindView(R.id.fragment_about_tagged)
     RecyclerView recyclerView_tagged;
-//    @BindView(R.id.taggedCount)
-//    TextView taggedCount;
 
     @BindView(R.id.fragment_about_featured_places)
     View featured_places;
@@ -256,9 +257,17 @@ public class About extends Fragment {
         public void onBindViewHolder(StarredViewHolder holder, int position) {
             final MunicipalityItem item = itemList.get(position);
 
+            RequestOptions options = new RequestOptions()
+                    .centerCrop()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .placeholder(R.drawable.suroybukidnon)
+                    .priority(Priority.HIGH);
+
             Glide.with(this.context)
                     .load(item.coverURL)
+                    .apply(options)
                     .into(holder.cover);
+
             holder.title.setText(item.title);
             holder.location.setText(item.location);
             holder.title.setOnClickListener(new View.OnClickListener() {
@@ -316,9 +325,17 @@ public class About extends Fragment {
         public void onBindViewHolder(TaggedViewHolder holder, int position) {
             final Event event = eventList.get(position);
 
+            RequestOptions options = new RequestOptions()
+                    .centerCrop()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .placeholder(R.drawable.suroybukidnon)
+                    .priority(Priority.HIGH);
+
             Glide.with(this.context)
                     .load(event.coverURL)
+                    .apply(options)
                     .into(holder.home_event_item_imageView);
+
             holder.home_event_item_title.setText(event.title);
             holder.home_event_item_date.setText(getDate(event));
             holder.home_event_item.setOnClickListener(new View.OnClickListener() {

@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
+import com.android.curlytops.suroytabukidnon.Account.Fragment.SavedPlaces;
+import com.android.curlytops.suroytabukidnon.Account.Fragment.SavedPlaces$SavedPlacesAdapter$SavedPlacesViewHolder_ViewBinding;
 import com.android.curlytops.suroytabukidnon.BaseActivity;
 import com.android.curlytops.suroytabukidnon.Model.MunicipalityItem;
 import com.android.curlytops.suroytabukidnon.R;
@@ -61,6 +63,8 @@ public class TabItemDetailActivity extends BaseActivity {
     private Menu menu;
 
     Map<String, String> marked = new HashMap<>();
+
+    SavedPlaces savedPlaces = new SavedPlaces();
 
     @Override
     protected void onStart() {
@@ -181,6 +185,7 @@ public class TabItemDetailActivity extends BaseActivity {
                     bookmarkReference.child(val).removeValue();
 
                     municipalityItem.bookmark.remove(getUid());
+
                 } else {
                     // Star the post and add self to stars
                     String key = bookmarkReference.push().getKey();
@@ -188,6 +193,8 @@ public class TabItemDetailActivity extends BaseActivity {
                     bookmarkReference.child(key).setValue(marked);
                     municipalityItem.bookmark.put(getUid(), key);
                 }
+
+                savedPlaces.sectionedRecyclerViewAdapter.notifyDataSetChanged();
 
                 // Set value and report transaction success
                 mutableData.setValue(municipalityItem);

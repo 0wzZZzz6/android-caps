@@ -57,7 +57,7 @@ public class SavedPlaces extends Fragment {
     @BindView(R.id.noBookmarked)
     View noBookmarked;
 
-    SectionedRecyclerViewAdapter sectionedRecyclerViewAdapter;
+    public SectionedRecyclerViewAdapter sectionedRecyclerViewAdapter;
 
     public static SavedPlaces newInstance() {
         SavedPlaces savedPlaces = new SavedPlaces();

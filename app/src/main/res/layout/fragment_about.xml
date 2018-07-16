@@ -72,6 +72,7 @@
             android:id="@+id/fragment_about_featured_places"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:orientation="vertical">
 
             <TextView
@@ -94,6 +95,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/fragment_about_tagged_events"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

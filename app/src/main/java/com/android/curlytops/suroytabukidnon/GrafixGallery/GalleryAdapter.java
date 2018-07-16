@@ -12,6 +12,9 @@ import android.widget.TextView;
 import com.android.curlytops.suroytabukidnon.Model.ImageModel;
 import com.android.curlytops.suroytabukidnon.R;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,17 +56,26 @@ public class GalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
+        RequestOptions options = new RequestOptions()
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.suroybukidnon)
+                .priority(Priority.HIGH);
+
         if (data.size() > 6 && position == 5 && viewMode.equalsIgnoreCase(viewMode_places)) {
             int more = data.size() - 5;
             String textContent = "+" + more;
             ((MyItemHolder) holder).textLayout.setVisibility(View.VISIBLE);
             ((MyItemHolder) holder).textView.setText(textContent);
-            Glide.with(context).load(data.get(position).getUrl())
-                    .thumbnail(0.5f)
+            Glide.with(context)
+                    .load(data.get(position).getUrl())
+                    .apply(options)
                     .into(((MyItemHolder) holder).mImg);
         } else {
-            Glide.with(context).load(data.get(position).getUrl())
-                    .thumbnail(0.5f)
+            Glide.with(context)
+                    .load(data.get(position).getUrl())
+                    .apply(options)
                     .into(((MyItemHolder) holder).mImg);
         }
     }
@@ -75,8 +87,6 @@ public class GalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         } else {
             return data.size();
         }
-
-//        return data.size();
     }
 
     public static class MyItemHolder extends RecyclerView.ViewHolder {

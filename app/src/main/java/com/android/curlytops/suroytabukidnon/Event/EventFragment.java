@@ -7,10 +7,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.res.ResourcesCompat;
@@ -21,6 +23,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -100,7 +103,8 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
     View bottomSheet;
     @BindView(R.id.fragment_event_fab)
     FloatingActionButton fab;
-
+    @BindView(R.id.fragment_event_coordinatorLayout)
+    CoordinatorLayout coordinatorLayout;
 
     boolean fabStat = false;
     boolean openFab = true;
@@ -193,6 +197,18 @@ public class EventFragment extends Fragment implements OnDateSelectedListener {
             public void onAnimationRepeat(Animation animation) {
             }
         });
+
+        ViewTreeObserver viewTreeObserver = coordinatorLayout.getViewTreeObserver();
+        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                int height = coordinatorLayout.getMeasuredHeight();
+
+                int bottomSheetPeekHeight = height - widget.getHeight();
+                behavior.setPeekHeight(bottomSheetPeekHeight);
+            }
+        });
+
 
         return rootView;
     }

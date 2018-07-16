@@ -11,8 +11,7 @@
         android:layout_height="230dp"
         android:layout_margin="1dp"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/damulog" />
+        android:src="@drawable/suroybukidnon_sm" />
 
 </LinearLayout>
 

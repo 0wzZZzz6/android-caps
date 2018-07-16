@@ -63,7 +63,6 @@ public class TabActivity extends BaseActivity {
 
         eventList = readEvents(this);
         itemList = readMunicipalityItems(this, municipalityId);
-
         aboutModel = readAbout(this, municipalityId);
 
         supportPostponeEnterTransition();

@@ -79,7 +79,6 @@ public class More extends Fragment {
             sectionAdapter = new SectionedRecyclerViewAdapter();
             sectionAdapter();
         } else {
-            Toast.makeText(this.getContext(), "itemLengh: " + itemLength, Toast.LENGTH_SHORT).show();
             view = inflater.inflate(R.layout.empty_state, container, false);
         }
 
